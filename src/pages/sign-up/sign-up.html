@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sign up</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <p>Welcome to the Haventec Authenticate sample app</p>
+  <p>As this is your first time here</p>
+  <p>we need a few details</p>
+
+  <form [formGroup]="signUpFormGroup" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!signUpFormGroup.valid">Sign up</button>
+  </form>
+
+</ion-content>

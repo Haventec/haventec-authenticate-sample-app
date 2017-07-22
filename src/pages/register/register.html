@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <p>Final step {{username}}</p>
+  <p>We have sent a registration code to your email {{email}}.</p>
+  <p>Please enter this registration code here</p>
+  <form [formGroup]="registrationFormGroup" (ngSubmit)="logForm()">
+
+    <ion-item>
+      <ion-label>Give this device a name</ion-label>
+      <ion-input type="text" formControlName="deviceName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Registration code</ion-label>
+      <ion-input type="text" formControlName="registrationCode"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Select a simple 4 digit PIN</ion-label>
+      <ion-input type="password" formControlName="pin1"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Confirm PIN</ion-label>
+      <ion-input type="password" formControlName="pin2"></ion-input>
+    </ion-item>
+
+    <button ion-button type="submit" [disabled]="!registrationFormGroup.valid">Finish</button>
+  </form>
+
+</ion-content>

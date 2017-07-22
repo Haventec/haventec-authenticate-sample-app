@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <p>Welcome back {{username}}</p>
+
+  <form [formGroup]="loginFormGroup" (ngSubmit)="logForm()">
+
+    <ion-item>
+      <ion-label>Select a simple 4 digit PIN</ion-label>
+      <ion-input type="password" formControlName="pin1"></ion-input>
+    </ion-item>
+
+    <button ion-button type="submit" [disabled]="!loginFormGroup.valid">Login</button>
+  </form>
+
+</ion-content>
