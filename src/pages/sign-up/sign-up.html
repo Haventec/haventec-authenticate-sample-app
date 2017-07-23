@@ -13,25 +13,24 @@
 <ion-content padding>
 
   <p>Welcome to the Haventec Authenticate sample app</p>
-  <p>As this is your first time here</p>
-  <p>we need a few details</p>
+  <p>As this is your first time here, we need a few details</p>
 
   <form [formGroup]="signUpFormGroup" (ngSubmit)="signUp()">
 
     <ion-item>
-      <ion-label stacked>Username</ion-label>
+      <ion-label stacked>Enter a username</ion-label>
       <ion-input type="text" formControlName="username"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Email</ion-label>
+      <ion-label stacked>Enter your email</ion-label>
       <ion-input formControlName="email"></ion-input>
     </ion-item>
 
-    <button ion-button type="submit" [disabled]="!signUpFormGroup.valid">Sign up</button>
+    <button ion-button type="submit" [disabled]="!signUpFormGroup.valid">Create an account</button>
 
   </form>
 
-  <button ion-button (click)='existingUser();'>Existing user</button>
+  <a (click)='existingUser();'>I am an existing user</a>
 
 </ion-content>

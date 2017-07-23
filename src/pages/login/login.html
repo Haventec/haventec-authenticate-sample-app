@@ -12,18 +12,18 @@
 
 <ion-content padding>
 
-  <p>Welcome back {{username}}</p>
+  <p>Welcome back {{user.getUsername()}}</p>
 
   <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
 
     <ion-item>
-      <ion-label stacked>Enter your simple 4 digit PIN</ion-label>
+      <ion-label stacked>Enter your PIN</ion-label>
       <ion-input type="password" formControlName="pin1"></ion-input>
     </ion-item>
 
     <button ion-button type="submit" [disabled]="!loginFormGroup.valid">Login</button>
   </form>
 
-  <button ion-button (click)='forgotPIN();'>Forgot PIN</button>
+  <a (click)='forgotPIN();'>Forgot your PIN?</a>
 
 </ion-content>

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-import { LoginPage } from '../login/login'
-import { ChangePinPage } from '../change-pin/change-pin'
+import { LoginPage } from '../login/login';
+import { ChangePinPage } from '../change-pin/change-pin';
+
+import { User } from '../../models/user';
 
 @Component({
   selector: 'page-home',
@@ -10,7 +12,11 @@ import { ChangePinPage } from '../change-pin/change-pin'
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {}
+  private user: User = new User('');
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.user = navParams.data;
+  }
 
   logout(){
     this.navCtrl.setRoot(LoginPage);

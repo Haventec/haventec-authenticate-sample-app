@@ -6,15 +6,20 @@ import { Storage } from '@ionic/storage';
 
 import { HomePage } from '../home/home';
 
+import { User } from '../../models/user'
+
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
 })
 export class RegisterPage {
 
-  private registrationFormGroup : FormGroup;
+  private user: User = new User('');
+  private registrationFormGroup: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private storage: Storage) {
+    this.user = navParams.data;
+
     this.registrationFormGroup = this.formBuilder.group({
       registrationCode: ['', Validators.required],
       pin1: ['', Validators.required],
@@ -26,7 +31,7 @@ export class RegisterPage {
   }
 
   register(){
-    this.storage.set('haventec_username','john');
-    this.navCtrl.setRoot(HomePage);
+    this.storage.set('haventec_username', this.user.getUsername());
+    this.navCtrl.setRoot(HomePage, this.user);
   }
 }

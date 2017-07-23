@@ -13,24 +13,23 @@
 
 <ion-content padding>
 
-  <p>Final step {{username}}</p>
-  <p>We have sent a registration code to your email address.</p>
-  <p>Please enter this registration code here</p>
+  <p>{{user.getUsername()}}, we have sent a registration code to your email address.</p>
+  <p>To complete your registration, please enter the registration code here.</p>
 
   <form [formGroup]="registrationFormGroup" (ngSubmit)="register()">
 
     <ion-item>
-      <ion-label stacked>Give this device a name</ion-label>
-      <ion-input type="text" formControlName="deviceName"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Registration code</ion-label>
+      <ion-label stacked>Enter the registration code</ion-label>
       <ion-input type="text" formControlName="registrationCode"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Select a simple 4 digit PIN</ion-label>
+      <ion-label stacked>Name this device</ion-label>
+      <ion-input type="text" formControlName="deviceName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Enter a PIN</ion-label>
       <ion-input type="password" formControlName="pin1"></ion-input>
     </ion-item>
 

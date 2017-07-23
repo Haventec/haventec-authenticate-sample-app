@@ -40,8 +40,8 @@ export class MyApp {
 
   // Check if this is the users first time using the App
   checkForFirstTimeUse(): void {
-    this.storage.get(this.haventecKey).then((val) => {
-      if(val == null){
+    this.storage.get(this.haventecKey).then((username) => {
+      if(username == null){
         this.rootPage = SignUpPage;
       } else {
         this.rootPage = LoginPage;
