@@ -20,22 +20,22 @@
   <form [formGroup]="registrationFormGroup" (ngSubmit)="register()">
 
     <ion-item>
-      <ion-label>Give this device a name</ion-label>
+      <ion-label stacked>Give this device a name</ion-label>
       <ion-input type="text" formControlName="deviceName"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Registration code</ion-label>
+      <ion-label stacked>Registration code</ion-label>
       <ion-input type="text" formControlName="registrationCode"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Select a simple 4 digit PIN</ion-label>
+      <ion-label stacked>Select a simple 4 digit PIN</ion-label>
       <ion-input type="password" formControlName="pin1"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Confirm PIN</ion-label>
+      <ion-label stacked>Confirm PIN</ion-label>
       <ion-input type="password" formControlName="pin2"></ion-input>
     </ion-item>
 
