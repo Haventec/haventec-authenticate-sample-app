@@ -11,19 +11,25 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
 
-  <p>Welcome back {{user.getUsername()}}</p>
+        <p>Welcome back {{user.getUsername()}}</p>
 
-  <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+        <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
 
-    <ion-item>
-      <ion-label stacked>Enter your PIN</ion-label>
-      <ion-input type="password" formControlName="pin1"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Enter your PIN</ion-label>
+            <ion-input type="password" formControlName="pin1"></ion-input>
+          </ion-item>
 
-    <button ion-button type="submit" [disabled]="!loginFormGroup.valid">Login</button>
-  </form>
+          <button ion-button type="submit" [disabled]="!loginFormGroup.valid" block margin-vertical>Login</button>
+        </form>
 
-  <a (click)='forgotPIN();'>Forgot your PIN?</a>
+        <a (click)='forgotPIN();'>Forgot your PIN?</a>
 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

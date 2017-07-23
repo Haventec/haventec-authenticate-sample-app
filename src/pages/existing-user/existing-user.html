@@ -11,18 +11,25 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
 
-  <p>Add this device</p>
+        <p>Add this device</p>
 
-  <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
+        <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
 
-    <ion-item>
-      <ion-label stacked>Username</ion-label>
-      <ion-input type="text" formControlName="username"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Username</ion-label>
+            <ion-input type="text" formControlName="username"></ion-input>
+          </ion-item>
 
-    <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid">Add your new device</button>
+          <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid" block margin-vertical>Add your new device</button>
 
-  </form>
+        </form>
 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

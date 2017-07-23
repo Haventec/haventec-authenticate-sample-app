@@ -12,34 +12,41 @@
 
 
 <ion-content padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
 
-  <p>{{user.getUsername()}}, we have sent a registration code to your email address.</p>
-  <p>To complete your registration, please enter the registration code here.</p>
+        <p>{{user.getUsername()}}, we have sent a registration code to your email address.</p>
+        <p>To complete your registration, please enter the registration code here.</p>
 
-  <form [formGroup]="registrationFormGroup" (ngSubmit)="register()">
+        <form [formGroup]="registrationFormGroup" (ngSubmit)="register()">
 
-    <ion-item>
-      <ion-label stacked>Enter the registration code</ion-label>
-      <ion-input type="text" formControlName="registrationCode"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Enter the registration code</ion-label>
+            <ion-input type="text" formControlName="registrationCode"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Name this device</ion-label>
-      <ion-input type="text" formControlName="deviceName"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Name this device</ion-label>
+            <ion-input type="text" formControlName="deviceName"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Enter a PIN</ion-label>
-      <ion-input type="password" formControlName="pin1"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Enter a PIN</ion-label>
+            <ion-input type="password" formControlName="pin1"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Confirm PIN</ion-label>
-      <ion-input type="password" formControlName="pin2"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Confirm PIN</ion-label>
+            <ion-input type="password" formControlName="pin2"></ion-input>
+          </ion-item>
 
-    <button ion-button type="submit" [disabled]="!registrationFormGroup.valid">Finish</button>
+          <button ion-button type="submit" [disabled]="!registrationFormGroup.valid" block margin-vertical>Finish</button>
 
-  </form>
+        </form>
 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

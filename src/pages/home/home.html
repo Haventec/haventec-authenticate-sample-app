@@ -15,9 +15,16 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
 
-  <p>Hi {{user.getUsername()}}, you have successfully logged in using Haventec Authenticate</p>
+        <p>Hi {{user.getUsername()}}, you have successfully logged in using Haventec Authenticate</p>
 
-  <button ion-button (click)='changePin();'>Change PIN</button>
+        <button ion-button (click)='changePin();' block margin-vertical>Change PIN</button>
 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

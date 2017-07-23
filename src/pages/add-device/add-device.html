@@ -12,34 +12,41 @@
 
 
 <ion-content padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
 
-  <p>An email has been sent to your inbox</p>
-  <p>Please check your email and enter the new device code below</p>
+        <p>An email has been sent to your inbox</p>
+        <p>Please check your email and enter the new device code below</p>
 
-  <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
+        <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
 
-    <ion-item>
-      <ion-label stacked>Give this device a name</ion-label>
-      <ion-input type="text" formControlName="deviceName"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Give this device a name</ion-label>
+            <ion-input type="text" formControlName="deviceName"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label stacked>New device code</ion-label>
-      <ion-input type="text" formControlName="deviceCode"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>New device code</ion-label>
+            <ion-input type="text" formControlName="deviceCode"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Select a simple 4 digit PIN</ion-label>
-      <ion-input type="password" formControlName="pin1"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Select a simple 4 digit PIN</ion-label>
+            <ion-input type="password" formControlName="pin1"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Confirm PIN</ion-label>
-      <ion-input type="password" formControlName="pin2"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Confirm PIN</ion-label>
+            <ion-input type="password" formControlName="pin2"></ion-input>
+          </ion-item>
 
-    <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid">Finish</button>
+          <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid" block margin-vertical>Finish</button>
 
-  </form>
+        </form>
 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

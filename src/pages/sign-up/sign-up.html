@@ -11,26 +11,33 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
 
-  <p>Welcome to the Haventec Authenticate sample app</p>
-  <p>As this is your first time here, we need a few details</p>
+        <p>Welcome to the Haventec Authenticate sample app</p>
+        <p>As this is your first time here, we need a few details</p>
 
-  <form [formGroup]="signUpFormGroup" (ngSubmit)="signUp()">
+        <form [formGroup]="signUpFormGroup" (ngSubmit)="signUp()">
 
-    <ion-item>
-      <ion-label stacked>Enter a username</ion-label>
-      <ion-input type="text" formControlName="username"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Enter a username</ion-label>
+            <ion-input type="text" formControlName="username"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Enter your email</ion-label>
-      <ion-input formControlName="email"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label stacked>Enter your email</ion-label>
+            <ion-input formControlName="email"></ion-input>
+          </ion-item>
 
-    <button ion-button type="submit" [disabled]="!signUpFormGroup.valid">Create an account</button>
+          <button ion-button type="submit" [disabled]="!signUpFormGroup.valid" block margin-vertical>Create an account</button>
 
-  </form>
+        </form>
 
-  <a (click)='existingUser();'>I am an existing user</a>
+        <a (click)='existingUser();'>I am an existing user</a>
 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
