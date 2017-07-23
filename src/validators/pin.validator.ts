@@ -2,7 +2,7 @@ import { AbstractControl}  from '@angular/forms';
 
 export class PinValidation {
 
-  static MatchPassword(AC: AbstractControl) {
+  static MatchPin(AC: AbstractControl) {
     let pin1 = AC.get('pin1').value;
     let pin2 = AC.get('pin2').value;
 

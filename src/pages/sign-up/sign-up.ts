@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { RegisterPage } from '../register/register';
+import { ExistingUserPage } from '../existing-user/existing-user';
 
 @Component({
   selector: 'page-sign-up',
@@ -20,9 +21,11 @@ export class SignUpPage {
 
   }
 
-  logForm(){
-    console.log(this.signUpFormGroup.value);
-    this.navCtrl.setRoot(RegisterPage);
+  signUp(){
+    this.navCtrl.push(RegisterPage);
   }
 
+  existingUser(){
+    this.navCtrl.push(ExistingUserPage);
+  }
 }

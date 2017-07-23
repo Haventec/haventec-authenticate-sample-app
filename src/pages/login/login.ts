@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { HomePage } from '../home/home';
+import { ForgotPinPage } from '../forgot-pin/forgot-pin';
 
 @Component({
   selector: 'page-login',
@@ -18,7 +19,11 @@ export class LoginPage {
     })
   }
 
-  logForm(){
+  login(){
     this.navCtrl.setRoot(HomePage);
+  }
+
+  forgotPIN(){
+    this.navCtrl.push(ForgotPinPage);
   }
 }

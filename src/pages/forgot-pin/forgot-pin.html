@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-buttons left>
+      <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+
+    <ion-title>Forgot PIN</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <p>Hi {{username}}</p>
+  <p>We have sent a reset code to your email address.</p>
+  <p>Please enter this reset code here</p>
+
+  <form [formGroup]="resetFormGroup" (ngSubmit)="resetPin()">
+
+    <ion-item>
+      <ion-label>Reset code</ion-label>
+      <ion-input type="text" formControlName="resetCode"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Select a simple 4 digit PIN</ion-label>
+      <ion-input type="password" formControlName="pin1"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Confirm PIN</ion-label>
+      <ion-input type="password" formControlName="pin2"></ion-input>
+    </ion-item>
+
+    <button ion-button type="submit" [disabled]="!resetFormGroup.valid">Reset PIN</button>
+
+  </form>
+
+</ion-content>

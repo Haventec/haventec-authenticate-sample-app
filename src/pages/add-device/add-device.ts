@@ -2,21 +2,20 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { PinValidation } from '../../validators/pin.validator';
-import { Storage } from '@ionic/storage';
 
 import { HomePage } from '../home/home';
 
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
+  selector: 'page-add-device',
+  templateUrl: 'add-device.html',
 })
-export class RegisterPage {
+export class AddDevicePage {
 
-  private registrationFormGroup : FormGroup;
+  private addDeviceFormGroup : FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private storage: Storage) {
-    this.registrationFormGroup = this.formBuilder.group({
-      registrationCode: ['', Validators.required],
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+    this.addDeviceFormGroup = this.formBuilder.group({
+      deviceCode: ['', Validators.required],
       pin1: ['', Validators.required],
       pin2: ['', Validators.required],
       deviceName: ['', Validators.required]
@@ -25,8 +24,7 @@ export class RegisterPage {
     })
   }
 
-  register(){
-    this.storage.set('haventec_username','john');
+  addDevice(){
     this.navCtrl.setRoot(HomePage);
   }
 }

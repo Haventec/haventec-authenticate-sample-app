@@ -5,7 +5,7 @@
       <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
     </ion-buttons>
 
-    <ion-title>Register</ion-title>
+    <ion-title>Add this device</ion-title>
 
   </ion-navbar>
 </ion-header>
@@ -13,11 +13,10 @@
 
 <ion-content padding>
 
-  <p>Final step {{username}}</p>
-  <p>We have sent a registration code to your email address.</p>
-  <p>Please enter this registration code here</p>
+  <p>An email has been sent to your inbox</p>
+  <p>Please check your email and enter the new device code below</p>
 
-  <form [formGroup]="registrationFormGroup" (ngSubmit)="register()">
+  <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
 
     <ion-item>
       <ion-label>Give this device a name</ion-label>
@@ -25,8 +24,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Registration code</ion-label>
-      <ion-input type="text" formControlName="registrationCode"></ion-input>
+      <ion-label>New device code</ion-label>
+      <ion-input type="text" formControlName="deviceCode"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -39,7 +38,7 @@
       <ion-input type="password" formControlName="pin2"></ion-input>
     </ion-item>
 
-    <button ion-button type="submit" [disabled]="!registrationFormGroup.valid">Finish</button>
+    <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid">Finish</button>
 
   </form>
 

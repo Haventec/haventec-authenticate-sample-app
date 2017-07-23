@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-buttons left>
+      <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+
+    <ion-title>Add this device</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <p>Add this device</p>
+
+  <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
+
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+
+    <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid">Add your new device</button>
+
+  </form>
+
+</ion-content>

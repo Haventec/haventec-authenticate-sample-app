@@ -1,9 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+
+    <ion-buttons left>
+      <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+
     <ion-title>Login</ion-title>
+
   </ion-navbar>
 </ion-header>
 
@@ -11,14 +14,16 @@
 
   <p>Welcome back {{username}}</p>
 
-  <form [formGroup]="loginFormGroup" (ngSubmit)="logForm()">
+  <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
 
     <ion-item>
-      <ion-label>Select a simple 4 digit PIN</ion-label>
+      <ion-label>Enter your simple 4 digit PIN</ion-label>
       <ion-input type="password" formControlName="pin1"></ion-input>
     </ion-item>
 
     <button ion-button type="submit" [disabled]="!loginFormGroup.valid">Login</button>
   </form>
+
+  <button ion-button (click)='forgotPIN();'>Forgot PIN</button>
 
 </ion-content>

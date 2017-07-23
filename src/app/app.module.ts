@@ -8,6 +8,10 @@ import { HomePage } from '../pages/home/home';
 import { SignUpPage } from "../pages/sign-up/sign-up";
 import { LoginPage } from "../pages/login/login";
 import { RegisterPage } from "../pages/register/register";
+import { ForgotPinPage } from "../pages/forgot-pin/forgot-pin";
+import { ExistingUserPage } from "../pages/existing-user/existing-user";
+import { AddDevicePage } from "../pages/add-device/add-device";
+import { ChangePinPage } from "../pages/change-pin/change-pin";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +22,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     SignUpPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ForgotPinPage,
+    ExistingUserPage,
+    AddDevicePage,
+    ChangePinPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     SignUpPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ForgotPinPage,
+    ExistingUserPage,
+    AddDevicePage,
+    ChangePinPage
   ],
   providers: [
     StatusBar,
