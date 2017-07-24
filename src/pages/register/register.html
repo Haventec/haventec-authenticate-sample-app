@@ -22,19 +22,19 @@
         <form [formGroup]="registrationFormGroup" (ngSubmit)="register()">
 
           <ion-item>
-            <ion-label stacked>Enter the registration code</ion-label>
+            <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>Enter the registration code</ion-label>
             <ion-input type="text" formControlName="registrationCode"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label stacked>Name this device</ion-label>
+            <ion-label stacked icon-start><ion-icon name="phone-portrait"></ion-icon>Name this device</ion-label>
             <ion-input type="text" formControlName="deviceName"></ion-input>
           </ion-item>
 
-          <ion-label class="pin-label">Enter a PIN</ion-label>
+          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
 
-          <button ion-button type="submit" [disabled]="!registrationFormGroup.valid" block margin-vertical>Finish</button>
+          <button ion-button type="submit" [disabled]="!registrationFormGroup.valid" block margin-vertical>Create my account</button>
 
         </form>
 

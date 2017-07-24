@@ -22,16 +22,16 @@
         <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
 
           <ion-item>
-            <ion-label stacked>Give this device a name</ion-label>
+            <ion-label stacked icon-start><ion-icon name="phone-portrait"></ion-icon>Give this device a name</ion-label>
             <ion-input type="text" formControlName="deviceName"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label stacked>New device code</ion-label>
+            <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>New device code</ion-label>
             <ion-input type="text" formControlName="deviceCode"></ion-input>
           </ion-item>
 
-          <ion-label class="pin-label">Enter a PIN</ion-label>
+          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
 
           <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid" block margin-vertical>Add</button>

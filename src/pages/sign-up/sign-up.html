@@ -21,12 +21,15 @@
         <form [formGroup]="signUpFormGroup" (ngSubmit)="signUp()">
 
           <ion-item>
-            <ion-label stacked>Enter a username</ion-label>
-            <ion-input type="text" formControlName="username"></ion-input>
+            <ion-label stacked icon-start><ion-icon name="person"></ion-icon>Enter a username</ion-label>
+
+            <ion-input type="text" formControlName="username">
+
+            </ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label stacked>Enter your email</ion-label>
+            <ion-label stacked icon-start><ion-icon name="mail"></ion-icon>Enter your email</ion-label>
             <ion-input formControlName="email"></ion-input>
           </ion-item>
 

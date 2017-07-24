@@ -25,7 +25,7 @@
 
         <form [formGroup]="changePinFormGroup" (ngSubmit)="changePin()">
 
-          <ion-label class="pin-label">Enter a PIN</ion-label>
+          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
 
           <button ion-button type="submit" [disabled]="!changePinFormGroup.valid" block margin-vertical>Change PIN</button>
