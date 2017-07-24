@@ -2,10 +2,10 @@
   <ion-navbar>
 
     <ion-buttons left>
-      <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+      <button ion-button menuToggle><ion-icon name="options"></ion-icon></button>
     </ion-buttons>
 
-    <ion-title>Register</ion-title>
+    <ion-title>Active your account</ion-title>
 
   </ion-navbar>
 </ion-header>
@@ -16,13 +16,13 @@
     <ion-row>
       <ion-col>
 
-        <p>{{user.getUsername()}}, we have sent a registration code to your email address.</p>
-        <p>To complete your registration, please enter the registration code here.</p>
+        <p>{{user.getUsername()}}, we have sent an activation code to your email address.</p>
+        <p>To activate your account, please enter that code here.</p>
 
         <form [formGroup]="registrationFormGroup" (ngSubmit)="registerUser()">
 
           <ion-item>
-            <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>Enter the registration code</ion-label>
+            <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>Enter the activation code</ion-label>
             <ion-input type="text" formControlName="registrationCode"></ion-input>
           </ion-item>
 

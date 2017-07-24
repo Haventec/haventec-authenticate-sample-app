@@ -30,6 +30,7 @@ export class LoginPage {
   pinUpdated(pin) {
     if (pin.length === 4) {
       this.loginFormGroup.controls['pin'].setValue(event);
+      this.login();
     }
   }
 
