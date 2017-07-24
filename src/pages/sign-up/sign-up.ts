@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RegisterPage } from '../register/register';
-import { ExistingUserPage } from '../existing-user/existing-user';
 import { User } from '../../models/user'
 import { AuthService } from '../../providers/auth-service/auth-service'
 
@@ -38,9 +37,5 @@ export class SignUpPage {
       },
       err => {console.error(err);}
     );
-  }
-
-  existingUser(){
-    this.navCtrl.push(ExistingUserPage);
   }
 }

@@ -12,7 +12,6 @@ import { SignUpPage } from "../pages/sign-up/sign-up";
 import { LoginPage } from "../pages/login/login";
 import { RegisterPage } from "../pages/register/register";
 import { ForgotPinPage } from "../pages/forgot-pin/forgot-pin";
-import { ExistingUserPage } from "../pages/existing-user/existing-user";
 import { AddDevicePage } from "../pages/add-device/add-device";
 
 import { PinInput } from "../components/pin-input/pin-input";
@@ -27,7 +26,6 @@ import { AuthService } from '../providers/auth-service/auth-service';
     LoginPage,
     RegisterPage,
     ForgotPinPage,
-    ExistingUserPage,
     AddDevicePage,
     PinInput
   ],
@@ -45,7 +43,6 @@ import { AuthService } from '../providers/auth-service/auth-service';
     LoginPage,
     RegisterPage,
     ForgotPinPage,
-    ExistingUserPage,
     AddDevicePage,
     PinInput
   ],
