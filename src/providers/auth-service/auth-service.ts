@@ -9,6 +9,7 @@ export class AuthService {
   private signUpUserPath: string = '/self-service/user';
   private registerUserPath: string = '/register/user';
   private loginUserPath: string = '/login';
+  private forgotPinPath: string = '/forgot-pin';
 
   constructor(private http: Http) {}
 
@@ -41,5 +42,14 @@ export class AuthService {
     };
 
     return this.http.post(this.url + this.loginUserPath, body).map(res => res.json());
+  }
+
+  forgotPin(username: string, deviceUuid: string) {
+    let body = {
+      'username': username,
+      'deviceUuid': deviceUuid
+    };
+
+    return this.http.post(this.url + this.forgotPinPath, body).map(res => res.json());
   }
 }

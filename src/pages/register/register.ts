@@ -3,8 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
-import { User } from '../../models/user'
-import { AuthService } from '../../providers/auth-service/auth-service'
+import { User } from '../../models/user';
+import { AuthService } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-register',

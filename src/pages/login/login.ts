@@ -4,8 +4,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { ForgotPinPage } from '../forgot-pin/forgot-pin';
-import { User } from '../../models/user'
-import { AuthService } from '../../providers/auth-service/auth-service'
+import { User } from '../../models/user';
+import { AuthService } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-login',
@@ -15,8 +15,7 @@ export class LoginPage {
 
   private haventecKey: string = 'haventec_username';
   private user: User = new User('');
-  private loginFormGroup : FormGroup;
-
+  private loginFormGroup: FormGroup;
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService) {
     this.storage.get(this.haventecKey).then((username) => {
@@ -28,13 +27,13 @@ export class LoginPage {
     })
   }
 
-  pinUpdated(pin){
-    if(pin.length === 4){
+  pinUpdated(pin) {
+    if (pin.length === 4) {
       this.loginFormGroup.controls['pin'].setValue(event);
     }
   }
 
-  login(){
+  login() {
     let username = this.user.getUsername();
     let deviceUuid = 'Todo';
     let authKey = 'Todo';
@@ -42,18 +41,34 @@ export class LoginPage {
 
     this.authService.login(username, deviceUuid, authKey, hashedPin).subscribe(
       data => {
-        if(data.responseStatus.status === 'SUCCESS'){
+        if (data.responseStatus.status === 'SUCCESS') {
           // Todo save keys
           this.navCtrl.setRoot(HomePage, this.user);
         } else {
           console.error('Error authService.login:' + data.responseStatus.message);
         }
       },
-      err => {console.error(err);}
+      err => {
+        console.error(err);
+      }
     );
   }
 
-  forgotPIN(){
-    this.navCtrl.push(ForgotPinPage, this.user);
+  forgotPin() {
+    let username = this.user.getUsername();
+    let deviceUuid = 'Todo';
+
+    this.authService.forgotPin(username, deviceUuid).subscribe(
+      data => {
+        if (data.responseStatus.status === 'SUCCESS') {
+          this.navCtrl.push(ForgotPinPage, this.user);
+        } else {
+          console.error('Error authService.forgotPin:' + data.responseStatus.message);
+        }
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 }
