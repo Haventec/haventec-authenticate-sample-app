@@ -33,10 +33,10 @@ export class SignUpPage {
           this.user.setUsername(this.signUpFormGroup.value.username);
           this.navCtrl.push(RegisterPage, this.user);
         } else {
-          console.log('Error');
+          console.error('Error authService.signUpUser:' + data.responseStatus.message);
         }
       },
-      err => {console.log(err);}
+      err => {console.error(err);}
     );
   }
 

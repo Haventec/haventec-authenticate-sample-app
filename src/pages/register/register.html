@@ -19,7 +19,7 @@
         <p>{{user.getUsername()}}, we have sent a registration code to your email address.</p>
         <p>To complete your registration, please enter the registration code here.</p>
 
-        <form [formGroup]="registrationFormGroup" (ngSubmit)="register()">
+        <form [formGroup]="registrationFormGroup" (ngSubmit)="registerUser()">
 
           <ion-item>
             <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>Enter the registration code</ion-label>
