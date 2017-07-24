@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
 import { LoginPage } from '../login/login';
-import { ChangePinPage } from '../change-pin/change-pin';
-
 import { User } from '../../models/user';
 
 @Component({
@@ -20,9 +17,5 @@ export class HomePage {
 
   logout(){
     this.navCtrl.setRoot(LoginPage);
-  }
-
-  changePin(){
-    this.navCtrl.push(ChangePinPage);
   }
 }

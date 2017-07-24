@@ -14,7 +14,6 @@ import { RegisterPage } from "../pages/register/register";
 import { ForgotPinPage } from "../pages/forgot-pin/forgot-pin";
 import { ExistingUserPage } from "../pages/existing-user/existing-user";
 import { AddDevicePage } from "../pages/add-device/add-device";
-import { ChangePinPage } from "../pages/change-pin/change-pin";
 
 import { PinInput } from "../components/pin-input/pin-input";
 
@@ -30,7 +29,6 @@ import { AuthService } from '../providers/auth-service/auth-service';
     ForgotPinPage,
     ExistingUserPage,
     AddDevicePage,
-    ChangePinPage,
     PinInput
   ],
   imports: [
@@ -49,7 +47,6 @@ import { AuthService } from '../providers/auth-service/auth-service';
     ForgotPinPage,
     ExistingUserPage,
     AddDevicePage,
-    ChangePinPage,
     PinInput
   ],
   providers: [
