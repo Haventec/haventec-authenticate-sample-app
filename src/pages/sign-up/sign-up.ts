@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RegisterPage } from '../register/register';
-import { User } from '../../models/user'
+import { AccessCredential } from '../../models/accessCredential'
 import { AuthService } from '../../providers/auth-service/auth-service'
 
 @Component({
@@ -12,7 +12,7 @@ import { AuthService } from '../../providers/auth-service/auth-service'
 })
 export class SignUpPage {
 
-  private user: User = new User('');
+  private accessCredential: AccessCredential = new AccessCredential('');
   private signUpFormGroup : FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public authService: AuthService) {
@@ -29,8 +29,8 @@ export class SignUpPage {
     this.authService.signUpUser(username, email).subscribe(
       data => {
         if(data.responseStatus.status === 'SUCCESS'){
-          this.user.setUsername(this.signUpFormGroup.value.username);
-          this.navCtrl.push(RegisterPage, this.user);
+          this.accessCredential.setUsername(this.signUpFormGroup.value.username);
+          this.navCtrl.push(RegisterPage, this.accessCredential);
         } else {
           console.error('Error authService.signUpUser:' + data.responseStatus.message);
         }

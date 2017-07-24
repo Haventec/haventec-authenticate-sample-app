@@ -17,6 +17,7 @@ import { AddDevicePage } from "../pages/add-device/add-device";
 import { PinInput } from "../components/pin-input/pin-input";
 
 import { AuthService } from '../providers/auth-service/auth-service';
+import { CrytoServiceProvider } from '../providers/cryto-service/cryto-service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AuthService } from '../providers/auth-service/auth-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    AuthService,
+    CrytoServiceProvider
   ]
 })
 export class AppModule {}

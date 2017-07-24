@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
-import { User } from '../../models/user';
+import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 
 @Component({
@@ -11,11 +11,11 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 })
 export class ForgotPinPage {
 
-  private user: User = new User('');
+  private accessCredential: AccessCredential = new AccessCredential('');
   private resetFormGroup : FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService) {
-    this.user = navParams.data;
+    this.accessCredential = navParams.data;
 
     this.resetFormGroup = this.formBuilder.group({
       resetPinToken: ['', Validators.required],
@@ -30,7 +30,7 @@ export class ForgotPinPage {
   }
 
   resetPin(){
-    let username = this.user.getUsername();
+    let username = this.accessCredential.getUsername();
     let deviceUuid = 'Todo';
     let hashedPin = 'Todo';
     let resetPinToken = this.resetFormGroup.value.resetPinToken;
@@ -39,7 +39,7 @@ export class ForgotPinPage {
       data => {
         if(data.responseStatus.status === 'SUCCESS'){
           // Todo save keys
-          this.navCtrl.setRoot(HomePage, this.user);
+          this.navCtrl.setRoot(HomePage, this.accessCredential);
         } else {
           console.error('Error authService.resetPin:' + data.responseStatus.message);
         }

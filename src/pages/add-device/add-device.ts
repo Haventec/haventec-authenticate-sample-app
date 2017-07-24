@@ -4,7 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { HomePage } from '../home/home';
 
-import { User } from '../../models/user'
+import { AccessCredential } from '../../models/accessCredential'
 
 @Component({
   selector: 'page-add-device',
@@ -12,11 +12,11 @@ import { User } from '../../models/user'
 })
 export class AddDevicePage {
 
-  private user: User = new User('');
+  private accessCredential: AccessCredential = new AccessCredential('');
   private addDeviceFormGroup : FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.user = navParams.data;
+    this.accessCredential = navParams.data;
 
     this.addDeviceFormGroup = this.formBuilder.group({
       deviceCode: ['', Validators.required],
@@ -32,6 +32,6 @@ export class AddDevicePage {
   }
 
   addDevice(){
-    this.navCtrl.setRoot(HomePage, this.user);
+    this.navCtrl.setRoot(HomePage, this.accessCredential);
   }
 }

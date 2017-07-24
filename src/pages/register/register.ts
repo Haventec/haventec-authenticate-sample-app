@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
-import { User } from '../../models/user';
+import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 
 @Component({
@@ -12,11 +12,11 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 })
 export class RegisterPage {
 
-  private user: User = new User('');
+  private accessCredential: AccessCredential = new AccessCredential('');
   private registrationFormGroup: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService) {
-    this.user = navParams.data;
+    this.accessCredential = navParams.data;
 
     this.registrationFormGroup = this.formBuilder.group({
       registrationCode: ['', Validators.required],
@@ -32,7 +32,7 @@ export class RegisterPage {
   }
 
   registerUser(){
-    let username = this.user.getUsername();
+    let username = this.accessCredential.getUsername();
     let registrationToken = this.registrationFormGroup.value.registrationToken;
     let hashedPin = 'Todo';
     let deviceName = this.registrationFormGroup.value.deviceName;
@@ -41,8 +41,8 @@ export class RegisterPage {
       data => {
         if(data.responseStatus.status === 'SUCCESS'){
           // Todo save keys
-          this.storage.set('haventec_username', this.user.getUsername());
-          this.navCtrl.setRoot(HomePage, this.user);
+          this.storage.set('haventec_username', this.accessCredential.getUsername());
+          this.navCtrl.setRoot(HomePage, this.accessCredential);
         } else {
           console.error('Error authService.registerUser:' + data.responseStatus.message);
         }
