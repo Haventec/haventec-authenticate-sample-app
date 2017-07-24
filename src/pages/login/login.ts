@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
-
 import { HomePage } from '../home/home';
 import { ForgotPinPage } from '../forgot-pin/forgot-pin';
-
 import { User } from '../../models/user'
+import { AuthService } from '../../providers/auth-service/auth-service'
 
 @Component({
   selector: 'page-login',
@@ -19,7 +18,7 @@ export class LoginPage {
   private loginFormGroup : FormGroup;
 
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService) {
     this.storage.get(this.haventecKey).then((username) => {
       this.user.setUsername(username);
     });
@@ -36,7 +35,22 @@ export class LoginPage {
   }
 
   login(){
-    this.navCtrl.setRoot(HomePage, this.user);
+    let username = this.user.getUsername();
+    let deviceUuid = 'Todo';
+    let authKey = 'Todo';
+    let hashedPin = 'Todo';
+
+    this.authService.login(username, deviceUuid, authKey, hashedPin).subscribe(
+      data => {
+        if(data.responseStatus.status === 'SUCCESS'){
+          // Todo save keys
+          this.navCtrl.setRoot(HomePage, this.user);
+        } else {
+          console.error('Error authService.login:' + data.responseStatus.message);
+        }
+      },
+      err => {console.error(err);}
+    );
   }
 
   forgotPIN(){

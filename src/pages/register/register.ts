@@ -34,12 +34,13 @@ export class RegisterPage {
   registerUser(){
     let username = this.user.getUsername();
     let registrationToken = this.registrationFormGroup.value.registrationToken;
-    let hashedPin = this.registrationFormGroup.value.pin;
+    let hashedPin = 'Todo';
     let deviceName = this.registrationFormGroup.value.deviceName;
 
     this.authService.registerUser(username, registrationToken, hashedPin, deviceName).subscribe(
       data => {
         if(data.responseStatus.status === 'SUCCESS'){
+          // Todo save keys
           this.storage.set('haventec_username', this.user.getUsername());
           this.navCtrl.setRoot(HomePage, this.user);
         } else {

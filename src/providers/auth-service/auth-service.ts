@@ -8,6 +8,7 @@ export class AuthService {
   private url: string = 'http://localhost:3000';
   private signUpUserPath: string = '/self-service/user';
   private registerUserPath: string = '/register/user';
+  private loginUserPath: string = '/login';
 
   constructor(private http: Http) {}
 
@@ -29,5 +30,16 @@ export class AuthService {
     };
 
     return this.http.post(this.url + this.registerUserPath, body).map(res => res.json());
+  }
+
+  login(username: string, deviceUuid: string, authKey: string, hashedPin: string) {
+    let body = {
+      'username': username,
+      'deviceUuid': deviceUuid,
+      'authKey': authKey,
+      'hashedPin': hashedPin
+    };
+
+    return this.http.post(this.url + this.loginUserPath, body).map(res => res.json());
   }
 }
