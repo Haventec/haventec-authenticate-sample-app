@@ -18,13 +18,13 @@
 
         <p>Hi {{user.getUsername()}}</p>
         <p>We have sent a reset code to your email address.</p>
-        <p>Please enter this reset code here</p>
+        <p>Please enter this reset PIN code here</p>
 
         <form [formGroup]="resetFormGroup" (ngSubmit)="resetPin()">
 
           <ion-item>
-            <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>Reset code</ion-label>
-            <ion-input type="text" formControlName="resetCode"></ion-input>
+            <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>Reset PIN code</ion-label>
+            <ion-input type="text" formControlName="resetPinToken"></ion-input>
           </ion-item>
 
           <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>

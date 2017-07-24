@@ -10,6 +10,7 @@ export class AuthService {
   private registerUserPath: string = '/register/user';
   private loginUserPath: string = '/login';
   private forgotPinPath: string = '/forgot-pin';
+  private resetPinPath: string = '/reset-pin';
 
   constructor(private http: Http) {}
 
@@ -51,5 +52,16 @@ export class AuthService {
     };
 
     return this.http.post(this.url + this.forgotPinPath, body).map(res => res.json());
+  }
+
+  resetPin(username: string, deviceUuid: string, hashedPin: string, resetPinToken: string) {
+    let body = {
+      'username': username,
+      'deviceUuid': deviceUuid,
+      'hashedPin': hashedPin,
+      'resetPinToken': resetPinToken
+    };
+
+    return this.http.post(this.url + this.resetPinPath, body).map(res => res.json());
   }
 }
