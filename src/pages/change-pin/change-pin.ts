@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { PinValidation } from '../../validators/pin.validator';
 
 import { LoginPage } from '../login/login';
 
@@ -15,11 +14,14 @@ export class ChangePinPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.changePinFormGroup = this.formBuilder.group({
-      pin1: ['', Validators.required],
-      pin2: ['', Validators.required],
-    }, {
-      validator: PinValidation.MatchPin
+      pin: ['', Validators.required],
     })
+  }
+
+  pinUpdated(pin){
+    if(pin.length === 4){
+      this.changePinFormGroup.controls['pin'].setValue(event);
+    }
   }
 
   logout(){

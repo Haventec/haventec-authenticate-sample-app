@@ -31,17 +31,10 @@
             <ion-input type="text" formControlName="deviceCode"></ion-input>
           </ion-item>
 
-          <ion-item>
-            <ion-label stacked>Select a simple 4 digit PIN</ion-label>
-            <ion-input type="password" formControlName="pin1"></ion-input>
-          </ion-item>
+          <ion-label class="pin-label">Enter a PIN</ion-label>
+          <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
 
-          <ion-item>
-            <ion-label stacked>Confirm PIN</ion-label>
-            <ion-input type="password" formControlName="pin2"></ion-input>
-          </ion-item>
-
-          <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid" block margin-vertical>Finish</button>
+          <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid" block margin-vertical>Add</button>
 
         </form>
 

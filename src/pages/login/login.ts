@@ -25,11 +25,14 @@ export class LoginPage {
     });
 
     this.loginFormGroup = this.formBuilder.group({
-      pin1: ['', Validators.required],
+      pin: ['', Validators.required],
     })
   }
 
-  ionViewDidLoad() {
+  pinUpdated(pin){
+    if(pin.length === 4){
+      this.loginFormGroup.controls['pin'].setValue(event);
+    }
   }
 
   login(){

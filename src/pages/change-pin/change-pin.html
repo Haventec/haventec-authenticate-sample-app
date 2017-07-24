@@ -25,15 +25,8 @@
 
         <form [formGroup]="changePinFormGroup" (ngSubmit)="changePin()">
 
-          <ion-item>
-            <ion-label stacked>Select a simple 4 digit PIN</ion-label>
-            <ion-input type="password" formControlName="pin1"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label stacked>Confirm PIN</ion-label>
-            <ion-input type="password" formControlName="pin2"></ion-input>
-          </ion-item>
+          <ion-label class="pin-label">Enter a PIN</ion-label>
+          <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
 
           <button ion-button type="submit" [disabled]="!changePinFormGroup.valid" block margin-vertical>Change PIN</button>
 

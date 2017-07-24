@@ -13,6 +13,8 @@ import { ExistingUserPage } from "../pages/existing-user/existing-user";
 import { AddDevicePage } from "../pages/add-device/add-device";
 import { ChangePinPage } from "../pages/change-pin/change-pin";
 
+import { PinInput } from "../components/pin-input/pin-input";
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -26,7 +28,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ForgotPinPage,
     ExistingUserPage,
     AddDevicePage,
-    ChangePinPage
+    ChangePinPage,
+    PinInput
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ForgotPinPage,
     ExistingUserPage,
     AddDevicePage,
-    ChangePinPage
+    ChangePinPage,
+    PinInput
   ],
   providers: [
     StatusBar,
