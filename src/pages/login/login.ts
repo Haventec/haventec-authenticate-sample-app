@@ -43,7 +43,7 @@ export class LoginPage {
 
     this.authService.login(username, deviceUuid, authKey, hashedPin).subscribe(
       data => {
-        if (data.status === 'SUCCESS') {
+        if (data.responseStatus.status === 'SUCCESS') {
           // Todo save keys
           this.navCtrl.setRoot(HomePage, this.accessCredential);
         } else {
@@ -62,10 +62,10 @@ export class LoginPage {
 
     this.authService.forgotPin(username, deviceUuid).subscribe(
       data => {
-        if (data.status === 'SUCCESS') {
+        if (data.responseStatus.status === 'SUCCESS') {
           this.navCtrl.push(ForgotPinPage, this.accessCredential);
         } else {
-          this.errorService.showError(data.result);
+          this.errorService.showError(data.responseStatus);
         }
       },
       err => {

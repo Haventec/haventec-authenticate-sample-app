@@ -18,7 +18,9 @@ export class AuthService {
   signUpUser(username: string, email: string) {
     let body = {
       username: username,
-      email: email
+      email: email,
+      apiKey: '',
+      applicationUuid: ''
     };
 
     return this.http.post(this.url + this.signUpUserPath, body).map(res => res.json());

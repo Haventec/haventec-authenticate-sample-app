@@ -6,9 +6,10 @@ export class ErrorService {
 
   constructor(private alertCtrl: AlertController) {}
 
-  showError(error) {
-    let alert = this.alertCtrl.create({title: 'Sorry an error occurred', subTitle: error, buttons: ['Dismiss']});
+  showError(errorObj) {
+    let errorMsg = errorObj.message;
+    let alert = this.alertCtrl.create({title: 'Sorry an error occurred', subTitle: errorMsg, buttons: ['Dismiss']});
     alert.present();
-    console.error('Error authService.signUpUser:' + error);
+    console.error('Error authService.signUpUser:' + errorMsg);
   }
 }

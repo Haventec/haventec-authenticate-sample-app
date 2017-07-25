@@ -40,12 +40,12 @@ export class RegisterPage {
 
     this.authService.registerUser(username, registrationToken, hashedPin, deviceName).subscribe(
       data => {
-        if(data.status === 'SUCCESS'){
+        if(data.responseStatus.status === 'SUCCESS'){
           // Todo save keys
           this.storage.set('haventec_username', this.accessCredential.getUsername());
           this.navCtrl.setRoot(HomePage, this.accessCredential);
         } else {
-          this.errorService.showError(data.result);
+          this.errorService.showError(data.responseStatus);
         }
       },
       err => {console.error(err);}

@@ -29,11 +29,11 @@ export class SignUpPage {
 
     this.authService.signUpUser(username, email).subscribe(
       data => {
-        if(data.status === 'SUCCESS'){
+        if(data.responseStatus.status === 'SUCCESS'){
           this.accessCredential.setUsername(this.signUpFormGroup.value.username);
           this.navCtrl.push(RegisterPage, this.accessCredential);
         } else {
-          this.errorService.showError(data.result);
+          this.errorService.showError(data.responseStatus);
         }
       },
       err => {console.error(err);}
