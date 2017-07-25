@@ -6,6 +6,7 @@ import { HomePage } from '../home/home';
 import { ForgotPinPage } from '../forgot-pin/forgot-pin';
 import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
+import { ErrorService } from '../../providers/error-service/error-service';
 
 @Component({
   selector: 'page-login',
@@ -17,7 +18,7 @@ export class LoginPage {
   private accessCredential: AccessCredential = new AccessCredential('');
   private loginFormGroup: FormGroup;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService, private errorService: ErrorService) {
     this.storage.get(this.haventecKey).then((username) => {
       this.accessCredential.setUsername(username);
     });
@@ -42,11 +43,11 @@ export class LoginPage {
 
     this.authService.login(username, deviceUuid, authKey, hashedPin).subscribe(
       data => {
-        if (data.responseStatus.status === 'SUCCESS') {
+        if (data.status === 'SUCCESS') {
           // Todo save keys
           this.navCtrl.setRoot(HomePage, this.accessCredential);
         } else {
-          console.error('Error authService.login:' + data.responseStatus.message);
+          console.error('Error authService.login:' + data.result);
         }
       },
       err => {
@@ -61,10 +62,10 @@ export class LoginPage {
 
     this.authService.forgotPin(username, deviceUuid).subscribe(
       data => {
-        if (data.responseStatus.status === 'SUCCESS') {
+        if (data.status === 'SUCCESS') {
           this.navCtrl.push(ForgotPinPage, this.accessCredential);
         } else {
-          console.error('Error authService.forgotPin:' + data.responseStatus.message);
+          this.errorService.showError(data.result);
         }
       },
       err => {

@@ -18,6 +18,7 @@ import { PinInput } from "../components/pin-input/pin-input";
 
 import { AuthService } from '../providers/auth-service/auth-service';
 import { CrytoServiceProvider } from '../providers/cryto-service/cryto-service';
+import { ErrorService } from '../providers/error-service/error-service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CrytoServiceProvider } from '../providers/cryto-service/cryto-service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    CrytoServiceProvider
+    CrytoServiceProvider,
+    ErrorService
   ]
 })
 export class AppModule {}

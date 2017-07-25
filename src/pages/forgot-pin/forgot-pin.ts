@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
+import { ErrorService } from '../../providers/error-service/error-service';
 
 @Component({
   selector: 'page-forgot-pin',
@@ -14,7 +15,7 @@ export class ForgotPinPage {
   private accessCredential: AccessCredential = new AccessCredential('');
   private resetFormGroup : FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private errorService: ErrorService) {
     this.accessCredential = navParams.data;
 
     this.resetFormGroup = this.formBuilder.group({
@@ -37,11 +38,11 @@ export class ForgotPinPage {
 
     this.authService.registerUser(username, deviceUuid, hashedPin, resetPinToken).subscribe(
       data => {
-        if(data.responseStatus.status === 'SUCCESS'){
+        if(data.status === 'SUCCESS'){
           // Todo save keys
           this.navCtrl.setRoot(HomePage, this.accessCredential);
         } else {
-          console.error('Error authService.resetPin:' + data.responseStatus.message);
+          this.errorService.showError(data.result);
         }
       },
       err => {console.error(err);}
