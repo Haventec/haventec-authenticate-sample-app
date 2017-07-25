@@ -30,7 +30,7 @@
 
           <ion-item>
             <ion-label stacked icon-start><ion-icon name="mail"></ion-icon>Enter your email</ion-label>
-            <ion-input formControlName="email"></ion-input>
+            <ion-input type="email" formControlName="email"></ion-input>
           </ion-item>
 
           <button ion-button type="submit" [disabled]="!signUpFormGroup.valid" block margin-vertical>Create an account</button>
