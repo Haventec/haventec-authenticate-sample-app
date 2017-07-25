@@ -17,8 +17,8 @@ export class AuthService {
 
   signUpUser(username: string, email: string) {
     let body = {
-      'username': username,
-      'email': email
+      username: username,
+      email: email
     };
 
     return this.http.post(this.url + this.signUpUserPath, body).map(res => res.json());
@@ -26,10 +26,10 @@ export class AuthService {
 
   registerUser(username: string, registrationToken: string, hashedPin: string, deviceName: string) {
     let body = {
-      'username': username,
-      'registrationToken': registrationToken,
-      'hashedPin': hashedPin,
-      'deviceName': deviceName
+      username: username,
+      registrationToken: registrationToken,
+      hashedPin: hashedPin,
+      deviceName: deviceName
     };
 
     return this.http.post(this.url + this.registerUserPath, body).map(res => res.json());
@@ -37,10 +37,10 @@ export class AuthService {
 
   login(username: string, deviceUuid: string, authKey: string, hashedPin: string) {
     let body = {
-      'username': username,
-      'deviceUuid': deviceUuid,
-      'authKey': authKey,
-      'hashedPin': hashedPin
+      username: username,
+      deviceUuid: deviceUuid,
+      authKey: authKey,
+      hashedPin: hashedPin
     };
 
     return this.http.post(this.url + this.loginUserPath, body).map(res => res.json());
@@ -52,8 +52,8 @@ export class AuthService {
 
   forgotPin(username: string, deviceUuid: string) {
     let body = {
-      'username': username,
-      'deviceUuid': deviceUuid
+      username: username,
+      deviceUuid: deviceUuid
     };
 
     return this.http.post(this.url + this.forgotPinPath, body).map(res => res.json());
@@ -61,10 +61,10 @@ export class AuthService {
 
   resetPin(username: string, deviceUuid: string, hashedPin: string, resetPinToken: string) {
     let body = {
-      'username': username,
-      'deviceUuid': deviceUuid,
-      'hashedPin': hashedPin,
-      'resetPinToken': resetPinToken
+      username: username,
+      deviceUuid: deviceUuid,
+      hashedPin: hashedPin,
+      resetPinToken: resetPinToken
     };
 
     return this.http.post(this.url + this.resetPinPath, body).map(res => res.json());
