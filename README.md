@@ -1,26 +1,51 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# Haventec Authenticate sample app
 
-## How to use this template
+This is a sample application to demonstrate how to use Haventec Authenticate.
+This application is **NOT** intended to be used in a Production environment.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## Getting Started
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+### Prerequisites
 
-### With the Ionic CLI:
+Install [NodeJS](https://nodejs.org)
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+Install [NPM](https://www.npmjs.com)
+ 
+Install [Ionic](https://ionicframework.com/)
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
+### Installing
+
+Install the dependencies
+```
+npm install
 ```
 
-Then, to run it, cd into `mySideMenu` and run:
+### Running
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+Start the server
+```
+ionic serve
 ```
 
-Substitute ios for android if not on a Mac.
+Run with Android
+```
+ionic cordova run android
+```
 
+Run with iOS
+```
+ionic cordova run ios
+```
+
+## Built With
+
+* [Ionic](https://ionicframework.com/)
+* [Typescript](https://www.typescriptlang.org/) 
+
+## Authors
+
+* [Haventec](http://www.haventec.com/)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
