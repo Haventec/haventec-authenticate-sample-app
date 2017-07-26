@@ -30,6 +30,11 @@ $text-color:                            #f6f6f6;
 $text-input-highlight-color-valid:      #00CC66;
 $text-input-highlight-color-invalid:    #E04124;
 
+$loading-ios-background: transparent;
+$loading-md-background: $loading-ios-background;
+$loading-wp-background: $loading-ios-background;
+$loading-md-box-shadow: none;
+
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
