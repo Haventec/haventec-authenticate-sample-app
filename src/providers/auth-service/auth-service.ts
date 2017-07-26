@@ -30,9 +30,13 @@ export class AuthService {
   registerUser(username: string, registrationToken: string, hashedPin: string, deviceName: string) {
     let body = {
       username: username,
+      applicationUuid: this.applicationUuid,
       registrationToken: registrationToken,
       hashedPin: hashedPin,
-      deviceName: deviceName
+      deviceName: deviceName,
+
+      // Todo - Not required remove queryParameters
+      queryParameters: ''
     };
 
     return this.http.post(this.url + this.registerUserPath, body).map(res => res.json());

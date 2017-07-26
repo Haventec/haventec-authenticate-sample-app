@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
+import { HaventecService } from '../../providers/haventec-service/haventec-service';
 import { ErrorService } from '../../providers/error-service/error-service';
 
 @Component({
@@ -16,7 +16,7 @@ export class RegisterPage {
   private accessCredential: AccessCredential = new AccessCredential('');
   private registrationFormGroup: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService, private errorService: ErrorService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private haventecService: HaventecService, private errorService: ErrorService) {
     this.accessCredential = navParams.data;
 
     this.registrationFormGroup = this.formBuilder.group({
@@ -42,7 +42,7 @@ export class RegisterPage {
       data => {
         if(data.responseStatus.status === 'SUCCESS'){
           // Todo save keys
-          this.storage.set('haventec_username', this.accessCredential.getUsername());
+          this.haventecService.saveActiveUser(this.accessCredential.getUsername());
           this.navCtrl.setRoot(HomePage, this.accessCredential);
         } else {
           this.errorService.showError(data.responseStatus);
