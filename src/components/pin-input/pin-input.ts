@@ -1,4 +1,5 @@
-import {Component, Input, Output, EventEmitter} from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Events } from 'ionic-angular';
 
 @Component({
     templateUrl: 'pin-input.html',
@@ -15,12 +16,16 @@ export class PinInput{
 
     @Output() pinUpdated = new EventEmitter();
 
-    constructor() {
+    constructor(public events: Events) {
         this.pin1 = '';
         this.pin2 = '';
         this.pin3 = '';
         this.pin4 = '';
         this.pincode = '';
+
+      events.subscribe('pin:clear', () => {
+        this.clearPins();
+      });
     }
 
     ngOnChanges(changes: any) {
@@ -69,5 +74,13 @@ export class PinInput{
     if (next) {
       next.focus();
     }
+  }
+
+  clearPins() {
+    this.pin1 = '';
+    this.pin2 = '';
+    this.pin3 = '';
+    this.pin4 = '';
+    this.pincode = '';
   }
 }

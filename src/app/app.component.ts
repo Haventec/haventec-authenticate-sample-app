@@ -2,9 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from '@ionic/storage';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { LoginPage } from '../pages/login/login';
-import { HaventecService } from '../providers/haventec-service/haventec-service'
 
 @Component({
   templateUrl: 'app.html'
@@ -12,10 +12,9 @@ import { HaventecService } from '../providers/haventec-service/haventec-service'
 export class MyApp {
   @ViewChild("content") navCtrl: NavController;
 
-  private haventecKey: string = 'haventec_username';
   rootPage: any;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private haventecService: HaventecService) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private storage: Storage) {
     this.initializeApp();
   }
 
@@ -32,15 +31,15 @@ export class MyApp {
 
   // Reset the App and return the user to the Sign up page
   resetApp(page) {
-    this.haventecService.removeActiveUser().then(() => {
+    this.storage.clear().then(() => {
       this.navCtrl.setRoot(SignUpPage);
     });
   }
 
   // Check if this is the users first time using the App
   checkForFirstTimeUse(): void {
-    this.haventecService.getActiveUser().then((activeUser) => {
-      if(activeUser == null){
+    this.storage.get('auth').then((auth) => {
+      if(auth == null){
         this.rootPage = SignUpPage;
       } else {
         this.rootPage = LoginPage;

@@ -28,23 +28,23 @@ export class AuthService {
   }
 
   registerUser(username: string, registrationToken: string, hashedPin: string, deviceName: string) {
+    // Todo - Not required remove queryParameters
     let body = {
       username: username,
       applicationUuid: this.applicationUuid,
       registrationToken: registrationToken,
       hashedPin: hashedPin,
       deviceName: deviceName,
-
-      // Todo - Not required remove queryParameters
       queryParameters: ''
     };
 
     return this.http.post(this.url + this.registerUserPath, body).map(res => res.json());
   }
 
-  login(username: string, deviceUuid: string, authKey: string, hashedPin: string) {
+  login(username: string, applicationUuid: string, deviceUuid: string, authKey: string, hashedPin: string) {
     let body = {
       username: username,
+      applicationUuid: applicationUuid,
       deviceUuid: deviceUuid,
       authKey: authKey,
       hashedPin: hashedPin
@@ -54,7 +54,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.delete(this.url + this.logoutUserPath).map(res => res.json());
+    //return this.http.delete(this.url + this.logoutUserPath).map(res => res.json());
   }
 
   forgotPin(username: string, deviceUuid: string) {
