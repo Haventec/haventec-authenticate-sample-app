@@ -7,7 +7,6 @@ import * as Constant from '../../constants/application.const'
 export class AuthService {
 
   private readonly url: string = Constant.API_ENDPOINT;
-  private readonly applicationUuid: string = Constant.APPLICATION_UUID;
   private signUpUserPath: string = '/self-service/user';
   private registerUserPath: string = '/register/user';
   private loginUserPath: string = '/login';
@@ -21,7 +20,7 @@ export class AuthService {
     let body = {
       username: username,
       email: email,
-      applicationUuid: this.applicationUuid
+      applicationUuid: Constant.APPLICATION_UUID,
     };
 
     return this.http.post(this.url + this.signUpUserPath, body).map(res => res.json());
@@ -31,7 +30,7 @@ export class AuthService {
     // Todo - Not required remove queryParameters
     let body = {
       username: username,
-      applicationUuid: this.applicationUuid,
+      applicationUuid: Constant.APPLICATION_UUID,
       registrationToken: registrationToken,
       hashedPin: hashedPin,
       deviceName: deviceName,
@@ -57,8 +56,9 @@ export class AuthService {
     //return this.http.delete(this.url + this.logoutUserPath).map(res => res.json());
   }
 
-  forgotPin(username: string, deviceUuid: string) {
+  forgotPin(applicationUuid: string, username: string, deviceUuid: string) {
     let body = {
+      applicationUuid: applicationUuid,
       username: username,
       deviceUuid: deviceUuid
     };
@@ -66,13 +66,15 @@ export class AuthService {
     return this.http.post(this.url + this.forgotPinPath, body).map(res => res.json());
   }
 
-  resetPin(username: string, deviceUuid: string, hashedPin: string, resetPinToken: string) {
+  resetPin(applicationUuid: string, username: string, deviceUuid: string, hashedPin: string, resetPinToken: string) {
     let body = {
+      applicationUuid: applicationUuid,
       username: username,
       deviceUuid: deviceUuid,
       hashedPin: hashedPin,
-      resetPinToken: resetPinToken
+      resetToken: resetPinToken
     };
+
 
     return this.http.post(this.url + this.resetPinPath, body).map(res => res.json());
   }

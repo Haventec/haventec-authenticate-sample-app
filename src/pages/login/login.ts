@@ -69,20 +69,23 @@ export class LoginPage {
   }
 
   forgotPin() {
-    let username = this.accessCredential.getUsername();
-    let deviceUuid = 'Todo';
+    this.storage.get('auth').then((data) => {
+      let username = data.username;
+      let applicationUuid = data.applicationUuid;
+      let deviceUuid = data.deviceUuid;
 
-    this.authService.forgotPin(username, deviceUuid).subscribe(
-      data => {
-        if (data.responseStatus.status === 'SUCCESS') {
-          this.navCtrl.push(ForgotPinPage, this.accessCredential);
-        } else {
-          this.errorService.showError(data.responseStatus);
+      this.authService.forgotPin(applicationUuid, username, deviceUuid).subscribe(
+        data => {
+          if (data.responseStatus.status === 'SUCCESS') {
+            this.navCtrl.push(ForgotPinPage, this.accessCredential);
+          } else {
+            this.errorService.showError(data.responseStatus);
+          }
+        },
+        err => {
+          console.error(err);
         }
-      },
-      err => {
-        console.error(err);
-      }
-    );
+      );
+    });
   }
 }
