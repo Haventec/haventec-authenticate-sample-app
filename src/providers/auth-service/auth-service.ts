@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import * as Constant from '../../constants/application.const'
 
 @Injectable()
 export class AuthService {
 
-  private url: string = 'http://localhost:3000';
+  private readonly url: string = Constant.API_ENDPOINT;
+  private readonly applicationUuid: string = Constant.APPLICATION_UUID;
   private signUpUserPath: string = '/self-service/user';
   private registerUserPath: string = '/register/user';
   private loginUserPath: string = '/login';
@@ -19,8 +21,7 @@ export class AuthService {
     let body = {
       username: username,
       email: email,
-      apiKey: '',
-      applicationUuid: ''
+      applicationUuid: this.applicationUuid
     };
 
     return this.http.post(this.url + this.signUpUserPath, body).map(res => res.json());

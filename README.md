@@ -20,6 +20,13 @@ Install the dependencies
 npm install
 ```
 
+### Configure the App
+
+Edit the values in 
+```
+/src/constants/application.const.ts
+```
+
 ### Running
 
 Start the server
@@ -36,6 +43,10 @@ Run with iOS
 ```
 ionic cordova run ios
 ```
+## Backend Sever
+
+This sample application was built to work with [Haventec's Authenticate sample server](https://github.com/Haventec/haventec-authenticate-sample-server).
+However you can modify this code to easily work with your own server
 
 ## Built With
 
