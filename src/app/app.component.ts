@@ -32,6 +32,7 @@ export class MyApp {
   // Reset the App and return the user to the Sign up page
   resetApp(page) {
     this.storage.clear().then(() => {
+      console.log('Resetting App');
       this.navCtrl.setRoot(SignUpPage);
     });
   }
@@ -40,8 +41,10 @@ export class MyApp {
   checkForFirstTimeUse(): void {
     this.storage.get('auth').then((auth) => {
       if(auth == null){
+        console.log('First time use');
         this.rootPage = SignUpPage;
       } else {
+        console.log('Not First time use');
         this.rootPage = LoginPage;
       }
     });

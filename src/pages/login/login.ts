@@ -32,6 +32,7 @@ export class LoginPage {
 
   pinUpdated(pin) {
     if (pin.length === 4) {
+      console.log('Login PIN', pin);
       this.loginFormGroup.reset();
       this.events.publish('pin:clear');
       this.login(pin);
@@ -49,7 +50,7 @@ export class LoginPage {
 
       this.authService.login(username, applicationUuid, deviceUuid, authKey, hashedPin).subscribe(
         data => {
-
+          console.log('Login response data', data);
 
           if (data.responseStatus.status === 'SUCCESS') {
             this.storage.set('auth', data);

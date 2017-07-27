@@ -27,8 +27,11 @@ export class SignUpPage {
     let username = this.signUpFormGroup.value.username;
     let email = this.signUpFormGroup.value.email;
 
+    console.log('Sign up Email', email);
+    console.log('Sign up Username', username);
     this.authService.signUpUser(username, email).subscribe(
       data => {
+        console.log('Sign up response data', data);
         if(data.responseStatus.status === 'SUCCESS'){
           this.accessCredential.setUsername(this.signUpFormGroup.value.username);
           this.navCtrl.push(RegisterPage, this.accessCredential);

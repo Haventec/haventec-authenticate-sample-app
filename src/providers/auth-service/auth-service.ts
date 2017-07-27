@@ -23,6 +23,8 @@ export class AuthService {
       applicationUuid: Constant.APPLICATION_UUID,
     };
 
+    console.log('Sign up request data', body);
+
     return this.http.post(this.url + this.signUpUserPath, body).map(res => res.json());
   }
 
@@ -37,6 +39,8 @@ export class AuthService {
       queryParameters: ''
     };
 
+    console.log('Register user request data', body);
+
     return this.http.post(this.url + this.registerUserPath, body).map(res => res.json());
   }
 
@@ -48,6 +52,8 @@ export class AuthService {
       authKey: authKey,
       hashedPin: hashedPin
     };
+
+    console.log('Login request data', body);
 
     return this.http.post(this.url + this.loginUserPath, body).map(res => res.json());
   }
@@ -63,6 +69,8 @@ export class AuthService {
       deviceUuid: deviceUuid
     };
 
+    console.log('Forgot PIN request data', body);
+
     return this.http.post(this.url + this.forgotPinPath, body).map(res => res.json());
   }
 
@@ -75,6 +83,7 @@ export class AuthService {
       resetToken: resetPinToken
     };
 
+    console.log('Reset PIN request data', body);
 
     return this.http.post(this.url + this.resetPinPath, body).map(res => res.json());
   }
