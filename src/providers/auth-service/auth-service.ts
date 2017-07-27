@@ -10,7 +10,7 @@ export class AuthService {
   private signUpUserPath: string = '/self-service/user';
   private registerUserPath: string = '/register/user';
   private loginUserPath: string = '/login';
-  private logoutUserPath: string = '/logout';
+  // private logoutUserPath: string = '/logout';
   private forgotPinPath: string = '/forgot-pin';
   private resetPinPath: string = '/reset-pin';
 

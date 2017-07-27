@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
@@ -16,9 +16,8 @@ export class RegisterPage {
 
   private accessCredential: AccessCredential = new AccessCredential('');
   private registrationFormGroup: FormGroup;
-  private loading: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private haventecService: HaventecService, private errorService: ErrorService, private storage: Storage, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private haventecService: HaventecService, private errorService: ErrorService, private storage: Storage) {
     this.accessCredential = navParams.data;
 
     this.registrationFormGroup = this.formBuilder.group({
@@ -27,7 +26,6 @@ export class RegisterPage {
       deviceName: ['', Validators.required]
     });
 
-    this.loading = this.loadingCtrl.create();
   }
 
   pinUpdated(pin){
@@ -42,12 +40,8 @@ export class RegisterPage {
     let hashedPin = this.haventecService.getHashPin(this.registrationFormGroup.value.pin);
     let deviceName = this.registrationFormGroup.value.deviceName;
 
-    this.loading.present();
-
     this.authService.registerUser(username, registrationToken, hashedPin, deviceName).subscribe(
       data => {
-
-        this.loading.dismiss();
 
         if(data.responseStatus.status === 'SUCCESS'){
           this.storage.set('auth', data);
