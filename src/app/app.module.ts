@@ -19,6 +19,7 @@ import { PinInput } from "../components/pin-input/pin-input";
 import { AuthService } from '../providers/auth-service/auth-service';
 import { HaventecService } from '../providers/haventec-service/haventec-service';
 import { LogService } from '../providers/log-service/log-service';
+import { PageLoadingService } from '../providers/page-loading-service/page-loading-service'
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { LogService } from '../providers/log-service/log-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     HaventecService,
-    LogService
+    LogService,
+    PageLoadingService
   ]
 })
 export class AppModule {}

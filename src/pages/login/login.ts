@@ -8,6 +8,7 @@ import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HaventecService } from '../../providers/haventec-service/haventec-service';
 import { LogService } from '../../providers/log-service/log-service';
+import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
   selector: 'page-login',
@@ -18,7 +19,7 @@ export class LoginPage {
   private accessCredential: AccessCredential = new AccessCredential('');
   private loginFormGroup: FormGroup;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService, private haventecService: HaventecService, public events: Events, private logService: LogService) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService, private haventecService: HaventecService, public events: Events, private logService: LogService, private pageLoading: PageLoadingService) {
     this.storage.get('auth').then((auth) => {
       this.accessCredential.setUsername(auth.username);
     });
@@ -47,9 +48,11 @@ export class LoginPage {
       let authKey = data.authKey;
       let hashedPin = this.haventecService.getHashPin(pin);
 
+      this.pageLoading.present();
+
       this.authService.login(username, applicationUuid, deviceUuid, authKey, hashedPin).subscribe(
         data => {
-
+          this.pageLoading.dismiss();
           if (data.responseStatus.status === 'SUCCESS') {
 
             this.logService.debug('Auth key: ' + data.authKey);
@@ -61,6 +64,7 @@ export class LoginPage {
           }
         },
         err => {
+          this.pageLoading.dismiss();
           console.error(err);
         }
       );
@@ -73,8 +77,11 @@ export class LoginPage {
       let applicationUuid = data.applicationUuid;
       let deviceUuid = data.deviceUuid;
 
+      this.pageLoading.present();
+
       this.authService.forgotPin(applicationUuid, username, deviceUuid).subscribe(
         data => {
+          this.pageLoading.dismiss();
           if (data.responseStatus.status === 'SUCCESS') {
             this.navCtrl.push(ForgotPinPage, this.accessCredential);
           } else {
@@ -82,6 +89,7 @@ export class LoginPage {
           }
         },
         err => {
+          this.pageLoading.dismiss();
           this.logService.error(err);
         }
       );

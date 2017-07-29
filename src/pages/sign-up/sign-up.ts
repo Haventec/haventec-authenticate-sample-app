@@ -5,6 +5,7 @@ import { RegisterPage } from '../register/register';
 import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { LogService } from '../../providers/log-service/log-service';
+import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
   selector: 'page-sign-up',
@@ -16,7 +17,7 @@ export class SignUpPage {
   private accessCredential: AccessCredential = new AccessCredential('');
   private signUpFormGroup : FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public authService: AuthService, private logService: LogService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public authService: AuthService, private logService: LogService, private pageLoading: PageLoadingService) {
     this.signUpFormGroup = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.email],
@@ -30,9 +31,11 @@ export class SignUpPage {
     this.logService.trace('Sign up Email ' + email);
     this.logService.trace('Sign up Username ' + username);
 
+    this.pageLoading.present();
+
     this.authService.signUpUser(username, email).subscribe(
       data => {
-
+        this.pageLoading.dismiss();
         this.logService.trace('Sign up response data ' + data);
 
         if(data.responseStatus.status === 'SUCCESS'){
@@ -42,7 +45,10 @@ export class SignUpPage {
           this.logService.error(data.responseStatus);
         }
       },
-      err => {this.logService.error(err);}
+      err => {
+        this.pageLoading.dismiss();
+        this.logService.error(err);
+      }
     );
   }
 }

@@ -7,6 +7,7 @@ import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HaventecService } from '../../providers/haventec-service/haventec-service'
 import { LogService } from '../../providers/log-service/log-service';
+import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
   selector: 'page-forgot-pin',
@@ -17,7 +18,7 @@ export class ForgotPinPage {
   private accessCredential: AccessCredential = new AccessCredential('');
   private resetFormGroup : FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private logService: LogService, private storage: Storage, private haventecService: HaventecService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private logService: LogService, private storage: Storage, private haventecService: HaventecService, private pageLoading: PageLoadingService) {
     this.accessCredential = navParams.data;
 
     this.resetFormGroup = this.formBuilder.group({
@@ -40,8 +41,11 @@ export class ForgotPinPage {
       let hashedPin = this.haventecService.getHashPin(this.resetFormGroup.value.pin);
       let resetPinToken = this.resetFormGroup.value.resetPinToken;
 
+      this.pageLoading.present();
+
       this.authService.resetPin(applicationUuid, username, deviceUuid, hashedPin, resetPinToken).subscribe(
         data => {
+          this.pageLoading.dismiss();
           if (data.responseStatus.status === 'SUCCESS') {
 
             this.logService.debug('Auth key: ' + data.authKey);
@@ -53,7 +57,8 @@ export class ForgotPinPage {
           }
         },
         err => {
-          console.error(err);
+          this.pageLoading.dismiss();
+          this.logService.error(err);
         }
       );
     });
