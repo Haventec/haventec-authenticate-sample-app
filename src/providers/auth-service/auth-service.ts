@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { LogService } from '../../providers/log-service/log-service'
 import 'rxjs/add/operator/map';
 import * as Constant from '../../constants/application.const'
 
@@ -14,7 +15,7 @@ export class AuthService {
   private forgotPinPath: string = '/forgot-pin';
   private resetPinPath: string = '/reset-pin';
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private logService: LogService) {}
 
   signUpUser(username: string, email: string) {
     let body = {
@@ -23,7 +24,7 @@ export class AuthService {
       applicationUuid: Constant.APPLICATION_UUID,
     };
 
-    console.log('Sign up request data', body);
+    this.logService.trace('Sign up request data ' + body);
 
     return this.http.post(this.url + this.signUpUserPath, body).map(res => res.json());
   }
@@ -39,7 +40,7 @@ export class AuthService {
       queryParameters: ''
     };
 
-    console.log('Register user request data', body);
+    this.logService.trace('Register user request data ' + body);
 
     return this.http.post(this.url + this.registerUserPath, body).map(res => res.json());
   }
@@ -53,7 +54,7 @@ export class AuthService {
       hashedPin: hashedPin
     };
 
-    console.log('Login request data', body);
+    this.logService.trace('Login request data ' + body);
 
     return this.http.post(this.url + this.loginUserPath, body).map(res => res.json());
   }
@@ -69,7 +70,7 @@ export class AuthService {
       deviceUuid: deviceUuid
     };
 
-    console.log('Forgot PIN request data', body);
+    this.logService.trace('Forgot PIN request data ' + body);
 
     return this.http.post(this.url + this.forgotPinPath, body).map(res => res.json());
   }
@@ -83,7 +84,7 @@ export class AuthService {
       resetToken: resetPinToken
     };
 
-    console.log('Reset PIN request data', body);
+    this.logService.trace('Reset PIN request data ' + body);
 
     return this.http.post(this.url + this.resetPinPath, body).map(res => res.json());
   }

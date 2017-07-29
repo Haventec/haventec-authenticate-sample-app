@@ -6,7 +6,7 @@ import { HomePage } from '../home/home';
 import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HaventecService } from '../../providers/haventec-service/haventec-service'
-import { ErrorService } from '../../providers/error-service/error-service';
+import { LogService } from '../../providers/log-service/log-service';
 
 @Component({
   selector: 'page-forgot-pin',
@@ -17,7 +17,7 @@ export class ForgotPinPage {
   private accessCredential: AccessCredential = new AccessCredential('');
   private resetFormGroup : FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private errorService: ErrorService, private storage: Storage, private haventecService: HaventecService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private logService: LogService, private storage: Storage, private haventecService: HaventecService) {
     this.accessCredential = navParams.data;
 
     this.resetFormGroup = this.formBuilder.group({
@@ -43,10 +43,13 @@ export class ForgotPinPage {
       this.authService.resetPin(applicationUuid, username, deviceUuid, hashedPin, resetPinToken).subscribe(
         data => {
           if (data.responseStatus.status === 'SUCCESS') {
+
+            this.logService.debug('Auth key: ' + data.authKey);
+
             this.storage.set('auth', data);
             this.navCtrl.setRoot(HomePage, this.accessCredential);
           } else {
-            this.errorService.showError(data.responseStatus);
+            this.logService.error(data.responseStatus);
           }
         },
         err => {

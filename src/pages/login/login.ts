@@ -7,7 +7,7 @@ import { ForgotPinPage } from '../forgot-pin/forgot-pin';
 import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HaventecService } from '../../providers/haventec-service/haventec-service';
-import { ErrorService } from '../../providers/error-service/error-service';
+import { LogService } from '../../providers/log-service/log-service';
 
 @Component({
   selector: 'page-login',
@@ -17,9 +17,8 @@ export class LoginPage {
 
   private accessCredential: AccessCredential = new AccessCredential('');
   private loginFormGroup: FormGroup;
-  // private loading: any;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService, private haventecService: HaventecService, public events: Events, private errorService: ErrorService) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService, private haventecService: HaventecService, public events: Events, private logService: LogService) {
     this.storage.get('auth').then((auth) => {
       this.accessCredential.setUsername(auth.username);
     });
@@ -27,12 +26,13 @@ export class LoginPage {
     this.loginFormGroup = this.formBuilder.group({
       pin: ['', Validators.required],
     });
-
   }
 
   pinUpdated(pin) {
     if (pin.length === 4) {
-      console.log('Login PIN', pin);
+
+      this.logService.trace('Login PIN ' + pin);
+
       this.loginFormGroup.reset();
       this.events.publish('pin:clear');
       this.login(pin);
@@ -47,16 +47,17 @@ export class LoginPage {
       let authKey = data.authKey;
       let hashedPin = this.haventecService.getHashPin(pin);
 
-
       this.authService.login(username, applicationUuid, deviceUuid, authKey, hashedPin).subscribe(
         data => {
-          console.log('Login response data', data);
 
           if (data.responseStatus.status === 'SUCCESS') {
+
+            this.logService.debug('Auth key: ' + data.authKey);
+
             this.storage.set('auth', data);
             this.navCtrl.setRoot(HomePage, this.accessCredential);
           } else {
-            this.errorService.showError(data.responseStatus);
+            this.logService.error(data.responseStatus);
           }
         },
         err => {
@@ -77,11 +78,11 @@ export class LoginPage {
           if (data.responseStatus.status === 'SUCCESS') {
             this.navCtrl.push(ForgotPinPage, this.accessCredential);
           } else {
-            this.errorService.showError(data.responseStatus);
+            this.logService.error(data.responseStatus);
           }
         },
         err => {
-          console.error(err);
+          this.logService.error(err);
         }
       );
     });

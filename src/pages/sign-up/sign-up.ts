@@ -4,7 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RegisterPage } from '../register/register';
 import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { ErrorService } from '../../providers/error-service/error-service';
+import { LogService } from '../../providers/log-service/log-service';
 
 @Component({
   selector: 'page-sign-up',
@@ -16,7 +16,7 @@ export class SignUpPage {
   private accessCredential: AccessCredential = new AccessCredential('');
   private signUpFormGroup : FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public authService: AuthService, private errorService: ErrorService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public authService: AuthService, private logService: LogService) {
     this.signUpFormGroup = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.email],
@@ -27,19 +27,22 @@ export class SignUpPage {
     let username = this.signUpFormGroup.value.username;
     let email = this.signUpFormGroup.value.email;
 
-    console.log('Sign up Email', email);
-    console.log('Sign up Username', username);
+    this.logService.trace('Sign up Email ' + email);
+    this.logService.trace('Sign up Username ' + username);
+
     this.authService.signUpUser(username, email).subscribe(
       data => {
-        console.log('Sign up response data', data);
+
+        this.logService.trace('Sign up response data ' + data);
+
         if(data.responseStatus.status === 'SUCCESS'){
           this.accessCredential.setUsername(this.signUpFormGroup.value.username);
           this.navCtrl.push(RegisterPage, this.accessCredential);
         } else {
-          this.errorService.showError(data.responseStatus);
+          this.logService.error(data.responseStatus);
         }
       },
-      err => {console.error(err);}
+      err => {this.logService.error(err);}
     );
   }
 }

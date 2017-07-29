@@ -6,7 +6,7 @@ import { HomePage } from '../home/home';
 import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HaventecService } from '../../providers/haventec-service/haventec-service';
-import { ErrorService } from '../../providers/error-service/error-service';
+import { LogService } from '../../providers/log-service/log-service';
 
 @Component({
   selector: 'page-register',
@@ -17,7 +17,7 @@ export class RegisterPage {
   private accessCredential: AccessCredential = new AccessCredential('');
   private registrationFormGroup: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private haventecService: HaventecService, private errorService: ErrorService, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private haventecService: HaventecService, private logService: LogService, private storage: Storage) {
     this.accessCredential = navParams.data;
 
     this.registrationFormGroup = this.formBuilder.group({
@@ -44,13 +44,16 @@ export class RegisterPage {
       data => {
 
         if(data.responseStatus.status === 'SUCCESS'){
+
+          this.logService.debug('Auth key: ' + data.authKey);
+
           this.storage.set('auth', data);
           this.navCtrl.setRoot(HomePage, this.accessCredential);
         } else {
-          this.errorService.showError(data.responseStatus);
+          this.logService.error(data.responseStatus);
         }
       },
-      err => {console.error(err);}
+      err => {this.logService.error(err);}
     );
   }
 }
