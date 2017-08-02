@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
 import * as Constant from '../../constants/application.const'
+import {HaventecCommon} from '@haventec/common-js';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +13,9 @@ export class AuthService {
   private forgotPinPath: string = '/forgot-pin';
   private resetPinPath: string = '/reset-pin';
 
-  constructor(private http: Http) {}
+  constructor(
+    private haventecCommon: HaventecCommon
+  ) {}
 
   signUpUser(username: string, email: string) {
     let body = {
@@ -23,7 +24,7 @@ export class AuthService {
       applicationUuid: Constant.APPLICATION_UUID,
     };
 
-    return this.http.post(this.url + this.signUpUserPath, body).map(res => res.json());
+    return this.haventecCommon.http.postNoAuth(this.url + this.signUpUserPath, body);
   }
 
   registerUser(username: string, registrationToken: string, hashedPin: string, deviceName: string) {
@@ -37,45 +38,44 @@ export class AuthService {
       queryParameters: ''
     };
 
-    return this.http.post(this.url + this.registerUserPath, body).map(res => res.json());
+    return this.haventecCommon.http.postNoAuth(this.url + this.registerUserPath, body);
   }
 
-  login(username: string, applicationUuid: string, deviceUuid: string, authKey: string, hashedPin: string) {
+  login(username: string, deviceUuid: string, authKey: string, hashedPin: string) {
     let body = {
       username: username,
-      applicationUuid: applicationUuid,
+      applicationUuid: Constant.APPLICATION_UUID,
       deviceUuid: deviceUuid,
       authKey: authKey,
       hashedPin: hashedPin
     };
 
-    return this.http.post(this.url + this.loginUserPath, body).map(res => res.json());
+    return this.haventecCommon.http.postNoAuth(this.url + this.loginUserPath, body);
   }
 
   logout() {
     //return this.http.delete(this.url + this.logoutUserPath).map(res => res.json());
   }
 
-  forgotPin(applicationUuid: string, username: string, deviceUuid: string) {
+  forgotPin(username: string, deviceUuid: string) {
     let body = {
-      applicationUuid: applicationUuid,
+      applicationUuid: Constant.APPLICATION_UUID,
       username: username,
       deviceUuid: deviceUuid
     };
 
-    return this.http.post(this.url + this.forgotPinPath, body).map(res => res.json());
+    return this.haventecCommon.http.postNoAuth(this.url + this.forgotPinPath, body);
   }
 
-  resetPin(applicationUuid: string, username: string, deviceUuid: string, hashedPin: string, resetPinToken: string) {
+  resetPin(username: string, deviceUuid: string, hashedPin: string, resetPinToken: string) {
     let body = {
-      applicationUuid: applicationUuid,
+      applicationUuid: Constant.APPLICATION_UUID,
       username: username,
       deviceUuid: deviceUuid,
       hashedPin: hashedPin,
       resetToken: resetPinToken
     };
 
-
-    return this.http.post(this.url + this.resetPinPath, body).map(res => res.json());
+    return this.haventecCommon.http.postNoAuth(this.url + this.resetPinPath, body);
   }
 }

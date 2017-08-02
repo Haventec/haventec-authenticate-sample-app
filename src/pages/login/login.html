@@ -15,7 +15,7 @@
     <ion-row>
       <ion-col>
 
-        <h1 id="main-msg">Welcome back {{accessCredential.getUsername()}}</h1>
+        <h1 id="main-msg">Welcome back {{username}}</h1>
 
         <form class="login-form" [formGroup]="loginFormGroup" (ngSubmit)="login()">
           <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter your PIN to login</ion-label>

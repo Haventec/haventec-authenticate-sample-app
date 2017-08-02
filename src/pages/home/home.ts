@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { ErrorService } from '../../providers/error-service/error-service';
+import {HaventecCommon} from '@haventec/common-js';
 
 @Component({
   selector: 'page-home',
@@ -11,10 +11,16 @@ import { ErrorService } from '../../providers/error-service/error-service';
 })
 export class HomePage {
 
-  private accessCredential: AccessCredential = new AccessCredential('');
+  public username: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authService: AuthService, private errorService: ErrorService) {
-    this.accessCredential = navParams.data;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private authService: AuthService,
+    private errorService: ErrorService,
+    private haventecCommon: HaventecCommon) {
+
+    this.username = this.haventecCommon.getUsername();
   }
 
   logout(){

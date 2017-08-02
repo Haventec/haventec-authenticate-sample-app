@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, Events, LoadingController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { ForgotPinPage } from '../forgot-pin/forgot-pin';
-import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { HaventecService } from '../../providers/haventec-service/haventec-service';
 import { ErrorService } from '../../providers/error-service/error-service';
+import {HaventecCommon} from '@haventec/common-js';
 
 @Component({
   selector: 'page-login',
@@ -15,77 +13,80 @@ import { ErrorService } from '../../providers/error-service/error-service';
 })
 export class LoginPage {
 
-  private accessCredential: AccessCredential = new AccessCredential('');
+  public username: string;
+
   private loginFormGroup: FormGroup;
   private loading: any;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private storage: Storage, private authService: AuthService, private haventecService: HaventecService, public events: Events, private errorService: ErrorService, public loadingCtrl: LoadingController) {
-    this.storage.get('auth').then((auth) => {
-      this.accessCredential.setUsername(auth.username);
-    });
+  constructor(
+    public navCtrl: NavController,
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private haventecCommon: HaventecCommon,
+    public events: Events,
+    private errorService: ErrorService,
+    public loadingCtrl: LoadingController) {
 
-    this.loginFormGroup = this.formBuilder.group({
+    const self: any = this;
+
+    self.loginFormGroup = self.formBuilder.group({
       pin: ['', Validators.required],
     });
 
-    this.loading = this.loadingCtrl.create();
+    self.loading = self.loadingCtrl.create();
+
+    self.username = self.haventecCommon.getUsername();
+
   }
 
   pinUpdated(pin) {
+    const self: any = this;
+
     if (pin.length === 4) {
-      this.loginFormGroup.reset();
-      this.events.publish('pin:clear');
-      this.login(pin);
+      self.loginFormGroup.reset();
+      self.events.publish('pin:clear');
+      self.login(pin);
     }
   }
 
   login(pin) {
-    this.storage.get('auth').then((data) => {
-      let username = data.username;
-      let applicationUuid = data.applicationUuid;
-      let deviceUuid = data.deviceUuid;
-      let authKey = data.authKey;
-      let hashedPin = this.haventecService.getHashPin(pin);
+    const self: any = this;
 
-      this.loading.present();
+    self.username = self.haventecCommon.getUsername();
+    let deviceUuid = self.haventecCommon.getDeviceUuid();
+    let authKey = self.haventecCommon.getAuthKey();
+    let hashedPin = self.haventecCommon.getHashPin(pin);
 
-      this.authService.login(username, applicationUuid, deviceUuid, authKey, hashedPin).subscribe(
-        data => {
+    self.loading.present();
 
-          this.loading.dismiss();
+    self.authService.login(self.username, deviceUuid, authKey, hashedPin).then(
+      data => {
 
-          if (data.responseStatus.status === 'SUCCESS') {
-            this.storage.set('auth', data);
-            this.navCtrl.setRoot(HomePage, this.accessCredential);
-          } else {
-            this.errorService.showError(data.responseStatus);
-          }
-        },
-        err => {
-          console.error(err);
-        }
-      );
-    });
+        self.loading.dismiss();
+
+        self.haventecCommon.updateDataFromResponse(data);
+
+        self.navCtrl.setRoot(HomePage);
+      },
+      err => {
+        self.errorService.showError(err);
+      }
+    );
   }
 
   forgotPin() {
-    this.storage.get('auth').then((data) => {
-      let username = data.username;
-      let applicationUuid = data.applicationUuid;
-      let deviceUuid = data.deviceUuid;
+    const self: any = this;
 
-      this.authService.forgotPin(applicationUuid, username, deviceUuid).subscribe(
-        data => {
-          if (data.responseStatus.status === 'SUCCESS') {
-            this.navCtrl.push(ForgotPinPage, this.accessCredential);
-          } else {
-            this.errorService.showError(data.responseStatus);
-          }
-        },
-        err => {
-          console.error(err);
-        }
-      );
-    });
+    self.username = self.haventecCommon.getUsername();
+    let deviceUuid = self.haventecCommon.getDeviceUuid();
+
+    self.authService.forgotPin(self.username, deviceUuid).then(
+      data => {
+          self.navCtrl.push(ForgotPinPage);
+      },
+      err => {
+        self.errorService.showError(err);
+      }
+    );
   }
 }

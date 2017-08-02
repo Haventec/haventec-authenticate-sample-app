@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RegisterPage } from '../register/register';
-import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { ErrorService } from '../../providers/error-service/error-service';
+import {HaventecCommon} from '@haventec/common-js';
 
 @Component({
   selector: 'page-sign-up',
@@ -13,10 +13,15 @@ import { ErrorService } from '../../providers/error-service/error-service';
 })
 export class SignUpPage {
 
-  private accessCredential: AccessCredential = new AccessCredential('');
   private signUpFormGroup : FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public authService: AuthService, private errorService: ErrorService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private formBuilder: FormBuilder,
+    public authService: AuthService,
+    private haventecCommon: HaventecCommon,
+    private errorService: ErrorService) {
     this.signUpFormGroup = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.email],
@@ -27,16 +32,14 @@ export class SignUpPage {
     let username = this.signUpFormGroup.value.username;
     let email = this.signUpFormGroup.value.email;
 
-    this.authService.signUpUser(username, email).subscribe(
+    this.authService.signUpUser(username, email).then(
       data => {
-        if(data.responseStatus.status === 'SUCCESS'){
-          this.accessCredential.setUsername(this.signUpFormGroup.value.username);
-          this.navCtrl.push(RegisterPage, this.accessCredential);
-        } else {
-          this.errorService.showError(data.responseStatus);
-        }
+          this.haventecCommon.init(username);
+          this.navCtrl.push(RegisterPage);
       },
-      err => {console.error(err);}
+      err => {
+        this.errorService.showError(err);
+      }
     );
   }
 }

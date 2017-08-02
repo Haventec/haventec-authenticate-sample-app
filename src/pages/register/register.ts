@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
-import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { HaventecService } from '../../providers/haventec-service/haventec-service';
 import { ErrorService } from '../../providers/error-service/error-service';
+import {HaventecCommon} from '@haventec/common-js';
 
 @Component({
   selector: 'page-register',
@@ -14,49 +12,65 @@ import { ErrorService } from '../../providers/error-service/error-service';
 })
 export class RegisterPage {
 
-  private accessCredential: AccessCredential = new AccessCredential('');
+  public username: string;
+
   private registrationFormGroup: FormGroup;
   private loading: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService, private haventecService: HaventecService, private errorService: ErrorService, private storage: Storage, public loadingCtrl: LoadingController) {
-    this.accessCredential = navParams.data;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private haventecCommon: HaventecCommon,
+    private errorService: ErrorService,
+    public loadingCtrl: LoadingController) {
 
-    this.registrationFormGroup = this.formBuilder.group({
+    const self: any = this;
+
+    self.registrationFormGroup = self.formBuilder.group({
       registrationToken: ['', Validators.required],
       pin: ['', Validators.required],
       deviceName: ['', Validators.required]
     });
 
-    this.loading = this.loadingCtrl.create();
+    self.loading = self.loadingCtrl.create();
+
+    self.username = self.haventecCommon.getUsername();
+
   }
 
   pinUpdated(pin){
+    const self: any = this;
+
     if(pin.length === 4){
-      this.registrationFormGroup.controls['pin'].setValue(pin);
+      self.registrationFormGroup.controls['pin'].setValue(pin);
     }
   }
 
   registerUser(){
-    let username = this.accessCredential.getUsername();
-    let registrationToken = this.registrationFormGroup.value.registrationToken;
-    let hashedPin = this.haventecService.getHashPin(this.registrationFormGroup.value.pin);
-    let deviceName = this.registrationFormGroup.value.deviceName;
+    const self: any = this;
 
-    this.loading.present();
+    self.username = self.haventecCommon.getUsername();
 
-    this.authService.registerUser(username, registrationToken, hashedPin, deviceName).subscribe(
+    let registrationToken = self.registrationFormGroup.value.registrationToken;
+    let hashedPin = self.haventecCommon.getHashPin(self.registrationFormGroup.value.pin);
+    let deviceName = self.registrationFormGroup.value.deviceName;
+
+    self.loading.present();
+
+    self.authService.registerUser(self.username, registrationToken, hashedPin, deviceName).then(
       data => {
 
-        this.loading.dismiss();
+        self.loading.dismiss();
 
-        if(data.responseStatus.status === 'SUCCESS'){
-          this.storage.set('auth', data);
-          this.navCtrl.setRoot(HomePage, this.accessCredential);
-        } else {
-          this.errorService.showError(data.responseStatus);
-        }
+        self.haventecCommon.updateDataFromResponse(data);
+
+        self.navCtrl.setRoot(HomePage);
       },
-      err => {console.error(err);}
+      err => {
+        self.errorService.showError(err);
+      }
     );
   }
 }
