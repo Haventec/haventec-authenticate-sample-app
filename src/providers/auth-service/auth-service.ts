@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { LogService } from '../../providers/log-service/log-service'
+import 'rxjs/add/operator/map';
 import * as Constant from '../../constants/application.const'
 import {HaventecCommon} from '@haventec/common-js';
 
@@ -9,12 +12,13 @@ export class AuthService {
   private signUpUserPath: string = '/self-service/user';
   private registerUserPath: string = '/register/user';
   private loginUserPath: string = '/login';
-  private logoutUserPath: string = '/logout';
+  // private logoutUserPath: string = '/logout';
   private forgotPinPath: string = '/forgot-pin';
   private resetPinPath: string = '/reset-pin';
 
   constructor(
-    private haventecCommon: HaventecCommon
+    private haventecCommon: HaventecCommon,
+    private logService: LogService
   ) {}
 
   signUpUser(username: string, email: string) {
@@ -23,6 +27,8 @@ export class AuthService {
       email: email,
       applicationUuid: Constant.APPLICATION_UUID,
     };
+
+    this.logService.trace('Sign up request data ' + body);
 
     return this.haventecCommon.http.postNoAuth(this.url + this.signUpUserPath, body);
   }
@@ -38,6 +44,8 @@ export class AuthService {
       queryParameters: ''
     };
 
+    this.logService.trace('Register user request data ' + body);
+
     return this.haventecCommon.http.postNoAuth(this.url + this.registerUserPath, body);
   }
 
@@ -49,6 +57,8 @@ export class AuthService {
       authKey: authKey,
       hashedPin: hashedPin
     };
+
+    this.logService.trace('Login request data ' + body);
 
     return this.haventecCommon.http.postNoAuth(this.url + this.loginUserPath, body);
   }
@@ -64,6 +74,8 @@ export class AuthService {
       deviceUuid: deviceUuid
     };
 
+    this.logService.trace('Forgot PIN request data ' + body);
+
     return this.haventecCommon.http.postNoAuth(this.url + this.forgotPinPath, body);
   }
 
@@ -75,6 +87,8 @@ export class AuthService {
       hashedPin: hashedPin,
       resetToken: resetPinToken
     };
+
+    this.logService.trace('Reset PIN request data ' + body);
 
     return this.haventecCommon.http.postNoAuth(this.url + this.resetPinPath, body);
   }

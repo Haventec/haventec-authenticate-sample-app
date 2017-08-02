@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, Events, LoadingController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { ForgotPinPage } from '../forgot-pin/forgot-pin';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { ErrorService } from '../../providers/error-service/error-service';
 import {HaventecCommon} from '@haventec/common-js';
+import { LogService } from '../../providers/log-service/log-service';
 
 @Component({
   selector: 'page-login',
@@ -16,7 +17,6 @@ export class LoginPage {
   public username: string;
 
   private loginFormGroup: FormGroup;
-  private loading: any;
 
   constructor(
     public navCtrl: NavController,
@@ -25,15 +25,13 @@ export class LoginPage {
     private haventecCommon: HaventecCommon,
     public events: Events,
     private errorService: ErrorService,
-    public loadingCtrl: LoadingController) {
+    private logService: LogService) {
 
     const self: any = this;
 
     self.loginFormGroup = self.formBuilder.group({
       pin: ['', Validators.required],
     });
-
-    self.loading = self.loadingCtrl.create();
 
     self.username = self.haventecCommon.getUsername();
 
@@ -43,6 +41,9 @@ export class LoginPage {
     const self: any = this;
 
     if (pin.length === 4) {
+
+      this.logService.trace('Login PIN ' + pin);
+
       self.loginFormGroup.reset();
       self.events.publish('pin:clear');
       self.login(pin);
@@ -57,19 +58,17 @@ export class LoginPage {
     let authKey = self.haventecCommon.getAuthKey();
     let hashedPin = self.haventecCommon.getHashPin(pin);
 
-    self.loading.present();
-
     self.authService.login(self.username, deviceUuid, authKey, hashedPin).then(
       data => {
 
-        self.loading.dismiss();
+        this.logService.debug('Auth key: ' + data.authKey);
 
         self.haventecCommon.updateDataFromResponse(data);
 
         self.navCtrl.setRoot(HomePage);
       },
       err => {
-        self.errorService.showError(err);
+        self.logService.error(err);
       }
     );
   }
@@ -85,7 +84,7 @@ export class LoginPage {
           self.navCtrl.push(ForgotPinPage);
       },
       err => {
-        self.errorService.showError(err);
+        self.logService.error(err);
       }
     );
   }

@@ -5,6 +5,7 @@ import { RegisterPage } from '../register/register';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { ErrorService } from '../../providers/error-service/error-service';
 import {HaventecCommon} from '@haventec/common-js';
+import { LogService } from '../../providers/log-service/log-service';
 
 @Component({
   selector: 'page-sign-up',
@@ -21,7 +22,8 @@ export class SignUpPage {
     private formBuilder: FormBuilder,
     public authService: AuthService,
     private haventecCommon: HaventecCommon,
-    private errorService: ErrorService) {
+    private errorService: ErrorService,
+    private logService: LogService) {
     this.signUpFormGroup = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.email],
@@ -32,13 +34,18 @@ export class SignUpPage {
     let username = this.signUpFormGroup.value.username;
     let email = this.signUpFormGroup.value.email;
 
+    this.logService.trace('Sign up Email ' + email);
+    this.logService.trace('Sign up Username ' + username);
+
     this.authService.signUpUser(username, email).then(
       data => {
-          this.haventecCommon.init(username);
-          this.navCtrl.push(RegisterPage);
+        this.logService.trace('Sign up response data ' + data);
+
+        this.haventecCommon.init(username);
+        this.navCtrl.push(RegisterPage);
       },
       err => {
-        this.errorService.showError(err);
+        this.logService.error(err);
       }
     );
   }

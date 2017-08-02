@@ -24,16 +24,6 @@ export class HomePage {
   }
 
   logout(){
-    // this.authService.logout().subscribe(
-    //   data => {
-    //     if(data.responseStatus.status === 'SUCCESS'){
-    //       // Todo clear storage
-          this.navCtrl.setRoot(LoginPage);
-    //     } else {
-    //       this.errorService.showError(data.responseStatus);
-    //     }
-    //   },
-    //   err => {console.error(err);}
-    // );
+    this.navCtrl.setRoot(LoginPage);
   }
 }
