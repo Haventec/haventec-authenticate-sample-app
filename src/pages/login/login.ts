@@ -4,7 +4,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { ForgotPinPage } from '../forgot-pin/forgot-pin';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { ErrorService } from '../../providers/error-service/error-service';
 import {HaventecCommon} from '@haventec/common-js';
 import { LogService } from '../../providers/log-service/log-service';
 
@@ -24,7 +23,6 @@ export class LoginPage {
     private authService: AuthService,
     private haventecCommon: HaventecCommon,
     public events: Events,
-    private errorService: ErrorService,
     private logService: LogService) {
 
     const self: any = this;
@@ -61,7 +59,7 @@ export class LoginPage {
     self.authService.login(self.username, deviceUuid, authKey, hashedPin).then(
       data => {
 
-        this.logService.debug('Auth key: ' + data.authKey);
+        self.logService.debug('Auth key: ' + data.authKey);
 
         self.haventecCommon.updateDataFromResponse(data);
 
@@ -81,7 +79,7 @@ export class LoginPage {
 
     self.authService.forgotPin(self.username, deviceUuid).then(
       data => {
-          self.navCtrl.push(ForgotPinPage);
+        self.navCtrl.push(ForgotPinPage);
       },
       err => {
         self.logService.error(err);

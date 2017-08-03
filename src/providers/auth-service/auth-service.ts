@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { LogService } from '../../providers/log-service/log-service'
-import 'rxjs/add/operator/map';
 import * as Constant from '../../constants/application.const'
 import {HaventecCommon} from '@haventec/common-js';
 

@@ -22,14 +22,28 @@ export class LogService {
 
   error(errorObj: any) {
 
-    let errorMsg = errorObj;
-
-    if(errorObj.message !== undefined){
-      errorMsg = errorObj.message;
-    }
+    let errorMsg = this.formatError(errorObj);
 
     let alert = this.alertCtrl.create({title: 'Sorry an error occurred', subTitle: errorMsg, buttons: ['Dismiss']});
     alert.present();
     console.error('Error authService.signUpUser:' + errorMsg);
+  }
+
+  formatError(error) {
+    if ( error && error.responseStatus && error.responseStatus.message ) {
+      return  ": " + error.responseStatus.message;
+    }
+    if ( error && error.message ) {
+      return ": " + error.message;
+    }
+    if ( error && error._body ) {
+      return ": " + JSON.parse(error._body).message;
+    }
+
+    if ( error ) {
+      return ": " + JSON.stringify(error);
+    }
+
+    return "";
   }
 }

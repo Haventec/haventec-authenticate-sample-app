@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RegisterPage } from '../register/register';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { ErrorService } from '../../providers/error-service/error-service';
 import {HaventecCommon} from '@haventec/common-js';
 import { LogService } from '../../providers/log-service/log-service';
 
@@ -22,30 +21,34 @@ export class SignUpPage {
     private formBuilder: FormBuilder,
     public authService: AuthService,
     private haventecCommon: HaventecCommon,
-    private errorService: ErrorService,
     private logService: LogService) {
-    this.signUpFormGroup = this.formBuilder.group({
+
+    const self: any = this;
+
+    self.signUpFormGroup = self.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.email],
     });
   }
 
   signUp(){
-    let username = this.signUpFormGroup.value.username;
-    let email = this.signUpFormGroup.value.email;
+    const self: any = this;
 
-    this.logService.trace('Sign up Email ' + email);
-    this.logService.trace('Sign up Username ' + username);
+    let username = self.signUpFormGroup.value.username;
+    let email = self.signUpFormGroup.value.email;
 
-    this.authService.signUpUser(username, email).then(
+    self.logService.trace('Sign up Email ' + email);
+    self.logService.trace('Sign up Username ' + username);
+
+    self.authService.signUpUser(username, email).then(
       data => {
-        this.logService.trace('Sign up response data ' + data);
+        self.logService.trace('Sign up response data ' + data);
 
-        this.haventecCommon.init(username);
-        this.navCtrl.push(RegisterPage);
+        self.haventecCommon.init(username);
+        self.navCtrl.push(RegisterPage);
       },
       err => {
-        this.logService.error(err);
+        self.logService.error(err);
       }
     );
   }

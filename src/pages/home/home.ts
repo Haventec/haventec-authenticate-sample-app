@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { ErrorService } from '../../providers/error-service/error-service';
 import {HaventecCommon} from '@haventec/common-js';
 
 @Component({
@@ -17,7 +16,6 @@ export class HomePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private authService: AuthService,
-    private errorService: ErrorService,
     private haventecCommon: HaventecCommon) {
 
     this.username = this.haventecCommon.getUsername();

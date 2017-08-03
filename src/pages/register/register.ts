@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { ErrorService } from '../../providers/error-service/error-service';
 import {HaventecCommon} from '@haventec/common-js';
 import { LogService } from '../../providers/log-service/log-service';
 
@@ -23,7 +22,6 @@ export class RegisterPage {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private haventecCommon: HaventecCommon,
-    private errorService: ErrorService,
     private logService: LogService) {
 
     const self: any = this;
