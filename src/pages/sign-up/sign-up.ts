@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { NavController, NavParams } from 'ionic-angular';
+import { HaventecCommon } from '@haventec/common-js';
 import { RegisterPage } from '../register/register';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import {HaventecCommon} from '@haventec/common-js';
 import { LogService } from '../../providers/log-service/log-service';
+import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
   selector: 'page-sign-up',
@@ -21,7 +22,9 @@ export class SignUpPage {
     private formBuilder: FormBuilder,
     public authService: AuthService,
     private haventecCommon: HaventecCommon,
-    private logService: LogService) {
+    private logService: LogService,
+    private pageLoadingService: PageLoadingService
+  ) {
 
     const self: any = this;
 
@@ -40,14 +43,18 @@ export class SignUpPage {
     self.logService.trace('Sign up Email ' + email);
     self.logService.trace('Sign up Username ' + username);
 
+    self.pageLoadingService.present();
+
     self.authService.signUpUser(username, email).then(
       data => {
+        self.pageLoadingService.dismiss();
         self.logService.trace('Sign up response data ' + data);
 
         self.haventecCommon.init(username);
         self.navCtrl.push(RegisterPage);
       },
       err => {
+        self.pageLoadingService.dismiss();
         self.logService.error(err);
       }
     );

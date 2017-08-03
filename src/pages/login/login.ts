@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { NavController, Events } from 'ionic-angular';
+import { HaventecCommon } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { ForgotPinPage } from '../forgot-pin/forgot-pin';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import {HaventecCommon} from '@haventec/common-js';
 import { LogService } from '../../providers/log-service/log-service';
+import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
   selector: 'page-login',
@@ -23,7 +24,9 @@ export class LoginPage {
     private authService: AuthService,
     private haventecCommon: HaventecCommon,
     public events: Events,
-    private logService: LogService) {
+    private logService: LogService,
+    private pageLoadingService: PageLoadingService
+  ) {
 
     const self: any = this;
 
@@ -56,9 +59,11 @@ export class LoginPage {
     let authKey = self.haventecCommon.getAuthKey();
     let hashedPin = self.haventecCommon.getHashPin(pin);
 
+    self.pageLoadingService.present();
+
     self.authService.login(self.username, deviceUuid, authKey, hashedPin).then(
       data => {
-
+        self.pageLoadingService.dismiss();
         self.logService.debug('Auth key: ' + data.authKey);
 
         self.haventecCommon.updateDataFromResponse(data);
@@ -66,6 +71,7 @@ export class LoginPage {
         self.navCtrl.setRoot(HomePage);
       },
       err => {
+        self.pageLoadingService.dismiss();
         self.logService.error(err);
       }
     );
@@ -77,11 +83,15 @@ export class LoginPage {
     self.username = self.haventecCommon.getUsername();
     let deviceUuid = self.haventecCommon.getDeviceUuid();
 
+    self.pageLoadingService.present();
+
     self.authService.forgotPin(self.username, deviceUuid).then(
       data => {
+        self.pageLoadingService.dismiss();
         self.navCtrl.push(ForgotPinPage);
       },
       err => {
+        self.pageLoadingService.dismiss();
         self.logService.error(err);
       }
     );

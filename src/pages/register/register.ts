@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { NavController, NavParams } from 'ionic-angular';
+import { HaventecCommon } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import {HaventecCommon} from '@haventec/common-js';
 import { LogService } from '../../providers/log-service/log-service';
+import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
   selector: 'page-register',
@@ -22,7 +23,9 @@ export class RegisterPage {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private haventecCommon: HaventecCommon,
-    private logService: LogService) {
+    private logService: LogService,
+    private pageLoadingService: PageLoadingService
+  ) {
 
     const self: any = this;
 
@@ -53,9 +56,11 @@ export class RegisterPage {
     let hashedPin = self.haventecCommon.getHashPin(self.registrationFormGroup.value.pin);
     let deviceName = self.registrationFormGroup.value.deviceName;
 
+    self.pageLoadingService.present();
+
     self.authService.registerUser(self.username, registrationToken, hashedPin, deviceName).then(
       data => {
-
+        self.pageLoadingService.dismiss();
         self.logService.debug('Auth key: ' + data.authKey);
 
         self.haventecCommon.updateDataFromResponse(data);
@@ -63,6 +68,7 @@ export class RegisterPage {
         self.navCtrl.setRoot(HomePage);
       },
       err => {
+        self.pageLoadingService.dismiss();
         self.logService.error(err);
       }
     );
