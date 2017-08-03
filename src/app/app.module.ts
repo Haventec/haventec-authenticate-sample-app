@@ -17,7 +17,7 @@ import { AddDevicePage } from "../pages/add-device/add-device";
 import { PinInput } from "../components/pin-input/pin-input";
 
 import { AuthService } from '../providers/auth-service/auth-service';
-import { HaventecService } from '../providers/haventec-service/haventec-service';
+import { HaventecCommonProvider } from "../providers/haventec-service/haventec.common.provider";
 import { LogService } from '../providers/log-service/log-service';
 import { PageLoadingService } from '../providers/page-loading-service/page-loading-service'
 
@@ -54,9 +54,9 @@ import { PageLoadingService } from '../providers/page-loading-service/page-loadi
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    HaventecService,
     LogService,
-    PageLoadingService
+    PageLoadingService,
+    HaventecCommonProvider
   ]
 })
 export class AppModule {}

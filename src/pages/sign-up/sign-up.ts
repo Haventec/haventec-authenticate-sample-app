@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RegisterPage } from '../register/register';
-import { AccessCredential } from '../../models/accessCredential';
 import { AuthService } from '../../providers/auth-service/auth-service';
+import {HaventecCommon} from '@haventec/common-js';
 import { LogService } from '../../providers/log-service/log-service';
-import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
   selector: 'page-sign-up',
@@ -14,40 +13,42 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 })
 export class SignUpPage {
 
-  private accessCredential: AccessCredential = new AccessCredential('');
   private signUpFormGroup : FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public authService: AuthService, private logService: LogService, private pageLoading: PageLoadingService) {
-    this.signUpFormGroup = this.formBuilder.group({
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private formBuilder: FormBuilder,
+    public authService: AuthService,
+    private haventecCommon: HaventecCommon,
+    private logService: LogService) {
+
+    const self: any = this;
+
+    self.signUpFormGroup = self.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.email],
     });
   }
 
   signUp(){
-    let username = this.signUpFormGroup.value.username;
-    let email = this.signUpFormGroup.value.email;
+    const self: any = this;
 
-    this.logService.trace('Sign up Email ' + email);
-    this.logService.trace('Sign up Username ' + username);
+    let username = self.signUpFormGroup.value.username;
+    let email = self.signUpFormGroup.value.email;
 
-    this.pageLoading.present();
+    self.logService.trace('Sign up Email ' + email);
+    self.logService.trace('Sign up Username ' + username);
 
-    this.authService.signUpUser(username, email).subscribe(
+    self.authService.signUpUser(username, email).then(
       data => {
-        this.pageLoading.dismiss();
-        this.logService.trace('Sign up response data ' + data);
+        self.logService.trace('Sign up response data ' + data);
 
-        if(data.responseStatus.status === 'SUCCESS'){
-          this.accessCredential.setUsername(this.signUpFormGroup.value.username);
-          this.navCtrl.push(RegisterPage, this.accessCredential);
-        } else {
-          this.logService.error(data.responseStatus);
-        }
+        self.haventecCommon.init(username);
+        self.navCtrl.push(RegisterPage);
       },
       err => {
-        this.pageLoading.dismiss();
-        this.logService.error(err);
+        self.logService.error(err);
       }
     );
   }
