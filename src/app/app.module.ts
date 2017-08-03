@@ -17,9 +17,9 @@ import { AddDevicePage } from "../pages/add-device/add-device";
 import { PinInput } from "../components/pin-input/pin-input";
 
 import { AuthService } from '../providers/auth-service/auth-service';
-import { HaventecCommonProvider } from "../providers/haventec-service/haventec.common.provider";
 import { LogService } from '../providers/log-service/log-service';
 import { PageLoadingService } from '../providers/page-loading-service/page-loading-service'
+import {HaventecClientProvider} from "@haventec/common-js";
 
 @NgModule({
   declarations: [
@@ -56,7 +56,7 @@ import { PageLoadingService } from '../providers/page-loading-service/page-loadi
     AuthService,
     LogService,
     PageLoadingService,
-    HaventecCommonProvider
+    HaventecClientProvider
   ]
 })
 export class AppModule {}

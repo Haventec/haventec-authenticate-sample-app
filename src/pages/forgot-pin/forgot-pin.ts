@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { HaventecCommon } from '@haventec/common-js';
+import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { LogService } from '../../providers/log-service/log-service';
@@ -23,7 +23,7 @@ export class ForgotPinPage {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private logService: LogService,
-    private haventecCommon: HaventecCommon,
+    private haventecClient: HaventecClient,
     private pageLoadingService: PageLoadingService
   ) {
 
@@ -34,7 +34,7 @@ export class ForgotPinPage {
       pin: ['', Validators.required],
     });
 
-    self.username = self.haventecCommon.getUsername();
+    self.username = self.haventecClient.getUsername();
 
   }
 
@@ -47,9 +47,9 @@ export class ForgotPinPage {
   resetPin(){
     const self: any = this;
 
-    self.username = self.haventecCommon.getUsername();
-    let deviceUuid = self.haventecCommon.getDeviceUuid();
-    let hashedPin = self.haventecCommon.getHashPin(self.resetFormGroup.value.pin);
+    self.username = self.haventecClient.getUsername();
+    let deviceUuid = self.haventecClient.getDeviceUuid();
+    let hashedPin = self.haventecClient.getHashPin(self.resetFormGroup.value.pin);
     let resetPinToken = self.resetFormGroup.value.resetPinToken;
 
     self.pageLoadingService.present();
@@ -59,7 +59,7 @@ export class ForgotPinPage {
         self.pageLoadingService.dismiss();
         self.logService.debug('Auth key: ' + data.authKey);
 
-        self.haventecCommon.updateDataFromResponse(data);
+        self.haventecClient.updateDataFromResponse(data);
         self.navCtrl.setRoot(HomePage);
       },
       err => {

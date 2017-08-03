@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { LoginPage } from '../pages/login/login';
 import { LogService } from '../providers/log-service/log-service';
-import {HaventecCommon} from '@haventec/common-js';
+import {HaventecClient} from '@haventec/common-js';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +20,7 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private logService: LogService,
-    private haventecCommon: HaventecCommon) {
+    private haventecClient: HaventecClient) {
     this.initializeApp();
   }
 
@@ -37,7 +37,7 @@ export class MyApp {
 
   // Reset the App and return the user to the Sign up page
   resetApp(page) {
-    this.haventecCommon.purge();
+    this.haventecClient.purge();
     this.logService.debug('Resetting App');
     this.navCtrl.setRoot(SignUpPage);
   }
@@ -45,7 +45,7 @@ export class MyApp {
   // Check if this is the users first time using the App
   checkForFirstTimeUse(): void {
 
-    let username = this.haventecCommon.getUsername();
+    let username = this.haventecClient.getUsername();
 
       if(username == null){
         this.logService.debug('First time use');

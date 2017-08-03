@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LogService } from '../../providers/log-service/log-service'
 import * as Constant from '../../constants/application.const'
-import {HaventecCommon} from '@haventec/common-js';
+import {HaventecClient} from '@haventec/common-js';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +15,7 @@ export class AuthService {
   private resetPinPath: string = '/reset-pin';
 
   constructor(
-    private haventecCommon: HaventecCommon,
+    private haventecClient: HaventecClient,
     private logService: LogService
   ) {}
 
@@ -28,7 +28,7 @@ export class AuthService {
 
     this.logService.trace('Sign up request data ' + body);
 
-    return this.haventecCommon.http.postNoAuth(this.url + this.signUpUserPath, body);
+    return this.haventecClient.http.postNoAuth(this.url + this.signUpUserPath, body);
   }
 
   registerUser(username: string, registrationToken: string, hashedPin: string, deviceName: string) {
@@ -44,7 +44,7 @@ export class AuthService {
 
     this.logService.trace('Register user request data ' + body);
 
-    return this.haventecCommon.http.postNoAuth(this.url + this.registerUserPath, body);
+    return this.haventecClient.http.postNoAuth(this.url + this.registerUserPath, body);
   }
 
   login(username: string, deviceUuid: string, authKey: string, hashedPin: string) {
@@ -58,7 +58,7 @@ export class AuthService {
 
     this.logService.trace('Login request data ' + body);
 
-    return this.haventecCommon.http.postNoAuth(this.url + this.loginUserPath, body);
+    return this.haventecClient.http.postNoAuth(this.url + this.loginUserPath, body);
   }
 
   logout() {
@@ -74,7 +74,7 @@ export class AuthService {
 
     this.logService.trace('Forgot PIN request data ' + body);
 
-    return this.haventecCommon.http.postNoAuth(this.url + this.forgotPinPath, body);
+    return this.haventecClient.http.postNoAuth(this.url + this.forgotPinPath, body);
   }
 
   resetPin(username: string, deviceUuid: string, hashedPin: string, resetPinToken: string) {
@@ -88,6 +88,6 @@ export class AuthService {
 
     this.logService.trace('Reset PIN request data ' + body);
 
-    return this.haventecCommon.http.postNoAuth(this.url + this.resetPinPath, body);
+    return this.haventecClient.http.postNoAuth(this.url + this.resetPinPath, body);
   }
 }

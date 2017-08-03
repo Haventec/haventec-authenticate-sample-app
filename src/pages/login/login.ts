@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, Events } from 'ionic-angular';
-import { HaventecCommon } from '@haventec/common-js';
+import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { ForgotPinPage } from '../forgot-pin/forgot-pin';
 import { AuthService } from '../../providers/auth-service/auth-service';
@@ -22,7 +22,7 @@ export class LoginPage {
     public navCtrl: NavController,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private haventecCommon: HaventecCommon,
+    private haventecClient: HaventecClient,
     public events: Events,
     private logService: LogService,
     private pageLoadingService: PageLoadingService
@@ -34,7 +34,7 @@ export class LoginPage {
       pin: ['', Validators.required],
     });
 
-    self.username = self.haventecCommon.getUsername();
+    self.username = self.haventecClient.getUsername();
 
   }
 
@@ -54,10 +54,10 @@ export class LoginPage {
   login(pin) {
     const self: any = this;
 
-    self.username = self.haventecCommon.getUsername();
-    let deviceUuid = self.haventecCommon.getDeviceUuid();
-    let authKey = self.haventecCommon.getAuthKey();
-    let hashedPin = self.haventecCommon.getHashPin(pin);
+    self.username = self.haventecClient.getUsername();
+    let deviceUuid = self.haventecClient.getDeviceUuid();
+    let authKey = self.haventecClient.getAuthKey();
+    let hashedPin = self.haventecClient.getHashPin(pin);
 
     self.pageLoadingService.present();
 
@@ -66,7 +66,7 @@ export class LoginPage {
         self.pageLoadingService.dismiss();
         self.logService.debug('Auth key: ' + data.authKey);
 
-        self.haventecCommon.updateDataFromResponse(data);
+        self.haventecClient.updateDataFromResponse(data);
 
         self.navCtrl.setRoot(HomePage);
       },
@@ -80,8 +80,8 @@ export class LoginPage {
   forgotPin() {
     const self: any = this;
 
-    self.username = self.haventecCommon.getUsername();
-    let deviceUuid = self.haventecCommon.getDeviceUuid();
+    self.username = self.haventecClient.getUsername();
+    let deviceUuid = self.haventecClient.getDeviceUuid();
 
     self.pageLoadingService.present();
 
