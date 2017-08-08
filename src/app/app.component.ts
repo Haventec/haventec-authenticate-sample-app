@@ -2,10 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HaventecClient } from '@haventec/common-js';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { LoginPage } from '../pages/login/login';
 import { LogService } from '../providers/log-service/log-service';
-import {HaventecClient} from '@haventec/common-js';
+import * as Constant from '../constants/application.const'
 
 @Component({
   templateUrl: 'app.html'
@@ -31,6 +32,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      this.checkAppConfig();
       this.checkForFirstTimeUse();
     });
   }
@@ -55,4 +57,11 @@ export class MyApp {
         this.rootPage = LoginPage;
       }
   };
+
+  checkAppConfig(){
+    if(Constant.APPLICATION_UUID === '' || Constant.API_ENDPOINT === '') {
+      this.logService.error('Please configure your Application UUID and API endpoint in application.const.ts');
+    }
+  }
+
 }

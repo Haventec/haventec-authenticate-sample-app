@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HaventecClient } from '@haventec/common-js';
 import { LogService } from '../../providers/log-service/log-service'
 import * as Constant from '../../constants/application.const'
-import {HaventecClient} from '@haventec/common-js';
 
 @Injectable()
 export class AuthService {

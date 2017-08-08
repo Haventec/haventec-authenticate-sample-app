@@ -29,19 +29,19 @@ export class LogService {
     console.error('Error authService.signUpUser:' + errorMsg);
   }
 
-  formatError(error) {
+  private formatError(error) {
     if ( error && error.responseStatus && error.responseStatus.message ) {
-      return  ": " + error.responseStatus.message;
+      return error.responseStatus.message;
     }
     if ( error && error.message ) {
-      return ": " + error.message;
+      return error.message;
     }
     if ( error && error._body ) {
-      return ": " + JSON.parse(error._body).message;
+      return JSON.parse(error._body).message;
     }
 
-    if ( error ) {
-      return ": " + JSON.stringify(error);
+    if ( typeof error === 'string' ) {
+      return error;
     }
 
     return "";
