@@ -10,7 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SignUpPage } from "../pages/sign-up/sign-up";
 import { LoginPage } from "../pages/login/login";
-import { RegisterPage } from "../pages/register/register";
+import { ActivateAccountPage } from "../pages/activate-account/activate-account";
 import { ForgotPinPage } from "../pages/forgot-pin/forgot-pin";
 import { AddDevicePage } from "../pages/add-device/add-device";
 
@@ -27,7 +27,7 @@ import {HaventecClientProvider} from "@haventec/common-js";
     HomePage,
     SignUpPage,
     LoginPage,
-    RegisterPage,
+    ActivateAccountPage,
     ForgotPinPage,
     AddDevicePage,
     PinInput
@@ -44,7 +44,7 @@ import {HaventecClientProvider} from "@haventec/common-js";
     HomePage,
     SignUpPage,
     LoginPage,
-    RegisterPage,
+    ActivateAccountPage,
     ForgotPinPage,
     AddDevicePage,
     PinInput

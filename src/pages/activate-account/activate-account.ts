@@ -8,14 +8,14 @@ import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
+  selector: 'page-activate-account',
+  templateUrl: 'activate-account.html',
 })
-export class RegisterPage {
+export class ActivateAccountPage {
 
   public username: string;
 
-  private registrationFormGroup: FormGroup;
+  private activateAccountFormGroup: FormGroup;
 
   constructor(
     public navCtrl: NavController,
@@ -29,8 +29,8 @@ export class RegisterPage {
 
     const self: any = this;
 
-    self.registrationFormGroup = self.formBuilder.group({
-      registrationToken: ['', Validators.required],
+    self.activateAccountFormGroup = self.formBuilder.group({
+      activationToken: ['', Validators.required],
       pin: ['', Validators.required],
       deviceName: ['', Validators.required]
     });
@@ -43,22 +43,22 @@ export class RegisterPage {
     const self: any = this;
 
     if(pin.length === 4){
-      self.registrationFormGroup.controls['pin'].setValue(pin);
+      self.activateAccountFormGroup.controls['pin'].setValue(pin);
     }
   }
 
-  registerUser(){
+  activateAccount(){
     const self: any = this;
 
     self.username = self.haventecClient.getUsername();
 
-    let registrationToken = self.registrationFormGroup.value.registrationToken;
-    let hashedPin = self.haventecClient.getHashPin(self.registrationFormGroup.value.pin);
-    let deviceName = self.registrationFormGroup.value.deviceName;
+    let activationToken = self.activateAccountFormGroup.value.activationToken;
+    let hashedPin = self.haventecClient.getHashPin(self.activateAccountFormGroup.value.pin);
+    let deviceName = self.activateAccountFormGroup.value.deviceName;
 
     self.pageLoadingService.present();
 
-    self.authService.registerUser(self.username, registrationToken, hashedPin, deviceName).then(
+    self.authService.activateAccount(self.username, activationToken, hashedPin, deviceName).then(
       data => {
         self.pageLoadingService.dismiss();
         self.logService.debug('Auth key: ' + data.authKey);

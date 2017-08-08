@@ -31,18 +31,18 @@ export class AuthService {
     return this.haventecClient.http.postNoAuth(this.url + this.signUpUserPath, body);
   }
 
-  registerUser(username: string, registrationToken: string, hashedPin: string, deviceName: string) {
+  activateAccount(username: string, activationToken: string, hashedPin: string, deviceName: string) {
     // Todo - Not required remove queryParameters
     let body = {
       username: username,
       applicationUuid: Constant.APPLICATION_UUID,
-      registrationToken: registrationToken,
+      registrationToken: activationToken,
       hashedPin: hashedPin,
       deviceName: deviceName,
       queryParameters: ''
     };
 
-    this.logService.trace('Register user request data ' + body);
+    this.logService.trace('Activate account request data ' + body);
 
     return this.haventecClient.http.postNoAuth(this.url + this.registerUserPath, body);
   }
