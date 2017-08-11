@@ -36,7 +36,7 @@ export class AuthService {
     let body = {
       username: username,
       applicationUuid: Constant.APPLICATION_UUID,
-      registrationToken: activationToken,
+      activationToken: activationToken,
       hashedPin: hashedPin,
       deviceName: deviceName,
       queryParameters: ''
@@ -83,7 +83,7 @@ export class AuthService {
       username: username,
       deviceUuid: deviceUuid,
       hashedPin: hashedPin,
-      resetToken: resetPinToken
+      resetPinToken: resetPinToken
     };
 
     this.logService.trace('Reset PIN request data ' + body);
