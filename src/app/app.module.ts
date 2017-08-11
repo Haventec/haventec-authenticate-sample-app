@@ -13,6 +13,8 @@ import { LoginPage } from "../pages/login/login";
 import { ActivateAccountPage } from "../pages/activate-account/activate-account";
 import { ForgotPinPage } from "../pages/forgot-pin/forgot-pin";
 import { AddDevicePage } from "../pages/add-device/add-device";
+import { ChooseUserPage } from "../pages/choose-user/choose-user";
+import { ExistingUserPage } from "../pages/existing-user/existing-user";
 
 import { PinInput } from "../components/pin-input/pin-input";
 
@@ -30,6 +32,8 @@ import {HaventecClientProvider} from "@haventec/common-js";
     ActivateAccountPage,
     ForgotPinPage,
     AddDevicePage,
+    ChooseUserPage,
+    ExistingUserPage,
     PinInput
   ],
   imports: [
@@ -47,6 +51,8 @@ import {HaventecClientProvider} from "@haventec/common-js";
     ActivateAccountPage,
     ForgotPinPage,
     AddDevicePage,
+    ChooseUserPage,
+    ExistingUserPage,
     PinInput
   ],
   providers: [

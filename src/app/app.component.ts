@@ -3,7 +3,7 @@ import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HaventecClient } from '@haventec/common-js';
-import { SignUpPage } from '../pages/sign-up/sign-up';
+import { ChooseUserPage } from '../pages/choose-user/choose-user';
 import { LoginPage } from '../pages/login/login';
 import { LogService } from '../providers/log-service/log-service';
 import * as Constant from '../constants/application.const'
@@ -41,7 +41,7 @@ export class MyApp {
   resetApp(page) {
     this.haventecClient.purge();
     this.logService.debug('Resetting App');
-    this.navCtrl.setRoot(SignUpPage);
+    this.navCtrl.setRoot(ChooseUserPage);
   }
 
   // Check if this is the users first time using the App
@@ -51,7 +51,7 @@ export class MyApp {
 
       if(username == null){
         this.logService.debug('First time use');
-        this.rootPage = SignUpPage;
+        this.rootPage = ChooseUserPage;
       } else {
         this.logService.debug('Not First time use');
         this.rootPage = LoginPage;

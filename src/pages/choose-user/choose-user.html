@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-buttons left>
+      <button ion-button menuToggle><ion-icon name="options"></ion-icon></button>
+    </ion-buttons>
+
+    <ion-title>My App</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
+
+        <!-- dimensions set using attributes -->
+        <div class="logo" text-center padding-vertical>
+          <ion-img width="200" height="200" src="/assets/icon/logo.png"></ion-img>
+
+          <h1 margin-vertical>Welcome to Haventec's Sample App</h1>
+        </div>
+
+        <button ion-button full (click)='newUser();'>New user</button>
+
+        <button ion-button full (click)='existingUser();'>Existing user</button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
