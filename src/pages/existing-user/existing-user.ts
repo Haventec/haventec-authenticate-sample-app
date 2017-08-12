@@ -49,9 +49,6 @@ export class ExistingUserPage {
         self.pageLoadingService.dismiss();
         self.logService.trace('Add device response data ' + data);
 
-        self.haventecClient.init(username);
-        self.haventecClient.updateDataFromResponse(data);
-
         self.navCtrl.push(ActivateDevicePage);
       },
       err => {

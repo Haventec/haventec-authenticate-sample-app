@@ -62,9 +62,6 @@ export class ActivateAccountPage {
       data => {
         self.pageLoadingService.dismiss();
         self.logService.debug('Auth key: ' + data.authKey);
-
-        self.haventecClient.updateDataFromResponse(data);
-
         self.navCtrl.setRoot(HomePage);
       },
       err => {

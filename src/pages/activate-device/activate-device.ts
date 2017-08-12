@@ -59,8 +59,6 @@ export class ActivateDevicePage {
         self.pageLoadingService.dismiss();
         self.logService.trace('Activate Device response data ' + data);
 
-        self.haventecClient.updateDataFromResponse(data);
-
         self.navCtrl.setRoot(HomePage);
       },
       err => {

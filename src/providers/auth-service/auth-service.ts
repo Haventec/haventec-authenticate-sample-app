@@ -6,15 +6,14 @@ import * as Constant from '../../constants/application.const'
 @Injectable()
 export class AuthService {
 
-  private readonly url: string = Constant.API_ENDPOINT;
-  private signUpUserPath: string = '/self-service/user';
-  private registerUserPath: string = '/activate/user';
-  private activateDevicePath: string = '/activate/device';
-  private addDevicePath: string = '/device';
-  private loginUserPath: string = '/login';
-  // private logoutUserPath: string = '/logout';
-  private forgotPinPath: string = '/forgot-pin';
-  private resetPinPath: string = '/reset-pin';
+  private signUpUserPath: string = Constant.API_ENDPOINT + '/self-service/user';
+  private registerUserPath: string = Constant.API_ENDPOINT + '/activate/user';
+  private activateDevicePath: string = Constant.API_ENDPOINT + '/activate/device';
+  private addDevicePath: string = Constant.API_ENDPOINT + '/device';
+  private loginUserPath: string = Constant.API_ENDPOINT + '/login';
+  // private logoutUserPath: string = Constant.API_ENDPOINT + '/logout';
+  private forgotPinPath: string = Constant.API_ENDPOINT + '/forgot-pin';
+  private resetPinPath: string = Constant.API_ENDPOINT + '/reset-pin';
 
   constructor(
     private haventecClient: HaventecClient,
@@ -28,13 +27,10 @@ export class AuthService {
       applicationUuid: Constant.APPLICATION_UUID,
     };
 
-    this.logService.trace('Sign up request data ' + body);
-
-    return this.haventecClient.http.postNoAuth(this.url + this.signUpUserPath, body);
+    return this.postNoAuth(this.signUpUserPath, body, username);
   }
 
   activateAccount(username: string, activationToken: string, hashedPin: string, deviceName: string) {
-    // Todo - Not required remove queryParameters
     let body = {
       username: username,
       applicationUuid: Constant.APPLICATION_UUID,
@@ -44,9 +40,7 @@ export class AuthService {
       queryParameters: ''
     };
 
-    this.logService.trace('Activate account request data ' + body);
-
-    return this.haventecClient.http.postNoAuth(this.url + this.registerUserPath, body);
+    return this.postNoAuth(this.registerUserPath, body);
   }
 
   addDevice(username: string, deviceName: string) {
@@ -56,9 +50,7 @@ export class AuthService {
       devicename: deviceName
     };
 
-    this.logService.trace('Add device request data ' + body);
-
-    return this.haventecClient.http.postNoAuth(this.url + this.addDevicePath, body);
+    return this.postNoAuth(this.addDevicePath, body, username);
   }
 
   activateDevice(activationToken: string, hashedPin: string, deviceUuid: string, username: string) {
@@ -70,9 +62,7 @@ export class AuthService {
       username: username
     };
 
-    this.logService.trace('Activate device request data ' + body);
-
-    return this.haventecClient.http.postNoAuth(this.url + this.activateDevicePath, body);
+    return this.postNoAuth(this.activateDevicePath, body);
   }
 
   login(username: string, deviceUuid: string, authKey: string, hashedPin: string) {
@@ -84,13 +74,11 @@ export class AuthService {
       hashedPin: hashedPin
     };
 
-    this.logService.trace('Login request data ' + body);
-
-    return this.haventecClient.http.postNoAuth(this.url + this.loginUserPath, body);
+    return this.postNoAuth(this.loginUserPath, body);
   }
 
   logout() {
-    //return this.http.delete(this.url + this.logoutUserPath).map(res => res.json());
+    //return this.http.delete(this.logoutUserPath).map(res => res.json());
   }
 
   forgotPin(username: string, deviceUuid: string) {
@@ -100,9 +88,7 @@ export class AuthService {
       deviceUuid: deviceUuid
     };
 
-    this.logService.trace('Forgot PIN request data ' + body);
-
-    return this.haventecClient.http.postNoAuth(this.url + this.forgotPinPath, body);
+    return this.postNoAuth(this.forgotPinPath, body);
   }
 
   resetPin(username: string, deviceUuid: string, hashedPin: string, resetPinToken: string) {
@@ -114,8 +100,31 @@ export class AuthService {
       resetPinToken: resetPinToken
     };
 
-    this.logService.trace('Reset PIN request data ' + body);
+    return this.postNoAuth(this.resetPinPath, body);
+  }
 
-    return this.haventecClient.http.postNoAuth(this.url + this.resetPinPath, body);
+  private postNoAuth(url: string, body: {}, initialiseUserWithName?: string): Promise<any> {
+
+    this.logService.trace('Request: ' + url + ' with body ' +  body);
+
+    return new Promise((resolve, reject) => {
+      this.haventecClient.http.postNoAuth(url, body).then(
+        data => {
+
+          this.logService.trace('Response: ' + url + ' with data ' +  data);
+
+          if(initialiseUserWithName){
+            console.log('init');
+            this.haventecClient.init(initialiseUserWithName);
+          }
+
+          this.haventecClient.updateDataFromResponse(data);
+          resolve(data);
+        },
+        err => {
+          reject(err);
+        }
+      );
+    });
   }
 }
