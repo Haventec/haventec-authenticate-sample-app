@@ -7,10 +7,10 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 
 @Component({
   selector: 'page-existing-user',
-  templateUrl: 'existing-user.html',
+  templateUrl: 'add-device.html',
   providers: [AuthService]
 })
-export class ExistingUserPage {
+export class AddDevicePage {
 
   private addDeviceFormGroup : FormGroup;
 

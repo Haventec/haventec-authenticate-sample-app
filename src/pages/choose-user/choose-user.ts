@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SignUpPage } from '../sign-up/sign-up';
-import { ExistingUserPage } from '../existing-user/existing-user';
+import { AddDevicePage } from '../add-device/add-device';
 
 @Component({
   selector: 'page-choose-user',
@@ -19,7 +19,7 @@ export class ChooseUserPage {
 
   existingUser() {
     const self: any = this;
-    self.navCtrl.push(ExistingUserPage);
+    self.navCtrl.push(AddDevicePage);
   }
 
 }
