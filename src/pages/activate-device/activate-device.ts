@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
@@ -11,6 +12,8 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 })
 export class ActivateDevicePage {
 
+  public username: string;
+
   private activateDeviceFormGroup : FormGroup;
 
   constructor(
@@ -18,6 +21,7 @@ export class ActivateDevicePage {
     public navParams: NavParams,
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private haventecClient: HaventecClient,
     private pageLoadingService: PageLoadingService
   ) {
 
@@ -26,7 +30,9 @@ export class ActivateDevicePage {
     self.activateDeviceFormGroup = this.formBuilder.group({
       deviceActivationCode: ['', Validators.required],
       pin: ['', Validators.required]
-    })
+    });
+
+    self.username = self.haventecClient.getUsername();
   }
 
   pinUpdated(pin){

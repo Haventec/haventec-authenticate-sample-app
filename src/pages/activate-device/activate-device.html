@@ -16,7 +16,7 @@
     <ion-row>
       <ion-col>
 
-        <p>An email has been sent to your inbox</p>
+        <p>{{username}}, an email has been sent to your inbox</p>
         <p>Please check your email and enter the device activation code below</p>
 
         <form [formGroup]="activateDeviceFormGroup" (ngSubmit)="activateDevice()">
