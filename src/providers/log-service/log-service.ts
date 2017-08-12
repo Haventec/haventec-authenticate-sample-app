@@ -26,7 +26,7 @@ export class LogService {
 
     let alert = this.alertCtrl.create({title: 'Sorry an error occurred', subTitle: errorMsg, buttons: ['Dismiss']});
     alert.present();
-    console.error('Error authService.signUpUser:' + errorMsg);
+    console.error('Error:' + errorMsg);
   }
 
   private formatError(error) {

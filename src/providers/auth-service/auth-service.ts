@@ -8,7 +8,8 @@ export class AuthService {
 
   private readonly url: string = Constant.API_ENDPOINT;
   private signUpUserPath: string = '/self-service/user';
-  private registerUserPath: string = '/register/user';
+  private registerUserPath: string = '/activate/user';
+  private activateDevicePath: string = '/activate/device';
   private addDevicePath: string = '/device';
   private loginUserPath: string = '/login';
   // private logoutUserPath: string = '/logout';
@@ -58,6 +59,20 @@ export class AuthService {
     this.logService.trace('Add device request data ' + body);
 
     return this.haventecClient.http.postNoAuth(this.url + this.addDevicePath, body);
+  }
+
+  activateDevice(activationToken: string, hashedPin: string, deviceUuid: string, username: string) {
+    let body = {
+      activationToken: activationToken,
+      applicationUuid: Constant.APPLICATION_UUID,
+      deviceUuid: deviceUuid,
+      hashedPin: hashedPin,
+      username: username
+    };
+
+    this.logService.trace('Activate device request data ' + body);
+
+    return this.haventecClient.http.postNoAuth(this.url + this.activateDevicePath, body);
   }
 
   login(username: string, deviceUuid: string, authKey: string, hashedPin: string) {

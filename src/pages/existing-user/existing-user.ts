@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 import { HaventecClient } from '@haventec/common-js';
+import { ActivateDevicePage } from '../activate-device/activate-device'
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
@@ -49,7 +50,9 @@ export class ExistingUserPage {
         self.logService.trace('Add device response data ' + data);
 
         self.haventecClient.init(username);
-        //self.navCtrl.push(ActivateAccountPage);
+        self.haventecClient.updateDataFromResponse(data);
+
+        self.navCtrl.push(ActivateDevicePage);
       },
       err => {
         self.pageLoadingService.dismiss();

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-buttons left>
+      <button ion-button menuToggle><ion-icon name="options"></ion-icon></button>
+    </ion-buttons>
+
+    <ion-title>Activate this device</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
+
+        <p>An email has been sent to your inbox</p>
+        <p>Please check your email and enter the device activation code below</p>
+
+        <form [formGroup]="activateDeviceFormGroup" (ngSubmit)="activateDevice()">
+
+          <ion-item>
+            <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>Device activation code</ion-label>
+            <ion-input type="number" formControlName="deviceActivationCode"></ion-input>
+          </ion-item>
+
+          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>
+          <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
+
+          <button ion-button type="submit" [disabled]="!activateDeviceFormGroup.valid" block margin-vertical>Activate</button>
+
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
