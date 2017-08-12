@@ -10,13 +10,11 @@ export class PageLoadingService {
     this.createLoader();
   }
 
-
   dismiss() {
     this.pageLoading.dismiss()
   }
 
   present() {
-    console.log(this.pageLoading);
     this.createLoader();
     this.pageLoading.present();
   }
@@ -24,5 +22,4 @@ export class PageLoadingService {
   private createLoader() {
     this.pageLoading = this.loadingController.create();
   }
-
 }
