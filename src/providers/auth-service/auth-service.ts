@@ -103,26 +103,26 @@ export class AuthService {
     return this.postNoAuth(this.resetPinPath, body);
   }
 
-  private postNoAuth(url: string, body: {}, initialiseAppWithName?: string): Promise<any> {
+  private postNoAuth(url: string, body: {}, initialiseAppWithUsername?: string): Promise<any> {
 
-    this.logService.trace('Request: ' + url + ' with body ' +  body);
+    this.logService.trace('Request: ' + url + ' with body ', body);
 
     return new Promise((resolve, reject) => {
       this.haventecClient.http.postNoAuth(url, body).then(
         data => {
 
-          this.logService.trace('Response: ' + url + ' with data ' +  data);
+          this.logService.trace('Response: ' + url + ' with data ', data);
 
-          if(initialiseAppWithName){
-            this.logService.debug('Initialising App with username: ' + initialiseAppWithName);
-            this.haventecClient.init(initialiseAppWithName);
+          if(initialiseAppWithUsername){
+            this.logService.debug('Initialising App with username: ' + initialiseAppWithUsername);
+            this.haventecClient.init(initialiseAppWithUsername);
           }
 
           this.haventecClient.updateDataFromResponse(data);
           resolve(data);
         },
         err => {
-          this.logService.error('Error from ' + url + ' ' + err);
+          this.logService.error(err);
           reject(err);
         }
       );
