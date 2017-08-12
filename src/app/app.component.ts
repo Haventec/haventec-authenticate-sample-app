@@ -48,14 +48,15 @@ export class MyApp {
   checkForFirstTimeUse(): void {
 
     let username = this.haventecClient.getUsername();
+    let authKey = this.haventecClient.getAuthKey();
 
-      if(username == null){
-        this.logService.debug('First time use');
-        this.rootPage = ChooseUserPage;
-      } else {
-        this.logService.debug('Not First time use');
-        this.rootPage = LoginPage;
-      }
+    if(username == null || authKey == null){
+      this.logService.debug('First time use');
+      this.rootPage = ChooseUserPage;
+    } else {
+      this.logService.debug('Not First time use');
+      this.rootPage = LoginPage;
+    }
   };
 
   checkAppConfig(){
