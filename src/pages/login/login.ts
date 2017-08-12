@@ -3,7 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, Events } from 'ionic-angular';
 import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
-import { ForgotPinPage } from '../forgot-pin/forgot-pin';
+import { ResetPinPage } from '../reset-pin/reset-pin';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
@@ -70,7 +70,7 @@ export class LoginPage {
     self.authService.forgotPin().then(
       data => {
         self.pageLoadingService.dismiss();
-        self.navCtrl.push(ForgotPinPage);
+        self.navCtrl.push(ResetPinPage);
       },
       err => {
         self.pageLoadingService.dismiss();

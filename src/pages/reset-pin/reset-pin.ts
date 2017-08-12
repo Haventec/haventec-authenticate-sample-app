@@ -7,10 +7,10 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
-  selector: 'page-forgot-pin',
-  templateUrl: 'forgot-pin.html',
+  selector: 'page-reset-pin',
+  templateUrl: 'reset-pin.html',
 })
-export class ForgotPinPage {
+export class ResetPinPage {
 
   public username: string;
 
