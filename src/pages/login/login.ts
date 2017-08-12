@@ -49,14 +49,9 @@ export class LoginPage {
   login(pin) {
     const self: any = this;
 
-    self.username = self.haventecClient.getUsername();
-    let deviceUuid = self.haventecClient.getDeviceUuid();
-    let authKey = self.haventecClient.getAuthKey();
-    let hashedPin = self.haventecClient.getHashPin(pin);
-
     self.pageLoadingService.present();
 
-    self.authService.login(self.username, deviceUuid, authKey, hashedPin).then(
+    self.authService.login(pin).then(
       data => {
         self.pageLoadingService.dismiss();
         self.navCtrl.setRoot(HomePage);
@@ -70,12 +65,9 @@ export class LoginPage {
   forgotPin() {
     const self: any = this;
 
-    self.username = self.haventecClient.getUsername();
-    let deviceUuid = self.haventecClient.getDeviceUuid();
-
     self.pageLoadingService.present();
 
-    self.authService.forgotPin(self.username, deviceUuid).then(
+    self.authService.forgotPin().then(
       data => {
         self.pageLoadingService.dismiss();
         self.navCtrl.push(ForgotPinPage);

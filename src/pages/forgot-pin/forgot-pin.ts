@@ -45,14 +45,12 @@ export class ForgotPinPage {
   resetPin(){
     const self: any = this;
 
-    self.username = self.haventecClient.getUsername();
-    let deviceUuid = self.haventecClient.getDeviceUuid();
-    let hashedPin = self.haventecClient.getHashPin(self.resetFormGroup.value.pin);
+    let pin = self.resetFormGroup.value.pin;
     let resetPinToken = self.resetFormGroup.value.resetPinToken;
 
     self.pageLoadingService.present();
 
-    self.authService.resetPin(self.username, deviceUuid, hashedPin, resetPinToken).then(
+    self.authService.resetPin(pin, resetPinToken).then(
       data => {
         self.pageLoadingService.dismiss();
         self.navCtrl.setRoot(HomePage);

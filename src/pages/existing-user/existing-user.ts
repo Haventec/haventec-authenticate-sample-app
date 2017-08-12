@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { HaventecClient } from '@haventec/common-js';
 import { ActivateDevicePage } from '../activate-device/activate-device'
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
@@ -19,7 +18,6 @@ export class ExistingUserPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private haventecClient: HaventecClient,
     private authService: AuthService,
     private pageLoadingService: PageLoadingService
   ) {

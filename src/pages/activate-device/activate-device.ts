@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
@@ -18,7 +17,6 @@ export class ActivateDevicePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private haventecClient: HaventecClient,
     private authService: AuthService,
     private pageLoadingService: PageLoadingService
   ) {
@@ -44,13 +42,10 @@ export class ActivateDevicePage {
 
     let deviceActivationCode = self.activateDeviceFormGroup.value.deviceActivationCode;
     let pin = self.activateDeviceFormGroup.value.pin;
-    let hashedPin = self.haventecClient.getHashPin(pin);
-    let username = self.haventecClient.getUsername();
-    let deviceUuid = self.haventecClient.getDeviceUuid();
 
     self.pageLoadingService.present();
 
-    self.authService.activateDevice(deviceActivationCode, hashedPin, deviceUuid, username).then(
+    self.authService.activateDevice(deviceActivationCode, pin).then(
       data => {
         self.pageLoadingService.dismiss();
         self.navCtrl.setRoot(HomePage);

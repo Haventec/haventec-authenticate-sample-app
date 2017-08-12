@@ -22,56 +22,66 @@ export class AuthService {
 
   signUpUser(username: string, email: string) {
     let body = {
-      username: username,
-      email: email,
       applicationUuid: Constant.APPLICATION_UUID,
+      email: email,
+      username: username,
     };
 
     return this.postNoAuth(this.signUpUserPath, body, username);
   }
 
-  activateAccount(username: string, activationToken: string, hashedPin: string, deviceName: string) {
+  activateAccount(username: string, activationToken: string, pin: string, deviceName: string) {
     let body = {
-      username: username,
-      applicationUuid: Constant.APPLICATION_UUID,
       activationToken: activationToken,
-      hashedPin: hashedPin,
+      applicationUuid: Constant.APPLICATION_UUID,
       deviceName: deviceName,
-      queryParameters: ''
+      hashedPin: this.haventecClient.getHashPin(pin),
+      queryParameters: '',
+      username: username
     };
 
     return this.postNoAuth(this.registerUserPath, body);
   }
 
-  addDevice(username: string, deviceName: string) {
-    let body = {
-      applicationUuid: Constant.APPLICATION_UUID,
-      username: username,
-      devicename: deviceName
-    };
-
-    return this.postNoAuth(this.addDevicePath, body, username);
-  }
-
-  activateDevice(activationToken: string, hashedPin: string, deviceUuid: string, username: string) {
+  activateDevice(activationToken: string, pin: string) {
     let body = {
       activationToken: activationToken,
       applicationUuid: Constant.APPLICATION_UUID,
-      deviceUuid: deviceUuid,
-      hashedPin: hashedPin,
-      username: username
+      deviceUuid: this.haventecClient.getDeviceUuid(),
+      hashedPin: this.haventecClient.getHashPin(pin),
+      username: this.haventecClient.getUsername()
     };
 
     return this.postNoAuth(this.activateDevicePath, body);
   }
 
-  login(username: string, deviceUuid: string, authKey: string, hashedPin: string) {
+  addDevice(username: string, deviceName: string) {
     let body = {
-      username: username,
       applicationUuid: Constant.APPLICATION_UUID,
-      deviceUuid: deviceUuid,
-      authKey: authKey,
-      hashedPin: hashedPin
+      devicename: deviceName,
+      username: username
+    };
+
+    return this.postNoAuth(this.addDevicePath, body, username);
+  }
+
+  forgotPin() {
+    let body = {
+      applicationUuid: Constant.APPLICATION_UUID,
+      deviceUuid: this.haventecClient.getDeviceUuid(),
+      username: this.haventecClient.getUsername()
+    };
+
+    return this.postNoAuth(this.forgotPinPath, body);
+  }
+
+  login(pin: string) {
+    let body = {
+      applicationUuid: Constant.APPLICATION_UUID,
+      authKey: this.haventecClient.getAuthKey(),
+      deviceUuid: this.haventecClient.getDeviceUuid(),
+      hashedPin: this.haventecClient.getHashPin(pin),
+      username: this.haventecClient.getUsername()
     };
 
     return this.postNoAuth(this.loginUserPath, body);
@@ -81,23 +91,13 @@ export class AuthService {
     //return this.http.delete(this.logoutUserPath).map(res => res.json());
   }
 
-  forgotPin(username: string, deviceUuid: string) {
+  resetPin(pin: string, resetPinToken: string) {
     let body = {
       applicationUuid: Constant.APPLICATION_UUID,
-      username: username,
-      deviceUuid: deviceUuid
-    };
-
-    return this.postNoAuth(this.forgotPinPath, body);
-  }
-
-  resetPin(username: string, deviceUuid: string, hashedPin: string, resetPinToken: string) {
-    let body = {
-      applicationUuid: Constant.APPLICATION_UUID,
-      username: username,
-      deviceUuid: deviceUuid,
-      hashedPin: hashedPin,
-      resetPinToken: resetPinToken
+      deviceUuid: this.haventecClient.getDeviceUuid(),
+      hashedPin: this.haventecClient.getHashPin(pin),
+      resetPinToken: resetPinToken,
+      username: this.haventecClient.getUsername()
     };
 
     return this.postNoAuth(this.resetPinPath, body);

@@ -51,12 +51,12 @@ export class ActivateAccountPage {
     self.username = self.haventecClient.getUsername();
 
     let activationToken = self.activateAccountFormGroup.value.activationToken;
-    let hashedPin = self.haventecClient.getHashPin(self.activateAccountFormGroup.value.pin);
+    let pin = self.activateAccountFormGroup.value.pin;
     let deviceName = self.activateAccountFormGroup.value.deviceName;
 
     self.pageLoadingService.present();
 
-    self.authService.activateAccount(self.username, activationToken, hashedPin, deviceName).then(
+    self.authService.activateAccount(self.username, activationToken, pin, deviceName).then(
       data => {
         self.pageLoadingService.dismiss();
         self.navCtrl.setRoot(HomePage);
