@@ -4,7 +4,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
@@ -22,7 +21,6 @@ export class ForgotPinPage {
     public navParams: NavParams,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private logService: LogService,
     private haventecClient: HaventecClient,
     private pageLoadingService: PageLoadingService
   ) {
@@ -57,13 +55,10 @@ export class ForgotPinPage {
     self.authService.resetPin(self.username, deviceUuid, hashedPin, resetPinToken).then(
       data => {
         self.pageLoadingService.dismiss();
-        self.logService.debug('Auth key: ' + data.authKey);
-
         self.navCtrl.setRoot(HomePage);
       },
       err => {
         self.pageLoadingService.dismiss();
-        self.logService.error(err);
       }
     );
   }

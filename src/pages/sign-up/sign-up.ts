@@ -4,7 +4,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { HaventecClient } from '@haventec/common-js';
 import { ActivateAccountPage } from '../activate-account/activate-account';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
@@ -22,7 +21,6 @@ export class SignUpPage {
     private formBuilder: FormBuilder,
     public authService: AuthService,
     private haventecClient: HaventecClient,
-    private logService: LogService,
     private pageLoadingService: PageLoadingService
   ) {
 
@@ -40,22 +38,15 @@ export class SignUpPage {
     let username = self.signUpFormGroup.value.username;
     let email = self.signUpFormGroup.value.email;
 
-    self.logService.trace('Sign up Email ' + email);
-    self.logService.trace('Sign up Username ' + username);
-
     self.pageLoadingService.present();
 
     self.authService.signUpUser(username, email).then(
       data => {
         self.pageLoadingService.dismiss();
-        self.logService.trace('Sign up response data ' + data);
-
-        self.haventecClient.init(username);
         self.navCtrl.push(ActivateAccountPage);
       },
       err => {
         self.pageLoadingService.dismiss();
-        self.logService.error(err);
       }
     );
   }

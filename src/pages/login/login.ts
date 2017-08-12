@@ -5,7 +5,6 @@ import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { ForgotPinPage } from '../forgot-pin/forgot-pin';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
@@ -24,7 +23,6 @@ export class LoginPage {
     private authService: AuthService,
     private haventecClient: HaventecClient,
     public events: Events,
-    private logService: LogService,
     private pageLoadingService: PageLoadingService
   ) {
 
@@ -42,9 +40,6 @@ export class LoginPage {
     const self: any = this;
 
     if (pin.length === 4) {
-
-      this.logService.trace('Login PIN ' + pin);
-
       self.loginFormGroup.reset();
       self.events.publish('pin:clear');
       self.login(pin);
@@ -64,13 +59,10 @@ export class LoginPage {
     self.authService.login(self.username, deviceUuid, authKey, hashedPin).then(
       data => {
         self.pageLoadingService.dismiss();
-        self.logService.debug('Auth key: ' + data.authKey);
-
         self.navCtrl.setRoot(HomePage);
       },
       err => {
         self.pageLoadingService.dismiss();
-        self.logService.error(err);
       }
     );
   }
@@ -90,7 +82,6 @@ export class LoginPage {
       },
       err => {
         self.pageLoadingService.dismiss();
-        self.logService.error(err);
       }
     );
   }

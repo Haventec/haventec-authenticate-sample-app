@@ -4,7 +4,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
@@ -21,7 +20,6 @@ export class ActivateDevicePage {
     private formBuilder: FormBuilder,
     private haventecClient: HaventecClient,
     private authService: AuthService,
-    private logService: LogService,
     private pageLoadingService: PageLoadingService
   ) {
 
@@ -50,20 +48,15 @@ export class ActivateDevicePage {
     let username = self.haventecClient.getUsername();
     let deviceUuid = self.haventecClient.getDeviceUuid();
 
-    self.logService.trace('Activate Device Email ' + deviceActivationCode);
-
     self.pageLoadingService.present();
 
     self.authService.activateDevice(deviceActivationCode, hashedPin, deviceUuid, username).then(
       data => {
         self.pageLoadingService.dismiss();
-        self.logService.trace('Activate Device response data ' + data);
-
         self.navCtrl.setRoot(HomePage);
       },
       err => {
         self.pageLoadingService.dismiss();
-        self.logService.error(err);
       }
     );
   }

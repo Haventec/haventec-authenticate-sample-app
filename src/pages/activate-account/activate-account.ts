@@ -4,7 +4,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
@@ -23,7 +22,6 @@ export class ActivateAccountPage {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private haventecClient: HaventecClient,
-    private logService: LogService,
     private pageLoadingService: PageLoadingService
   ) {
 
@@ -61,12 +59,10 @@ export class ActivateAccountPage {
     self.authService.activateAccount(self.username, activationToken, hashedPin, deviceName).then(
       data => {
         self.pageLoadingService.dismiss();
-        self.logService.debug('Auth key: ' + data.authKey);
         self.navCtrl.setRoot(HomePage);
       },
       err => {
         self.pageLoadingService.dismiss();
-        self.logService.error(err);
       }
     );
   }

@@ -63,5 +63,4 @@ export class MyApp {
       this.logService.error('Please configure your Application UUID and API endpoint in application.const.ts');
     }
   }
-
 }
