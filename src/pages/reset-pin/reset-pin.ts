@@ -25,15 +25,12 @@ export class ResetPinPage {
     private pageLoadingService: PageLoadingService
   ) {
 
-    const self: any = this;
-
-    self.resetFormGroup = self.formBuilder.group({
+    this.resetFormGroup = this.formBuilder.group({
       resetPinToken: ['', Validators.required],
       pin: ['', Validators.required],
     });
 
-    self.username = self.haventecClient.getUsername();
-
+    this.username = this.haventecClient.getUsername();
   }
 
   pinUpdated(pin){
@@ -43,20 +40,19 @@ export class ResetPinPage {
   }
 
   resetPin(){
-    const self: any = this;
 
-    let pin = self.resetFormGroup.value.pin;
-    let resetPinToken = self.resetFormGroup.value.resetPinToken;
+    let pin = this.resetFormGroup.value.pin;
+    let resetPinToken = this.resetFormGroup.value.resetPinToken;
 
-    self.pageLoadingService.present();
+    this.pageLoadingService.present();
 
-    self.authService.resetPin(pin, resetPinToken).then(
+    this.authService.resetPin(pin, resetPinToken).then(
       data => {
-        self.pageLoadingService.dismiss();
-        self.navCtrl.setRoot(HomePage);
+        this.pageLoadingService.dismiss();
+        this.navCtrl.setRoot(HomePage);
       },
       err => {
-        self.pageLoadingService.dismiss();
+        this.pageLoadingService.dismiss();
       }
     );
   }

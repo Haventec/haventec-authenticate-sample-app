@@ -25,44 +25,38 @@ export class ActivateAccountPage {
     private pageLoadingService: PageLoadingService
   ) {
 
-    const self: any = this;
-
-    self.activateAccountFormGroup = self.formBuilder.group({
+    this.activateAccountFormGroup = this.formBuilder.group({
       activationToken: ['', Validators.required],
       pin: ['', Validators.required],
       deviceName: ['', Validators.required]
     });
 
-    self.username = self.haventecClient.getUsername();
-
+    this.username = this.haventecClient.getUsername();
   }
 
   pinUpdated(pin){
-    const self: any = this;
-
     if(pin.length === 4){
-      self.activateAccountFormGroup.controls['pin'].setValue(pin);
+      this.activateAccountFormGroup.controls['pin'].setValue(pin);
     }
   }
 
   activateAccount(){
-    const self: any = this;
 
-    self.username = self.haventecClient.getUsername();
+    this.username = this.haventecClient.getUsername();
 
-    let activationToken = self.activateAccountFormGroup.value.activationToken;
-    let pin = self.activateAccountFormGroup.value.pin;
-    let deviceName = self.activateAccountFormGroup.value.deviceName;
+    let activationToken = this.activateAccountFormGroup.value.activationToken;
+    let pin = this.activateAccountFormGroup.value.pin;
+    let deviceName = this.activateAccountFormGroup.value.deviceName;
 
-    self.pageLoadingService.present();
+    this.pageLoadingService.present();
 
-    self.authService.activateAccount(self.username, activationToken, pin, deviceName).then(
+    this.authService.activateAccount(this.username, activationToken, pin, deviceName).then(
       data => {
-        self.pageLoadingService.dismiss();
-        self.navCtrl.setRoot(HomePage);
+        this.pageLoadingService.dismiss();
+        this.navCtrl.setRoot(HomePage);
       },
       err => {
-        self.pageLoadingService.dismiss();
+        this.pageLoadingService.dismiss();
       }
     );
   }

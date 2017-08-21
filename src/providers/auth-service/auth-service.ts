@@ -36,7 +36,6 @@ export class AuthService {
       applicationUuid: Constant.APPLICATION_UUID,
       deviceName: deviceName,
       hashedPin: this.haventecClient.getHashPin(pin),
-      queryParameters: '',
       username: username
     };
 
@@ -58,7 +57,7 @@ export class AuthService {
   addDevice(username: string, deviceName: string) {
     let body = {
       applicationUuid: Constant.APPLICATION_UUID,
-      devicename: deviceName,
+      deviceName: deviceName,
       username: username
     };
 

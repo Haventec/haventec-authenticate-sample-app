@@ -26,54 +26,46 @@ export class LoginPage {
     private pageLoadingService: PageLoadingService
   ) {
 
-    const self: any = this;
-
-    self.loginFormGroup = self.formBuilder.group({
+    this.loginFormGroup = this.formBuilder.group({
       pin: ['', Validators.required],
     });
 
-    self.username = self.haventecClient.getUsername();
-
+    this.username = this.haventecClient.getUsername();
   }
 
   pinUpdated(pin) {
-    const self: any = this;
-
     if (pin.length === 4) {
-      self.loginFormGroup.reset();
-      self.events.publish('pin:clear');
-      self.login(pin);
+      this.loginFormGroup.reset();
+      this.events.publish('pin:clear');
+      this.login(pin);
     }
   }
 
   login(pin) {
-    const self: any = this;
+    this.pageLoadingService.present();
 
-    self.pageLoadingService.present();
-
-    self.authService.login(pin).then(
+    this.authService.login(pin).then(
       data => {
-        self.pageLoadingService.dismiss();
-        self.navCtrl.setRoot(HomePage);
+        this.pageLoadingService.dismiss();
+        this.navCtrl.setRoot(HomePage);
       },
       err => {
-        self.pageLoadingService.dismiss();
+        this.pageLoadingService.dismiss();
       }
     );
   }
 
   forgotPin() {
-    const self: any = this;
 
-    self.pageLoadingService.present();
+    this.pageLoadingService.present();
 
-    self.authService.forgotPin().then(
+    this.authService.forgotPin().then(
       data => {
-        self.pageLoadingService.dismiss();
-        self.navCtrl.push(ResetPinPage);
+        this.pageLoadingService.dismiss();
+        this.navCtrl.push(ResetPinPage);
       },
       err => {
-        self.pageLoadingService.dismiss();
+        this.pageLoadingService.dismiss();
       }
     );
   }

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { AuthService } from '../../providers/auth-service/auth-service';
-import {HaventecClient} from '@haventec/common-js';
+import { HaventecClient } from '@haventec/common-js';
 
 @Component({
   selector: 'page-home',
@@ -15,7 +14,6 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private authService: AuthService,
     private haventecClient: HaventecClient) {
 
     this.username = this.haventecClient.getUsername();

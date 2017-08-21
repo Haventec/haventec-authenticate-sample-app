@@ -21,30 +21,28 @@ export class AddDevicePage {
     private authService: AuthService,
     private pageLoadingService: PageLoadingService
   ) {
-    const self: any = this;
 
-    self.addDeviceFormGroup = self.formBuilder.group({
+    this.addDeviceFormGroup = this.formBuilder.group({
       username: ['', Validators.required],
       deviceName: ['', Validators.required]
     });
   }
 
   addDevice(){
-    const self: any = this;
 
-    let username = self.addDeviceFormGroup.value.username;
-    let deviceName = self.addDeviceFormGroup.value.deviceName;
+    let username = this.addDeviceFormGroup.value.username;
+    let deviceName = this.addDeviceFormGroup.value.deviceName;
 
-    self.pageLoadingService.present();
+    this.pageLoadingService.present();
 
-    self.authService.addDevice(username, deviceName).then(
+    this.authService.addDevice(username, deviceName).then(
       data => {
-        self.pageLoadingService.dismiss();
+        this.pageLoadingService.dismiss();
 
-        self.navCtrl.push(ActivateDevicePage);
+        this.navCtrl.push(ActivateDevicePage);
       },
       err => {
-        self.pageLoadingService.dismiss();
+        this.pageLoadingService.dismiss();
       }
     );
 

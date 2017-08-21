@@ -22,29 +22,26 @@ export class SignUpPage {
     private pageLoadingService: PageLoadingService
   ) {
 
-    const self: any = this;
-
-    self.signUpFormGroup = self.formBuilder.group({
+    this.signUpFormGroup = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.email],
     });
   }
 
   signUp(){
-    const self: any = this;
 
-    let username = self.signUpFormGroup.value.username;
-    let email = self.signUpFormGroup.value.email;
+    let username = this.signUpFormGroup.value.username;
+    let email = this.signUpFormGroup.value.email;
 
-    self.pageLoadingService.present();
+    this.pageLoadingService.present();
 
-    self.authService.signUpUser(username, email).then(
+    this.authService.signUpUser(username, email).then(
       data => {
-        self.pageLoadingService.dismiss();
-        self.navCtrl.push(ActivateAccountPage);
+        this.pageLoadingService.dismiss();
+        this.navCtrl.push(ActivateAccountPage);
       },
       err => {
-        self.pageLoadingService.dismiss();
+        this.pageLoadingService.dismiss();
       }
     );
   }

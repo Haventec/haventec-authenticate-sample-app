@@ -25,39 +25,34 @@ export class ActivateDevicePage {
     private pageLoadingService: PageLoadingService
   ) {
 
-    const self: any = this;
-
-    self.activateDeviceFormGroup = this.formBuilder.group({
+    this.activateDeviceFormGroup = this.formBuilder.group({
       deviceActivationCode: ['', Validators.required],
       pin: ['', Validators.required]
     });
 
-    self.username = self.haventecClient.getUsername();
+    this.username = this.haventecClient.getUsername();
   }
 
   pinUpdated(pin){
-    const self: any = this;
-
     if(pin.length === 4){
-      self.activateDeviceFormGroup.controls['pin'].setValue(pin);
+      this.activateDeviceFormGroup.controls['pin'].setValue(pin);
     }
   }
 
   activateDevice(){
-    const self: any = this;
 
-    let deviceActivationCode = self.activateDeviceFormGroup.value.deviceActivationCode;
-    let pin = self.activateDeviceFormGroup.value.pin;
+    let deviceActivationCode = this.activateDeviceFormGroup.value.deviceActivationCode;
+    let pin = this.activateDeviceFormGroup.value.pin;
 
-    self.pageLoadingService.present();
+    this.pageLoadingService.present();
 
-    self.authService.activateDevice(deviceActivationCode, pin).then(
+    this.authService.activateDevice(deviceActivationCode, pin).then(
       data => {
-        self.pageLoadingService.dismiss();
-        self.navCtrl.setRoot(HomePage);
+        this.pageLoadingService.dismiss();
+        this.navCtrl.setRoot(HomePage);
       },
       err => {
-        self.pageLoadingService.dismiss();
+        this.pageLoadingService.dismiss();
       }
     );
   }
