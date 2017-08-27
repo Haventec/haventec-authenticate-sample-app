@@ -5,6 +5,7 @@ import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
 import { ResetPinPage } from '../reset-pin/reset-pin';
 import { AuthService } from '../../providers/auth-service/auth-service';
+import { LogService } from '../../providers/log-service/log-service'
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
@@ -21,6 +22,7 @@ export class LoginPage {
     public navCtrl: NavController,
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private logService: LogService,
     private haventecClient: HaventecClient,
     public events: Events,
     private pageLoadingService: PageLoadingService
@@ -46,6 +48,7 @@ export class LoginPage {
 
     this.authService.login(pin).then(
       data => {
+        this.logService.debug('\nAuthentication Key: \n\n', data.authKey);
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);
       },
