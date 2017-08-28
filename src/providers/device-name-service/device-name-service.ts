@@ -56,6 +56,7 @@ export class DeviceNameService {
       [/nokia/, "Nokia"],
       [/ gt\-/, "Galaxy"],
       [/ sm\-/, "Galaxy"],
+      [/ lgms/, "LG"],
       [/xbox/, "Xbox"],
       [/(?:bb\d+)|(?:blackberry)|(?: rim )/, "Blackberry"]
     ]
@@ -76,8 +77,6 @@ export class DeviceNameService {
 
     this.logService.trace(userAgent);
     this.logService.debug('Device: ' + this.device.name + ', Browser: ' + this.browser.name + ', OS: ' + this.os.name);
-
-    console.log(this.getDeviceName());
   }
 
   getDeviceName(): string {

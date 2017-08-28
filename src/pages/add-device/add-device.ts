@@ -23,19 +23,17 @@ export class AddDevicePage {
   ) {
 
     this.addDeviceFormGroup = this.formBuilder.group({
-      username: ['', Validators.required],
-      deviceName: ['', Validators.required]
+      username: ['', Validators.required]
     });
   }
 
   addDevice(){
 
     let username = this.addDeviceFormGroup.value.username;
-    let deviceName = this.addDeviceFormGroup.value.deviceName;
 
     this.pageLoadingService.present();
 
-    this.authService.addDevice(username, deviceName).then(
+    this.authService.addDevice(username).then(
       data => {
         this.pageLoadingService.dismiss();
 

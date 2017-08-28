@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HaventecClient } from '@haventec/common-js';
-import { LogService } from '../../providers/log-service/log-service'
-import * as Constant from '../../constants/application.const'
+import { LogService } from '../../providers/log-service/log-service';
+import { DeviceNameService } from '../../providers/device-name-service/device-name-service';
+import * as Constant from '../../constants/application.const';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +18,8 @@ export class AuthService {
 
   constructor(
     private haventecClient: HaventecClient,
-    private logService: LogService
+    private logService: LogService,
+    private deviceNameService: DeviceNameService
   ) {}
 
   signUpUser(username: string, email: string) {
@@ -30,11 +32,11 @@ export class AuthService {
     return this.postNoAuth(this.signUpUserPath, body, username);
   }
 
-  activateAccount(username: string, activationToken: string, pin: string, deviceName: string) {
+  activateAccount(username: string, activationToken: string, pin: string) {
     let body = {
       activationToken: activationToken,
       applicationUuid: Constant.APPLICATION_UUID,
-      deviceName: deviceName,
+      deviceName: this.deviceNameService.getDeviceName(),
       hashedPin: this.haventecClient.getHashPin(pin),
       username: username
     };
@@ -54,10 +56,10 @@ export class AuthService {
     return this.postNoAuth(this.activateDevicePath, body);
   }
 
-  addDevice(username: string, deviceName: string) {
+  addDevice(username: string) {
     let body = {
       applicationUuid: Constant.APPLICATION_UUID,
-      deviceName: deviceName,
+      deviceName: this.deviceNameService.getDeviceName(),
       username: username
     };
 

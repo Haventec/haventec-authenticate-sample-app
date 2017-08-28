@@ -27,8 +27,7 @@ export class ActivateAccountPage {
 
     this.activateAccountFormGroup = this.formBuilder.group({
       activationToken: ['', Validators.required],
-      pin: ['', Validators.required],
-      deviceName: ['', Validators.required]
+      pin: ['', Validators.required]
     });
 
     this.username = this.haventecClient.getUsername();
@@ -46,11 +45,10 @@ export class ActivateAccountPage {
 
     let activationToken = this.activateAccountFormGroup.value.activationToken;
     let pin = this.activateAccountFormGroup.value.pin;
-    let deviceName = this.activateAccountFormGroup.value.deviceName;
 
     this.pageLoadingService.present();
 
-    this.authService.activateAccount(this.username, activationToken, pin, deviceName).then(
+    this.authService.activateAccount(this.username, activationToken, pin).then(
       data => {
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);

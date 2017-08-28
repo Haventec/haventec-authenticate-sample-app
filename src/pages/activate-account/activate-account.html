@@ -26,11 +26,6 @@
             <ion-input type="text" formControlName="activationToken"></ion-input>
           </ion-item>
 
-          <ion-item>
-            <ion-label stacked icon-start><ion-icon name="phone-portrait"></ion-icon>Name this device</ion-label>
-            <ion-input type="text" formControlName="deviceName"></ion-input>
-          </ion-item>
-
           <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
 
