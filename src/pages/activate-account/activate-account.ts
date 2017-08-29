@@ -12,8 +12,6 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 })
 export class ActivateAccountPage {
 
-  public username: string;
-
   private activateAccountFormGroup: FormGroup;
 
   constructor(
@@ -26,11 +24,8 @@ export class ActivateAccountPage {
   ) {
 
     this.activateAccountFormGroup = this.formBuilder.group({
-      activationToken: ['', Validators.required],
       pin: ['', Validators.required]
     });
-
-    this.username = this.haventecClient.getUsername();
   }
 
   pinUpdated(pin){
@@ -40,15 +35,12 @@ export class ActivateAccountPage {
   }
 
   activateAccount(){
-
-    this.username = this.haventecClient.getUsername();
-
-    let activationToken = this.activateAccountFormGroup.value.activationToken;
+    let activationToken = this.navParams.get('activationToken');
     let pin = this.activateAccountFormGroup.value.pin;
 
     this.pageLoadingService.present();
 
-    this.authService.activateAccount(this.username, activationToken, pin).then(
+    this.authService.activateAccount(this.haventecClient.getUsername(), activationToken, pin).then(
       data => {
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);

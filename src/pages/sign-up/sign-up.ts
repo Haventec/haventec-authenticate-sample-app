@@ -38,7 +38,9 @@ export class SignUpPage {
     this.authService.signUpUser(username, email).then(
       data => {
         this.pageLoadingService.dismiss();
-        this.navCtrl.push(ActivateAccountPage);
+        this.navCtrl.push(ActivateAccountPage, {
+          activationToken: data.activationToken
+        });
       },
       err => {
         this.pageLoadingService.dismiss();
