@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {LogService} from '../../providers/log-service/log-service'
+import { Injectable } from '@angular/core';
+import { LogService } from '../../providers/log-service/log-service'
 
 /**
  * This Device name service is a TypeScript port from Sniffr https://www.npmjs.com/package/sniffr

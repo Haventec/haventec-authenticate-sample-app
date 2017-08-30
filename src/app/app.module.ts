@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HaventecClientProvider } from "@haventec/common-js";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -20,9 +21,8 @@ import { PinInput } from "../components/pin-input/pin-input";
 
 import { AuthService } from '../providers/auth-service/auth-service';
 import { LogService } from '../providers/log-service/log-service';
-import { PageLoadingService } from '../providers/page-loading-service/page-loading-service'
-import { HaventecClientProvider } from "@haventec/common-js";
-import { DeviceNameService } from '../providers/device-name-service/device-name-service';
+import { PageLoadingService } from '../providers/page-loading-service/page-loading-service';
+import { DeviceNameService } from '../providers/device-name-service/device-name-service'
 
 @NgModule({
   declarations: [

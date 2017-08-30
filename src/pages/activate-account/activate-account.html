@@ -16,6 +16,9 @@
     <ion-row>
       <ion-col>
 
+        <p>{{username}}, please enter a PIN</p>
+        <p>This PIN will be used each time you login</p>
+
         <form class="activate-account-form" [formGroup]="activateAccountFormGroup" (ngSubmit)="activateAccount()">
 
           <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>

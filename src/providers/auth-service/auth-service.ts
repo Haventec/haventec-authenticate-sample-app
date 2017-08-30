@@ -15,6 +15,7 @@ export class AuthService {
   // private logoutUserPath: string = Constant.API_ENDPOINT + '/logout';
   private forgotPinPath: string = Constant.API_ENDPOINT + '/forgot-pin';
   private resetPinPath: string = Constant.API_ENDPOINT + '/reset-pin';
+  private userDetailsPath: string = Constant.API_ENDPOINT + '/user/current';
 
   constructor(
     private haventecClient: HaventecClient,
@@ -29,7 +30,7 @@ export class AuthService {
       username: username,
     };
 
-    return this.postNoAuth(this.signUpUserPath, body, username);
+    return this.post(this.signUpUserPath, body, username);
   }
 
   activateAccount(username: string, activationToken: string, pin: string) {
@@ -41,7 +42,7 @@ export class AuthService {
       username: username
     };
 
-    return this.postNoAuth(this.registerUserPath, body);
+    return this.post(this.registerUserPath, body);
   }
 
   activateDevice(activationToken: string, pin: string) {
@@ -53,7 +54,7 @@ export class AuthService {
       username: this.haventecClient.getUsername()
     };
 
-    return this.postNoAuth(this.activateDevicePath, body);
+    return this.post(this.activateDevicePath, body);
   }
 
   addDevice(username: string) {
@@ -63,7 +64,7 @@ export class AuthService {
       username: username
     };
 
-    return this.postNoAuth(this.addDevicePath, body, username);
+    return this.post(this.addDevicePath, body, username);
   }
 
   forgotPin() {
@@ -73,7 +74,7 @@ export class AuthService {
       username: this.haventecClient.getUsername()
     };
 
-    return this.postNoAuth(this.forgotPinPath, body);
+    return this.post(this.forgotPinPath, body);
   }
 
   login(pin: string) {
@@ -85,7 +86,7 @@ export class AuthService {
       username: this.haventecClient.getUsername()
     };
 
-    return this.postNoAuth(this.loginUserPath, body);
+    return this.post(this.loginUserPath, body);
   }
 
   logout() {
@@ -101,12 +102,34 @@ export class AuthService {
       username: this.haventecClient.getUsername()
     };
 
-    return this.postNoAuth(this.resetPinPath, body);
+    return this.post(this.resetPinPath, body);
   }
 
-  private postNoAuth(url: string, body: {}, initialiseAppWithUsername?: string): Promise<any> {
+  getUserDetails(){
+    return this.get(this.userDetailsPath)
+  }
 
-    this.logService.trace('Request: ' + url + ' with body ', body);
+  private get(url: string): Promise<any> {
+
+    this.logService.trace('GET Request: ' + url);
+
+    return new Promise((resolve, reject) => {
+      this.haventecClient.http.get(url, this.haventecClient.getAccessToken()).then(
+        data => {
+          this.logService.trace('GET Response: ' + url + ' with data ', data);
+          resolve(data);
+        },
+        err => {
+          this.logService.error(err);
+          reject(err);
+        }
+      );
+    });
+  }
+
+  private post(url: string, body: {}, initialiseAppWithUsername?: string): Promise<any> {
+
+    this.logService.trace('POST Request: ' + url + ' with body ', body);
 
     return new Promise((resolve, reject) => {
       this.haventecClient.http.postNoAuth(url, body).then(

@@ -1,4 +1,4 @@
-// Your backend sever that communicates with Haventec. Sample backend serve available at https://github.com/Haventec/haventec-authenticate-sample-server
+// Your backend server that communicates with Haventec. Sample backend server available at https://github.com/Haventec/haventec-authenticate-sample-server
 export const API_ENDPOINT: string = '';
 
 // Your Application UUID you received from Haventec Cloud Portal (cloudportal.haventec.com)

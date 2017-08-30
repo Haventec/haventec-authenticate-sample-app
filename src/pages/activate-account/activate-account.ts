@@ -12,6 +12,8 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 })
 export class ActivateAccountPage {
 
+  public username: string;
+
   private activateAccountFormGroup: FormGroup;
 
   constructor(
@@ -26,6 +28,8 @@ export class ActivateAccountPage {
     this.activateAccountFormGroup = this.formBuilder.group({
       pin: ['', Validators.required]
     });
+
+    this.username = this.haventecClient.getUsername();
   }
 
   pinUpdated(pin){
