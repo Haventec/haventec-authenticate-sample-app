@@ -48,6 +48,14 @@ ionic cordova run ios
 This sample application was built to work with [Haventec's Authenticate sample server](https://github.com/Haventec/haventec-authenticate-sample-server).
 However you can modify this code to easily work with your own server
 
+## Deploying
+
+[Ionic deploying](https://ionicframework.com/docs/intro/deploying/)
+
+## Publishing
+
+[Ionic publishing](http://ionicframework.com/docs/v1/guide/publishing.html)
+
 ## Built With
 
 * [Ionic](https://ionicframework.com/)
