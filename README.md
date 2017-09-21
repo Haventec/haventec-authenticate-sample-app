@@ -8,8 +8,6 @@ This application is **NOT** intended to be used in a Production environment.
 ### Prerequisites
 
 Install [NodeJS](https://nodejs.org)
-
-Install [NPM](https://www.npmjs.com)
  
 Install [Ionic](https://ionicframework.com/)
 
