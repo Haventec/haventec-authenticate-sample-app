@@ -20,6 +20,12 @@ npm install
 
 ### Configure the App
 
+We need to update the API_ENDPOINT and APPLICATION_UUID values in the application.const.ts file.
+
+The API_ENDPOINT value tells this application where your backend server is located.
+
+The APPLICATION_UUID is from the Haventec Cloud Portal. This is created when you add a new Application
+
 Edit the values in 
 ```
 /src/constants/application.const.ts
