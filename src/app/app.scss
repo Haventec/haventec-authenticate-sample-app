@@ -40,3 +40,10 @@
 ion-img {
   background: transparent;
 }
+
+
+@include media-breakpoint-up('md') {
+  .margin-md-top {
+    margin-top: 120px;
+  }
+}
