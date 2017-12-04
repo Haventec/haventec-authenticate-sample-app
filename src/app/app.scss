@@ -15,39 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-.item-md {
-  padding-left: 0;
-}
-
-.pin-label {
-  color: $label-md-text-color;
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-[icon-left] ion-icon,
-[icon-start] ion-icon {
-  line-height: 1;
-}
-
-.alert-wrapper{
-
-  .alert-button {
-    color: #000;
-  }
-}
-
-ion-img {
-  background: transparent;
-}
-
-
-@include media-breakpoint-up('md') {
-  .margin-md-top {
-    margin-top: 60px;
-  }
-}
-
-.col-fixed {
-  width: 330px;
-}
+@import "../theme/global/ionic-overwrite";
+@import "../theme/global/layout";
+@import "../theme/global/form";
+@import "../theme/global/icon";
