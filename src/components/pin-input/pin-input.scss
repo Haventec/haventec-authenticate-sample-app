@@ -5,7 +5,6 @@
   min-height: 45px;
   color: #222;
 
-
   .pin-item {
     padding: 10px;
     border: 1px solid #ddd;
@@ -14,6 +13,21 @@
     height: 50px;
     text-align: center;
     background-color: #f4f4f4;
+  }
+
+  @include media-breakpoint-up('sm') {
+    justify-content: center;
+
+
+    .pin-item {
+      margin: 0 20px;
+    }
+    .pin-item:first-child {
+      margin: 0 20px 0 0;
+    }
+    .pin-item:last-child {
+      margin: 0 0 0 20px;
+    }
   }
 }
 
