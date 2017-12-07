@@ -7,10 +7,9 @@ import * as Constant from '../../constants/application.const';
 @Injectable()
 export class HttpService {
 
-  constructor(
-    private haventecClient: HaventecClient,
-    private logService: LogService
-  ) {}
+  constructor(private haventecClient: HaventecClient,
+              private logService: LogService) {
+  }
 
   get(url: string): Promise<any> {
 
@@ -40,7 +39,7 @@ export class HttpService {
 
           this.logService.trace('Response: ' + url + ' with data ', data);
 
-          if(initialiseAppWithUsername){
+          if (initialiseAppWithUsername) {
             this.logService.debug('Initialising App with username: ' + initialiseAppWithUsername);
             this.haventecClient.init(initialiseAppWithUsername);
           }
@@ -55,4 +54,27 @@ export class HttpService {
       );
     });
   }
+
+  delete(url: string): Promise<any> {
+
+    this.logService.trace('DELETE Request: ' + url);
+
+    return new Promise((resolve, reject) => {
+      this.haventecClient.http.delete(url, this.haventecClient.getAccessToken()).then(
+        data => {
+
+          this.logService.trace('Response: ' + url + ' with data ', data);
+
+          this.haventecClient.updateDataFromResponse(data);
+          resolve(data);
+        },
+        err => {
+          this.logService.error(err);
+          reject(err);
+        }
+      );
+    });
+  }
 }
+
+

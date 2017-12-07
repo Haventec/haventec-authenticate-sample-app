@@ -19,6 +19,7 @@ import { AddDevicePage } from "../pages/add-device/add-device";
 
 import { PinInput } from "../components/pin-input/pin-input";
 
+import { HttpService } from '../providers/http-service/http-service';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { LogService } from '../providers/log-service/log-service';
 import { PageLoadingService } from '../providers/page-loading-service/page-loading-service';
@@ -61,6 +62,7 @@ import { DeviceNameService } from '../providers/device-name-service/device-name-
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HaventecClient, useFactory: HaventecClientFactory, deps: [ ] },
+    HttpService,
     AuthService,
     LogService,
     PageLoadingService,

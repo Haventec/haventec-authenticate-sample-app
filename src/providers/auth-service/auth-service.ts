@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HaventecClient } from '@haventec/common-js';
-import { LogService } from '../../providers/log-service/log-service';
+import { HttpService } from '../../providers/http-service/http-service';
 import { DeviceNameService } from '../../providers/device-name-service/device-name-service';
 import * as Constant from '../../constants/application.const';
 
@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(
     private haventecClient: HaventecClient,
-    private logService: LogService,
+    private http: HttpService,
     private deviceNameService: DeviceNameService
   ) {}
 
@@ -30,7 +30,7 @@ export class AuthService {
       username: username,
     };
 
-    return this.post(this.signUpUserPath, body, username);
+    return this.http.post(this.signUpUserPath, body, username);
   }
 
   activateAccount(username: string, activationToken: string, pin: string) {
@@ -42,7 +42,7 @@ export class AuthService {
       username: username
     };
 
-    return this.post(this.registerUserPath, body);
+    return this.http.post(this.registerUserPath, body);
   }
 
   activateDevice(activationToken: string, pin: string) {
@@ -54,7 +54,7 @@ export class AuthService {
       username: this.haventecClient.getUsername()
     };
 
-    return this.post(this.activateDevicePath, body);
+    return this.http.post(this.activateDevicePath, body);
   }
 
   addDevice(username: string) {
@@ -64,7 +64,7 @@ export class AuthService {
       username: username
     };
 
-    return this.post(this.addDevicePath, body, username);
+    return this.http.post(this.addDevicePath, body, username);
   }
 
   forgotPin() {
@@ -74,7 +74,7 @@ export class AuthService {
       username: this.haventecClient.getUsername()
     };
 
-    return this.post(this.forgotPinPath, body);
+    return this.http.post(this.forgotPinPath, body);
   }
 
   login(pin: string) {
@@ -86,11 +86,11 @@ export class AuthService {
       username: this.haventecClient.getUsername()
     };
 
-    return this.post(this.loginUserPath, body);
+    return this.http.post(this.loginUserPath, body);
   }
 
   logout() {
-    return this.delete(this.logoutUserPath);
+    return this.http.delete(this.logoutUserPath);
   }
 
   resetPin(pin: string, resetPinToken: string) {
@@ -102,75 +102,10 @@ export class AuthService {
       username: this.haventecClient.getUsername()
     };
 
-    return this.post(this.resetPinPath, body);
+    return this.http.post(this.resetPinPath, body);
   }
 
   getUserDetails(){
-    return this.get(this.userDetailsPath)
-  }
-
-  private get(url: string): Promise<any> {
-
-    this.logService.trace('GET Request: ' + url);
-
-    return new Promise((resolve, reject) => {
-      this.haventecClient.http.get(url, this.haventecClient.getAccessToken()).then(
-        data => {
-          this.logService.trace('GET Response: ' + url + ' with data ', data);
-          resolve(data);
-        },
-        err => {
-          this.logService.error(err);
-          reject(err);
-        }
-      );
-    });
-  }
-
-  private post(url: string, body: {}, initialiseAppWithUsername?: string): Promise<any> {
-
-    this.logService.trace('POST Request: ' + url + ' with body ', body);
-
-    return new Promise((resolve, reject) => {
-      this.haventecClient.http.postNoAuth(url, body).then(
-        data => {
-
-          this.logService.trace('Response: ' + url + ' with data ', data);
-
-          if(initialiseAppWithUsername){
-            this.logService.debug('Initialising App with username: ' + initialiseAppWithUsername);
-            this.haventecClient.init(initialiseAppWithUsername);
-          }
-
-          this.haventecClient.updateDataFromResponse(data);
-          resolve(data);
-        },
-        err => {
-          this.logService.error(err);
-          reject(err);
-        }
-      );
-    });
-  }
-
-  private delete(url: string): Promise<any> {
-
-    this.logService.trace('DELETE Request: ' + url);
-
-    return new Promise((resolve, reject) => {
-      this.haventecClient.http.delete(url, this.haventecClient.getAccessToken()).then(
-        data => {
-
-          this.logService.trace('Response: ' + url + ' with data ', data);
-
-          this.haventecClient.updateDataFromResponse(data);
-          resolve(data);
-        },
-        err => {
-          this.logService.error(err);
-          reject(err);
-        }
-      );
-    });
+    return this.http.get(this.userDetailsPath)
   }
 }
