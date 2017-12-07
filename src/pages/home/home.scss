@@ -6,7 +6,7 @@
     width: 100%;
 
     td{
-      padding: 5px;
+      padding: 15px;
     }
 
     tr{
@@ -17,6 +17,10 @@
       &:nth-child(even){
         background-color: #F0F8FC;
       }
+    }
+
+    .word-break {
+      word-break: break-all;
     }
   }
 }

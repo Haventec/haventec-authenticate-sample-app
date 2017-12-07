@@ -12,6 +12,8 @@ import { UserModel } from '../../models/user';
 export class HomePage {
 
   public username: string;
+  public accessToken: string;
+  public authKey: string;
   public user: UserModel = new UserModel();
 
   constructor(
@@ -20,6 +22,8 @@ export class HomePage {
     private authService: AuthService
   ){
     this.username = this.haventecClient.getUsername();
+    this.accessToken = this.haventecClient.getAccessToken();
+    this.authKey = this.haventecClient.getAuthKey();
     this.getUserDetails();
   }
 
@@ -33,6 +37,11 @@ export class HomePage {
   }
 
   logout(){
-    this.navCtrl.setRoot(LoginPage);
+    this.authService.logout().then(
+      data => {
+        this.navCtrl.setRoot(LoginPage);
+      },
+      err => {}
+    );
   }
 }

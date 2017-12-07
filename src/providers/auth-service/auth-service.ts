@@ -12,7 +12,7 @@ export class AuthService {
   private activateDevicePath: string = Constant.API_ENDPOINT + '/activate/device';
   private addDevicePath: string = Constant.API_ENDPOINT + '/device';
   private loginUserPath: string = Constant.API_ENDPOINT + '/login';
-  // private logoutUserPath: string = Constant.API_ENDPOINT + '/logout';
+  private logoutUserPath: string = Constant.API_ENDPOINT + '/logout';
   private forgotPinPath: string = Constant.API_ENDPOINT + '/forgot-pin';
   private resetPinPath: string = Constant.API_ENDPOINT + '/reset-pin';
   private userDetailsPath: string = Constant.API_ENDPOINT + '/user/current';
@@ -90,7 +90,7 @@ export class AuthService {
   }
 
   logout() {
-    //return this.http.delete(this.logoutUserPath).map(res => res.json());
+    return this.delete(this.logoutUserPath);
   }
 
   resetPin(pin: string, resetPinToken: string) {
@@ -141,6 +141,27 @@ export class AuthService {
             this.logService.debug('Initialising App with username: ' + initialiseAppWithUsername);
             this.haventecClient.init(initialiseAppWithUsername);
           }
+
+          this.haventecClient.updateDataFromResponse(data);
+          resolve(data);
+        },
+        err => {
+          this.logService.error(err);
+          reject(err);
+        }
+      );
+    });
+  }
+
+  private delete(url: string): Promise<any> {
+
+    this.logService.trace('DELETE Request: ' + url);
+
+    return new Promise((resolve, reject) => {
+      this.haventecClient.http.delete(url, this.haventecClient.getAccessToken()).then(
+        data => {
+
+          this.logService.trace('Response: ' + url + ' with data ', data);
 
           this.haventecClient.updateDataFromResponse(data);
           resolve(data);
