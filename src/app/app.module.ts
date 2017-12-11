@@ -21,6 +21,7 @@ import { PinInput } from "../components/pin-input/pin-input";
 
 import { HttpService } from '../providers/http-service/http-service';
 import { AuthService } from '../providers/auth-service/auth-service';
+import { UserService } from '../providers/user-service/user-service';
 import { LogService } from '../providers/log-service/log-service';
 import { PageLoadingService } from '../providers/page-loading-service/page-loading-service';
 import { DeviceNameService } from '../providers/device-name-service/device-name-service'
@@ -64,6 +65,7 @@ import { DeviceNameService } from '../providers/device-name-service/device-name-
     { provide: HaventecClient, useFactory: HaventecClientFactory, deps: [ ] },
     HttpService,
     AuthService,
+    UserService,
     LogService,
     PageLoadingService,
     DeviceNameService

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HaventecClient } from '@haventec/common-js';
 import { LogService } from '../../providers/log-service/log-service';
-import { DeviceNameService } from '../../providers/device-name-service/device-name-service';
-import * as Constant from '../../constants/application.const';
 
 @Injectable()
 export class HttpService {

@@ -15,7 +15,6 @@ export class AuthService {
   private logoutUserPath: string = Constant.API_ENDPOINT + '/logout';
   private forgotPinPath: string = Constant.API_ENDPOINT + '/forgot-pin';
   private resetPinPath: string = Constant.API_ENDPOINT + '/reset-pin';
-  private userDetailsPath: string = Constant.API_ENDPOINT + '/user/current';
 
   constructor(
     private haventecClient: HaventecClient,
@@ -103,9 +102,5 @@ export class AuthService {
     };
 
     return this.http.post(this.resetPinPath, body);
-  }
-
-  getUserDetails(){
-    return this.http.get(this.userDetailsPath)
   }
 }
