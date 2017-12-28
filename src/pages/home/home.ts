@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from 'ionic-angular';
-import { NavController } from 'ionic-angular';
 import { HaventecClient } from '@haventec/common-js';
-import { LoginPage } from '../login/login';
-import { AuthService } from '../../providers/auth-service/auth-service';
 import { UserService } from '../../providers/user-service/user-service';
 import { UserModel } from '../../models/user';
 
@@ -20,9 +17,7 @@ export class HomePage {
 
   constructor(
     private alertCtrl: AlertController,
-    private navCtrl: NavController,
     private haventecClient: HaventecClient,
-    private authService: AuthService,
     private userService: UserService
   ){
     this.username = this.haventecClient.getUsername();
@@ -50,18 +45,6 @@ export class HomePage {
     // );
   }
 
-  logout(){
-
-    this.navCtrl.setRoot(LoginPage);
-
-    // this.authService.logout().then(
-    //   data => {
-    //     this.navCtrl.setRoot(LoginPage);
-    //   },
-    //   err => {}
-    // );
-  }
-
   showAuthKey() {
       let alert = this.alertCtrl.create({
         title: 'Your unique Authentication Key',
@@ -70,5 +53,4 @@ export class HomePage {
       });
       alert.present();
     }
-
 }
