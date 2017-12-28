@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Events } from 'ionic-angular';
+import { Component } from "@angular/core";
+import * as Constant from '../../constants/application.const';
 
 @Component({
     templateUrl: 'header-public.html',
@@ -7,5 +7,10 @@ import { Events } from 'ionic-angular';
 
 })
 export class HeaderPublic{
-     constructor() {}
+
+  private appName: string;
+
+  constructor() {
+    this.appName = Constant.APPLICATION_NAME;
+  }
 }
