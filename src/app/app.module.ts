@@ -18,6 +18,7 @@ import { ChooseUserPage } from "../pages/choose-user/choose-user";
 import { AddDevicePage } from "../pages/add-device/add-device";
 
 import { PinInput } from "../components/pin-input/pin-input";
+import { HeaderPublic } from "../components/header-public/header-public";
 
 import { HttpService } from '../providers/http-service/http-service';
 import { AuthService } from '../providers/auth-service/auth-service';
@@ -37,7 +38,8 @@ import { DeviceNameService } from '../providers/device-name-service/device-name-
     ActivateDevicePage,
     ChooseUserPage,
     AddDevicePage,
-    PinInput
+    PinInput,
+    HeaderPublic
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { DeviceNameService } from '../providers/device-name-service/device-name-
     ActivateDevicePage,
     ChooseUserPage,
     AddDevicePage,
-    PinInput
+    PinInput,
+    HeaderPublic
   ],
   providers: [
     StatusBar,
