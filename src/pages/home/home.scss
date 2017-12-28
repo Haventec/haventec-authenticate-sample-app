@@ -1,26 +1,4 @@
 .page-home {
   background-color: #FCFCFC;
   color: #1C1C1C;
-
-  .table {
-    width: 100%;
-
-    td{
-      padding: 15px;
-    }
-
-    tr{
-      &:nth-child(odd){
-        background-color: #E3F4FB;
-      }
-
-      &:nth-child(even){
-        background-color: #F0F8FC;
-      }
-    }
-
-    .word-break {
-      word-break: break-all;
-    }
-  }
 }

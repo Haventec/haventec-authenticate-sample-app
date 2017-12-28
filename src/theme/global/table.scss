@@ -1,0 +1,17 @@
+.table {
+  width: 100%;
+
+  td {
+    padding: 1.5rem;
+  }
+
+  tr {
+    &:nth-child(odd) {
+      background-color: $colour-primary-light;
+    }
+
+    &:nth-child(even) {
+      background-color: $colour-primary-xlight;
+    }
+  }
+}
