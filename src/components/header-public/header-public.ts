@@ -3,8 +3,7 @@ import * as Constant from '../../constants/application.const';
 
 @Component({
     templateUrl: 'header-public.html',
-    selector: 'header-public',
-
+    selector: 'header-public'
 })
 export class HeaderPublic{
 

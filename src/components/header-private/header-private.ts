@@ -1,14 +1,19 @@
 import { Component} from "@angular/core";
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../../pages/login/login';
+import * as Constant from '../../constants/application.const';
 
 @Component({
     templateUrl: 'header-private.html',
-    selector: 'header-private',
-
+    selector: 'header-private'
 })
 export class HeaderPrivate{
-     constructor(private navCtrl: NavController) {}
+
+  private appName: string;
+
+  constructor(private navCtrl: NavController) {
+    this.appName = Constant.APPLICATION_NAME;
+  }
 
   logout(){
 
