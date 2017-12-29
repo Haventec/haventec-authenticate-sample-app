@@ -1,25 +1,15 @@
-<ion-header>
-  <ion-navbar>
-
-    <ion-buttons left>
-      <button ion-button menuToggle><ion-icon name="options"></ion-icon></button>
-    </ion-buttons>
-
-    <ion-title>Active your account</ion-title>
-
-  </ion-navbar>
-</ion-header>
-
+<header-public></header-public>
 
 <ion-content padding>
-  <ion-grid >
-    <ion-row justify-content-center class="margin-md-top">
+  <ion-grid>
+    <ion-row justify-content-center class="page-margin">
       <ion-col col-auto class="col-fixed">
 
+        <h1>Active your account</h1>
         <p>{{username}}, please enter a PIN</p>
         <p>This PIN will be used each time you login</p>
 
-        <form class="activate-account-form" [formGroup]="activateAccountFormGroup" (ngSubmit)="activateAccount()">
+        <form [formGroup]="activateAccountFormGroup" (ngSubmit)="activateAccount()">
 
           <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>

@@ -1,9 +1,13 @@
-@include media-breakpoint-up('md') {
-  .margin-md-top {
-    margin-top: 60px;
-  }
+ion-content {
+  margin-top: 5.75rem;
 }
 
 .col-fixed {
   width: 330px;
+}
+
+.page-margin {
+  @include media-breakpoint-up('md') {
+    margin-top: 15rem;
+  }
 }

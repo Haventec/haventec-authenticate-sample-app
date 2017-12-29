@@ -1,14 +1,14 @@
 <header-public></header-public>
 
 <ion-content padding>
-  <ion-grid >
-    <ion-row justify-content-center class="margin-md-top">
+  <ion-grid>
+    <ion-row justify-content-center class="page-margin">
       <ion-col col-auto class="col-fixed">
 
         <h1>Add this device</h1>
         <p>As this is your first time using this device, you will need to add it to your account</p>
 
-        <form class="add-device-form" [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
+        <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
 
           <ion-item>
             <ion-label stacked icon-start><ion-icon name="person"></ion-icon>Enter your username</ion-label>
