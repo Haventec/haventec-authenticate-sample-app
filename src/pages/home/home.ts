@@ -3,6 +3,7 @@ import { AlertController } from 'ionic-angular';
 import { HaventecClient } from '@haventec/common-js';
 import { UserService } from '../../providers/user-service/user-service';
 import { UserModel } from '../../models/user';
+import * as Constant from '../../constants/application.const';
 
 @Component({
   selector: 'page-home',
@@ -14,6 +15,7 @@ export class HomePage {
   public accessToken: string;
   public authKey: string;
   public user: UserModel = new UserModel();
+  private appName: string;
 
   constructor(
     private alertCtrl: AlertController,
@@ -25,6 +27,7 @@ export class HomePage {
     this.authKey = this.haventecClient.getAuthKey();
     this.getUserDetails();
     this.getUserDevices();
+    this.appName = Constant.APPLICATION_NAME;
   }
 
   private getUserDetails(){

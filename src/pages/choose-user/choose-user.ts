@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SignUpPage } from '../sign-up/sign-up';
 import { AddDevicePage } from '../add-device/add-device';
+import * as Constant from '../../constants/application.const';
 
 @Component({
   selector: 'page-choose-user',
@@ -9,7 +10,10 @@ import { AddDevicePage } from '../add-device/add-device';
 })
 export class ChooseUserPage {
 
+  private appName: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.appName = Constant.APPLICATION_NAME;
   }
 
   newUser() {
