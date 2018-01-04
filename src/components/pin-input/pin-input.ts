@@ -59,7 +59,7 @@ export class PinInput{
 
   update(changes) {
     let next = null;
-    if (changes.keyCode >= 48 && changes.keyCode <= 57) {
+    if (changes.keyCode >= 48 && changes.keyCode <= 57 || changes.keyCode >= 96 && changes.keyCode <= 105) {
       this.pincode = this.pin1 + this.pin2 + this.pin3 + this.pin4;
 
       this.pinUpdated.emit(this.pincode);
