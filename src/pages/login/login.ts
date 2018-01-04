@@ -7,6 +7,7 @@ import { ResetPinPage } from '../reset-pin/reset-pin';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { LogService } from '../../providers/log-service/log-service'
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
+import * as Constant from '../../constants/application.const';
 
 @Component({
   selector: 'page-login',
@@ -17,6 +18,7 @@ export class LoginPage {
   public username: string;
 
   private loginFormGroup: FormGroup;
+  private appName: string;
 
   constructor(
     public navCtrl: NavController,
@@ -28,6 +30,7 @@ export class LoginPage {
     private pageLoadingService: PageLoadingService
   ) {
 
+    this.appName = Constant.APPLICATION_NAME;
     this.loginFormGroup = this.formBuilder.group({
       pin: ['', Validators.required],
     });
