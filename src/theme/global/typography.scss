@@ -1,3 +1,10 @@
+html {
+  @include media-breakpoint-up('md') {
+    // Creates a base font of 16px
+    font-size: 71.4287%;
+  }
+}
+
 h3 {
   margin-top: 6rem;
 }
