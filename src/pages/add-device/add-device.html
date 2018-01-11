@@ -12,7 +12,7 @@
 
           <ion-item>
             <ion-label stacked icon-start><ion-icon name="person"></ion-icon>Enter your username</ion-label>
-            <ion-input type="text" formControlName="username"></ion-input>
+            <ion-input type="text" formControlName="username" autofocus></ion-input>
           </ion-item>
 
           <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid" block margin-vertical>Add this device</button>
