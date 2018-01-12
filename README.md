@@ -13,7 +13,7 @@ Install [Ionic](https://ionicframework.com/)
 
 ### Installing
 
-Install the dependencies
+Install the dependencies within the root folder
 ```
 npm install
 ```
