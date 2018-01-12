@@ -18,6 +18,22 @@
           </tbody>
         </table>
 
+        <h3><ion-icon name="phone-portrait" class="icon-left-aligned"></ion-icon>Your devices</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Last login</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let device of user.devices">
+              <td>{{device.deviceName}} <ng-container *ngIf="device.deviceUuid === thisDeviceUuid">(this device)</ng-container></td>
+              <td>{{device.lastLogin * 1000 | date:'short'}}</td>
+            </tr>
+          </tbody>
+        </table>
+
         <h3><ion-icon name="lock" class="icon-left-aligned"></ion-icon>Your security</h3>
         <section class="section">
           <h5>Authentication key</h5>

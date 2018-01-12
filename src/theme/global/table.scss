@@ -1,17 +1,28 @@
 .table {
   width: 100%;
 
-  td {
-    padding: 1.5rem;
+  thead {
+
+    tr {
+      background-color: $colour-primary-light;
+      color: $text-color;
+    }
   }
 
-  tr {
-    &:nth-child(odd) {
-      background-color: $colour-primary-light;
-    }
+  tbody {
 
-    &:nth-child(even) {
-      background-color: $colour-primary-xlight;
+    tr {
+      &:nth-child(odd) {
+        background-color: $colour-primary-xlight;
+      }
+
+      &:nth-child(even) {
+        background-color: $colour-primary-xxlight;
+      }
     }
+  }
+
+  td {
+    padding: 1.5rem;
   }
 }

@@ -12,14 +12,15 @@ export class UserService {
   constructor(
     private http: HttpService,
     private haventecClient: HaventecClient
-  ) {}
+  ) {
+    this.userDevicesPath = this.userDevicesPath.replace('{userUuid}', this.haventecClient.getUserUuid());
+  }
 
   getUserDetails(){
     return this.http.get(this.userDetailsPath)
   }
 
   getUserDevices(){
-    this.haventecClient.getDeviceUuid();
     return this.http.get(this.userDevicesPath)
   }
 }

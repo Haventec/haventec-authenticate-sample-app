@@ -5,6 +5,8 @@ export class UserModel {
   public email;
   public lastLogin;
   public locked;
+  public devices;
+  public deviceUuid;
 
   constructor(){
     this.active = '';
@@ -12,6 +14,8 @@ export class UserModel {
     this.email = '';
     this.lastLogin = '';
     this.locked = '';
+    this.devices = [];
+    this.deviceUuid = '371584cc-d1f4-4326-a215-403a6007b36c';
   }
 
   setData(userResponse: any){
@@ -34,6 +38,10 @@ export class UserModel {
 
     if(userResponse.locked){
       this.locked = userResponse.locked
+    }
+
+    if(userResponse.devices){
+      this.devices = userResponse.devices
     }
   }
 }

@@ -22,17 +22,20 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-$background-color:                      #006C9A;
-$background-color-light:                #FCFCFC;
+$colour-background-light:               #FCFCFC;
 
-$colour-primary-xlight:                 #F0F8FC;
-$colour-primary-light:                  #E3F4FB;
+$colour-primary:                        #006C9A;
+$colour-primary-light:                  #0097D1;
+$colour-primary-xlight:                 #E3F4FB;
+$colour-primary-xxlight:                #F0F8FC;
 
-$text-color:                            #f6f6f6;
+$text-color:                            #F8F8F8;
 $text-color-dark:                       #1C1C1C;
 $text-input-highlight-color-valid:      #00CC66;
 $text-input-highlight-color-invalid:    #E04124;
 
+// Ionic Variable overwrites
+$background-color:                      $colour-primary;
 $toolbar-background:                    #005479;
 $label-md-text-color:                   #ccc;
 

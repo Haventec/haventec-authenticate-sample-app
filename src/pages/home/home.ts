@@ -16,6 +16,7 @@ export class HomePage {
   public authKey: string;
   public user: UserModel = new UserModel();
   private appName: string;
+  private thisDeviceUuid: string;
 
   constructor(
     private alertCtrl: AlertController,
@@ -25,6 +26,7 @@ export class HomePage {
     this.username = this.haventecClient.getUsername();
     this.accessToken = this.haventecClient.getAccessToken();
     this.authKey = this.haventecClient.getAuthKey();
+    this.thisDeviceUuid = this.haventecClient.getDeviceUuid();
     this.getUserDetails();
     this.getUserDevices();
     this.appName = Constant.APPLICATION_NAME;
@@ -33,19 +35,20 @@ export class HomePage {
   private getUserDetails(){
     this.userService.getUserDetails().then(
       data => {
-        this.user.setData(data)
+        this.user.setData(data);
       },
       err => {}
     );
   }
 
   private getUserDevices(){
-    // this.userService.getUserDevices().then(
-    //   data => {
-    //     console.log(data);
-    //   },
-    //   err => {}
-    // );
+    this.userService.getUserDevices().then(
+      data => {
+        console.log(data);
+        this.user.setData(data);
+      },
+      err => {}
+    );
   }
 
   showAuthKey() {
