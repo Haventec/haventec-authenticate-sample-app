@@ -5,12 +5,16 @@
     <ion-row>
       <ion-col>
 
-        <h1>Hi {{username}}</h1>
+        <h1>Hi {{user.username}}</h1>
         <p>Welcome to your {{appName}} homepage. You have successfully logged in using Haventec Authenticate</p>
 
         <h3><ion-icon name="person" class="icon-left-aligned"></ion-icon>About You</h3>
         <table class="table table-striped">
           <tbody>
+            <tr>
+              <td>Username</td>
+              <td class="word-break">{{user.username}}</td>
+            </tr>
             <tr>
               <td>Email</td>
               <td class="word-break">{{user.email}}</td>

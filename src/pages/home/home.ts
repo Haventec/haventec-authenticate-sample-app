@@ -11,7 +11,6 @@ import * as Constant from '../../constants/application.const';
 })
 export class HomePage {
 
-  public username: string;
   public accessToken: string;
   public authKey: string;
   public user: UserModel = new UserModel();
@@ -23,7 +22,7 @@ export class HomePage {
     private haventecClient: HaventecClient,
     private userService: UserService
   ){
-    this.username = this.haventecClient.getUsername();
+    this.user.username = this.haventecClient.getUsername();
     this.accessToken = this.haventecClient.getAccessToken();
     this.authKey = this.haventecClient.getAuthKey();
     this.thisDeviceUuid = this.haventecClient.getDeviceUuid();
@@ -44,7 +43,6 @@ export class HomePage {
   private getUserDevices(){
     this.userService.getUserDevices().then(
       data => {
-        console.log(data);
         this.user.setData(data);
       },
       err => {}

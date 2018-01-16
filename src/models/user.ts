@@ -2,20 +2,22 @@ export class UserModel {
 
   public active;
   public dateCreated;
+  public devices;
+  public deviceUuid;
   public email;
   public lastLogin;
   public locked;
-  public devices;
-  public deviceUuid;
+  public username;
 
   constructor(){
     this.active = '';
     this.dateCreated = '';
+    this.devices = [];
+    this.deviceUuid = '';
     this.email = '';
     this.lastLogin = '';
     this.locked = '';
-    this.devices = [];
-    this.deviceUuid = '371584cc-d1f4-4326-a215-403a6007b36c';
+    this.username = '';
   }
 
   setData(userResponse: any){
@@ -28,6 +30,10 @@ export class UserModel {
       this.dateCreated = userResponse.dateCreated
     }
 
+    if(userResponse.devices){
+      this.devices = userResponse.devices
+    }
+
     if(userResponse.email){
       this.email = userResponse.email
     }
@@ -38,10 +44,6 @@ export class UserModel {
 
     if(userResponse.locked){
       this.locked = userResponse.locked
-    }
-
-    if(userResponse.devices){
-      this.devices = userResponse.devices
     }
   }
 }
