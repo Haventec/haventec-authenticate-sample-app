@@ -27,6 +27,10 @@ import { UserService } from '../providers/user-service/user-service';
 import { LogService } from '../providers/log-service/log-service';
 import { PageLoadingService } from '../providers/page-loading-service/page-loading-service';
 import { DeviceNameService } from '../providers/device-name-service/device-name-service'
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Http } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,13 @@ import { DeviceNameService } from '../providers/device-name-service/device-name-
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    }),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -78,3 +89,7 @@ import { DeviceNameService } from '../providers/device-name-service/device-name-
   ]
 })
 export class AppModule {}
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

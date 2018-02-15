@@ -7,6 +7,7 @@ import { ChooseUserPage } from '../pages/choose-user/choose-user';
 import { LoginPage } from '../pages/login/login';
 import { LogService } from '../providers/log-service/log-service';
 import * as Constant from '../constants/application.const'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,12 +22,14 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private logService: LogService,
-    private haventecClient: HaventecClient) {
+    private haventecClient: HaventecClient,
+    private translate: TranslateService) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.translate.setDefaultLang('en');
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
