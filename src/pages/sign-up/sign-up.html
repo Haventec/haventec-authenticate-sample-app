@@ -5,13 +5,13 @@
     <ion-row justify-content-center class="page-margin">
       <ion-col col-auto class="col-fixed">
 
-        <h1>Create an account</h1>
-        <p>As this is your first time here, we need a few details</p>
+        <h1>{{'CREATE_AN_ACCOUNT' | translate}}</h1>
+        <p>{{'CREATE_AN_ACCOUNT_NOTE' | translate}}</p>
 
         <form [formGroup]="signUpFormGroup" (ngSubmit)="signUp()">
 
           <ion-item>
-            <ion-label stacked icon-start><ion-icon name="person"></ion-icon>Enter a username</ion-label>
+            <ion-label stacked icon-start><ion-icon name="person"></ion-icon>{{'ENTER_A_USERNAME' | translate}}</ion-label>
 
             <ion-input type="text" formControlName="username" autofocus>
 
@@ -19,11 +19,11 @@
           </ion-item>
 
           <ion-item>
-            <ion-label stacked icon-start><ion-icon name="mail"></ion-icon>Enter your email</ion-label>
+            <ion-label stacked icon-start><ion-icon name="mail"></ion-icon>{{'ENTER_YOUR_EMAIL' | translate}}</ion-label>
             <ion-input type="email" formControlName="email"></ion-input>
           </ion-item>
 
-          <button ion-button type="submit" [disabled]="!signUpFormGroup.valid" block margin-vertical>Create an account</button>
+          <button ion-button type="submit" [disabled]="!signUpFormGroup.valid" block margin-vertical>{{'CREATE_AN_ACCOUNT_BUTTON' | translate}}</button>
 
         </form>
 

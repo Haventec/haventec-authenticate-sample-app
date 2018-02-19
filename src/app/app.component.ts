@@ -16,6 +16,7 @@ export class MyApp {
   @ViewChild("content") navCtrl: NavController;
 
   rootPage: any;
+  private language = 'en';
 
   constructor(
     public platform: Platform,
@@ -23,13 +24,14 @@ export class MyApp {
     public splashScreen: SplashScreen,
     private logService: LogService,
     private haventecClient: HaventecClient,
-    private translate: TranslateService) {
+    private translateService: TranslateService) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.translate.setDefaultLang('en');
+      this.translateService.setDefaultLang(this.language);
+      this.setLang(this.language);
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
@@ -51,16 +53,19 @@ export class MyApp {
   checkForFirstTimeUse(): void {
 
     let username = this.haventecClient.getUsername();
-    let authKey = this.haventecClient.getAuthKey();
-
-    if(username == null || authKey == null){
-      this.logService.debug('First time use');
-      this.rootPage = ChooseUserPage;
-    } else {
+    if(username != null && this.haventecClient.getAuthKey() != null) {
       this.logService.debug('Not First time use');
       this.rootPage = LoginPage;
+    } else {
+      this.logService.debug('First time use');
+      this.rootPage = ChooseUserPage;
     }
   };
+
+  setLang(language) {
+    console.log('You have chosen the language: ' + language);
+    this.translateService.use(language)
+  }
 
   checkAppConfig(){
     if(Constant.APPLICATION_UUID === '' || Constant.API_ENDPOINT === '') {

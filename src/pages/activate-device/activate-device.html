@@ -5,21 +5,21 @@
     <ion-row justify-content-center class="page-margin">
       <ion-col col-auto class="col-fixed">
 
-        <h1>Activate this device</h1>
-        <p>{{username}}, an email has been sent to your inbox</p>
-        <p>Please check your email and enter the device activation code below</p>
+        <h1>{{'ACTIVATE_THIS_DEVICE' | translate}}</h1>
+        <p>{{username}}, {{'EMAIL_SENT_NOTE' | translate}}</p>
+        <p>{{'CHECK_YOUR_EMAIL_AND_ACTIVATE_DEVICE' | translate}}</p>
 
         <form [formGroup]="activateDeviceFormGroup" (ngSubmit)="activateDevice()">
 
           <ion-item>
-            <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>Device activation code</ion-label>
+            <ion-label stacked icon-start><ion-icon name="logo-buffer"></ion-icon>{{'DEVICE_ACTIVATION_CODE' | translate}}</ion-label>
             <ion-input type="number" formControlName="deviceActivationCode" autofocus></ion-input>
           </ion-item>
 
-          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>
+          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>{{'ENTER_A_PIN' | translate}}</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
 
-          <button ion-button type="submit" [disabled]="!activateDeviceFormGroup.valid" block margin-vertical>Activate</button>
+          <button ion-button type="submit" [disabled]="!activateDeviceFormGroup.valid" block margin-vertical>{{'ACTIVATE' | translate}}</button>
 
         </form>
 
