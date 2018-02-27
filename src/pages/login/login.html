@@ -13,7 +13,7 @@
 
         <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
           <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>{{'ENTER_YOUR_PIN_TO_LOGIN' | translate}}</ion-label>
-          <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
+          <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)" ></pin-input>
         </form>
 
         <a (click)='forgotPin();'>{{'FORGOT_YOUR_PIN' | translate}}</a>

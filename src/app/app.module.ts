@@ -17,7 +17,7 @@ import { ActivateDevicePage } from "../pages/activate-device/activate-device";
 import { ChooseUserPage } from "../pages/choose-user/choose-user";
 import { AddDevicePage } from "../pages/add-device/add-device";
 
-import { PinInput } from "../components/pin-input/pin-input";
+import { PinInput } from "../components/pin-input-new/pin-input";
 import { HeaderPrivate } from "../components/header-private/header-private";
 import { HeaderPublic } from "../components/header-public/header-public";
 
