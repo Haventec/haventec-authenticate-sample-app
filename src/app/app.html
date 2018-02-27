@@ -2,7 +2,7 @@
   <ion-header>
 
     <ion-toolbar>
-      <ion-title>Options</ion-title>
+      <ion-title>{{'OPTIONS' | translate }}</ion-title>
     </ion-toolbar>
 
   </ion-header>
@@ -10,12 +10,19 @@
   <ion-content padding>
     <ion-list>
       <button ion-item menuClose (click)="resetApp()" icon-start>
-        <ion-icon name="refresh"></ion-icon>Reset this App
+        <ion-icon name="refresh"></ion-icon>{{'RESET_THIS_APP' | translate}}
       </button>
-      <p>'Reset this App' will clear this applications Authentication Key and User information from this device. Once reset you can re-add this device to an existing user by clicking 'Existing user' or you can create a new user.</p>
+      <p>'{{'RESET_THIS_APP' | translate}}' {{'RESET_THIS_APP_EXPLANATION' | translate}}</p>
+
+      <ion-item>
+        <ion-label>Choose language</ion-label>
+        <ion-select [(ngModel)]="language" (ionChange)="setLang($event)">
+          <ion-option value="en">English</ion-option>
+          <ion-option value="es">Spanish</ion-option>
+        </ion-select>
+      </ion-item>
     </ion-list>
   </ion-content>
-
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

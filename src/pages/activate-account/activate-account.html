@@ -5,16 +5,16 @@
     <ion-row justify-content-center class="page-margin">
       <ion-col col-auto class="col-fixed">
 
-        <h1>Active your account</h1>
-        <p>{{username}}, please enter a PIN</p>
-        <p>This PIN will be used each time you login</p>
+        <h1>{{'ACTIVATE_YOUR_ACCOUNT' | translate}}</h1>
+        <p>{{username}}, {{'PLEASE_ENTER_A_PIN' | translate}}</p>
+        <p>{{'PIN_EXPLANATION' | translate}}</p>
 
         <form [formGroup]="activateAccountFormGroup" (ngSubmit)="activateAccount()">
 
-          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>Enter a PIN</ion-label>
+          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>{{'ENTER_A_PIN' | translate}}</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
 
-          <button ion-button type="submit" [disabled]="!activateAccountFormGroup.valid" block margin-vertical>Create my account</button>
+          <button ion-button type="submit" [disabled]="!activateAccountFormGroup.valid" block margin-vertical>{{'CREATE_MY_ACCOUNT' | translate}}</button>
 
         </form>
 

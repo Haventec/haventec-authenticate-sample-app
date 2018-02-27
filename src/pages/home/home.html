@@ -5,41 +5,41 @@
     <ion-row>
       <ion-col>
 
-        <h1>Hi {{user.username}}</h1>
-        <p>Welcome to your {{appName}} homepage. You have successfully logged in using Haventec Authenticate</p>
-        <p>We hope you enjoyed that authentication experience</p>
+        <h1>{{'HI' | translate}} {{user.username}}</h1>
+        <p>{{'WELCOME_TO_YOUR_HOMEPAGE' | translate}}. {{'YOU_HAVE_SUCCESSFULLY_LOGGED_IN' | translate}}</p>
+        <p>{{'YOU_HAVE_SUCCESSFULLY_LOGGED_IN_SECONDARY_MESSAGE' | translate}}</p>
 
-        <h3><ion-icon name="heart" class="icon-left-aligned"></ion-icon>Your user experience</h3>
+        <h3><ion-icon name="heart" class="icon-left-aligned"></ion-icon>{{'YOUR_USER_EXPERIENCE' | translate}}</h3>
         <section class="section">
-          <p>You have just used a simple 4 digit PIN to Authenticate but what so special about it:</p>
+          <p>{{'4_DIGIT_PIN_EXPLANATION_HEADER' | translate}}:</p>
           <ul>
-            <li>First off that PIN you entered is only known to you, it is <span class="text-highlight">not stored anywhere</span>, not on this device or on Haventec's servers. Nothing for an attacker to steal</li>
-            <li>When you first signed up, we auto registered this device and placed a <span class="text-highlight">unique Authentication Key</span> on it. See 'Your security below' for more details</li>
-            <li>Every time you login we <span class="text-highlight">rotate the Authentication Key</span>. Its like having a locksmith change your locks every time you enter your house</li>
-            <li>Two factor authentication (2FA) out of the box. 2FA is <span class="text-highlight">Something you know</span>, your PIN and <span class="text-highlight">Something you have</span>, your device and its unique Authentication Key</li>
+            <li>{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_1A' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_1B' | translate}}</span>, {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_1C' | translate}}</li>
+            <li>{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_2A' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_2B' | translate}}</span> {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_2C' | translate}}</li>
+            <li>{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_3A' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_3B' | translate}}</span>. {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_3C' | translate}}</li>
+            <li>{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4A' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4B' | translate}}</span>, {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4C' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4D' | translate}}</span>, {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4E' | translate}}</li>
           </ul>
         </section>
 
-        <h3><ion-icon name="person" class="icon-left-aligned"></ion-icon>About You</h3>
+        <h3><ion-icon name="person" class="icon-left-aligned"></ion-icon>{{'ABOUT_YOU' | translate}}</h3>
         <table class="table table-striped">
           <tbody>
             <tr>
-              <td>Username</td>
+              <td>{{'USERNAME' | translate}}</td>
               <td class="word-break">{{user.username}}</td>
             </tr>
             <tr>
-              <td>Email</td>
+              <td>{{'EMAIL' | translate}}</td>
               <td class="word-break">{{user.email}}</td>
             </tr>
           </tbody>
         </table>
 
-        <h3><ion-icon name="phone-portrait" class="icon-left-aligned"></ion-icon>Your devices</h3>
+        <h3><ion-icon name="phone-portrait" class="icon-left-aligned"></ion-icon>{{'YOUR_DEVICES' | translate}}</h3>
         <table class="table table-striped">
           <thead>
             <tr>
-              <td>Name</td>
-              <td>Last login</td>
+              <td>{{'NAME' | translate}}</td>
+              <td>{{'LAST_LOGIN' | translate}}</td>
             </tr>
           </thead>
           <tbody>
@@ -50,11 +50,11 @@
           </tbody>
         </table>
 
-        <h3><ion-icon name="lock" class="icon-left-aligned"></ion-icon>Your security</h3>
+        <h3><ion-icon name="lock" class="icon-left-aligned"></ion-icon>{{'YOUR_SECURITY' | translate}}</h3>
         <section class="section">
-          <h5>Authentication key</h5>
-          <p>The Authentication key is unique to this application on this device. It automatically rotates every time you login. This greatly increases your security</p>
-          <button ion-button type="button" (click)='showAuthKey();'>Show</button>
+          <h5>{{'AUTHENTICATION_KEY' | translate}}</h5>
+          <p>{{'AUTHENTICATION_KEY_EXPLANATION' | translate}}</p>
+          <button ion-button type="button" (click)='showAuthKey();'>{{'SHOW' | translate}}</button>
         </section>
 
       </ion-col>

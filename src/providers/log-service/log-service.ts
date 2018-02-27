@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import * as Constant from '../../constants/application.const'
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class LogService {
 
-  constructor(private alertCtrl: AlertController) {}
+  constructor(private alertCtrl: AlertController, private translate: TranslateService) {}
 
   debug(msg: string, obj?: any) {
     if(Constant.DEBUG){
@@ -20,9 +21,21 @@ export class LogService {
   }
 
   error(errorObj: any, obj?: any) {
+    let buttonName = 'Dismiss';
     let errorMsg = this.formatError(errorObj);
-    let alert = this.alertCtrl.create({title: 'Sorry an error occurred', subTitle: errorMsg, buttons: ['Dismiss']});
-    alert.present();
+    this.translate.get('DISMISS_BUTTON').subscribe(
+      value => {
+        buttonName = value;
+      }
+    )
+
+    this.translate.get('GENERAL_ERROR').subscribe(
+      value => {
+        let alert = this.alertCtrl.create({title: value, subTitle: errorMsg, buttons: [buttonName]});
+        alert.present();
+      }
+    )
+
     console.error('Error: ' + errorMsg);
   }
 

@@ -5,17 +5,19 @@
     <ion-row justify-content-center class="page-margin">
       <ion-col col-auto class="col-fixed">
 
-        <h1>Add this device</h1>
-        <p>As this is your first time using this device, you will need to add it to your account</p>
+        <h1>{{'ADD_THIS_DEVICE' | translate}}</h1>
+        <p>{{'ADD_DEVICE_EXPLANATION' | translate}}</p>
 
         <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
 
           <ion-item>
-            <ion-label stacked icon-start><ion-icon name="person"></ion-icon>Enter your username</ion-label>
+            <ion-label stacked icon-start><ion-icon name="person">
+               </ion-icon>{{'ENTER_YOUR_USERNAME' | translate}}</ion-label>
             <ion-input type="text" formControlName="username" autofocus></ion-input>
           </ion-item>
 
-          <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid" block margin-vertical>Add this device</button>
+          <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid"
+                  block margin-vertical>{{'ADD_THIS_DEVICE' | translate}}</button>
 
         </form>
 
