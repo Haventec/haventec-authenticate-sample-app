@@ -1,0 +1,5 @@
+<div class="pin-input">
+  <ion-input type="tel" pattern="[0-9]*" inputmode="numeric" #pinInput
+             class="pin-item" maxlength="4" [(ngModel)]="pincode" (ionChange)="update($event)" autofocus></ion-input>
+
+</div>
