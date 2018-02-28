@@ -7,7 +7,7 @@ This application is **NOT** intended to be used in a Production environment.
 
 ### Prerequisites
 
-Install [NodeJS](https://nodejs.org)
+Install [NodeJS](https://nodejs.org) > v8.0.0
  
 Install [Ionic](https://ionicframework.com/)
 
