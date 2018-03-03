@@ -1,22 +1,18 @@
 <header-public></header-public>
 
-<ion-content padding>
+<ion-content>
   <ion-grid>
     <ion-row justify-content-center>
       <ion-col col-auto class="col-fixed">
 
-        <div class="logo" text-center padding-vertical>
-          <ion-img width="200" height="200" src="assets/img/{{appName}}-logo.png"></ion-img>
-
-          <h1>{{'WELCOME_BACK' | translate}} {{username}}</h1>
-        </div>
+        <h1>{{'WELCOME_BACK' | translate}} {{username}}</h1>
+        <h3>{{'ENTER_YOUR_PIN_TO_LOGIN' | translate}}</h3>
 
         <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
-          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>{{'ENTER_YOUR_PIN_TO_LOGIN' | translate}}</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
         </form>
 
-        <a (click)='forgotPin();'>{{'FORGOT_YOUR_PIN' | translate}}</a>
+        <h5 (click)='forgotPin();'>{{'FORGOT_YOUR_PIN' | translate}}</h5>
 
       </ion-col>
     </ion-row>
