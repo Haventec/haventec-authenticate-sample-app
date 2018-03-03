@@ -4,8 +4,8 @@
   thead {
 
     tr {
-      background-color: $colour-primary-light;
-      color: $text-color;
+      background-color: $colour-background-primary;
+      color: $colour-text-primary;
     }
   }
 
@@ -13,11 +13,11 @@
 
     tr {
       &:nth-child(odd) {
-        background-color: $colour-primary-xlight;
+        background-color: $colour-background-primary;
       }
 
       &:nth-child(even) {
-        background-color: $colour-primary-xxlight;
+        background-color: $colour-background-primary;
       }
     }
   }
