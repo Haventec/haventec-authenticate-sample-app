@@ -1,19 +1,15 @@
-<ion-menu [content]="content">
-  <ion-header>
+<ion-menu [content]="content" side="right">
+  <div class="ht-side-menu">
 
-    <ion-toolbar>
-      <ion-title>{{'OPTIONS' | translate }}</ion-title>
-    </ion-toolbar>
+    <div class="header">
+      <h1 class="title">{{'MENU' | translate }}</h1>
+    </div>
 
-  </ion-header>
+    <button class="ht-bt-secondary" menuClose (click)="resetApp()">{{'RESET_THIS_APP' | translate}}</button>
 
-  <ion-content padding>
+    <p class="ht-text-small">{{'RESET_THIS_APP_EXPLANATION' | translate}}</p>
+
     <ion-list>
-      <button ion-item menuClose (click)="resetApp()" icon-start>
-        <ion-icon name="refresh"></ion-icon>{{'RESET_THIS_APP' | translate}}
-      </button>
-      <p>'{{'RESET_THIS_APP' | translate}}' {{'RESET_THIS_APP_EXPLANATION' | translate}}</p>
-
       <ion-item>
         <ion-label>Choose language</ion-label>
         <ion-select [(ngModel)]="language" (ionChange)="setLang($event)">
@@ -22,7 +18,8 @@
         </ion-select>
       </ion-item>
     </ion-list>
-  </ion-content>
+
+  </div>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

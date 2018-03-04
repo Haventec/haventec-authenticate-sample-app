@@ -2,16 +2,6 @@
   border-top: 2px solid $colour-background-tertiary;
   text-align: center;
 
-  .bt-menu {
-    position: absolute;
-    top: 1px;
-    right: 0;
-
-    button {
-      color: $colour-text-tertiary;
-    }
-  }
-
   .toolbar {
     padding: 0;
     min-height: 0;

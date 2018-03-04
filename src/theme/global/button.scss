@@ -1,3 +1,28 @@
-.button {
-  border-radius: 1rem;
+button {
+  border-radius: 0.3rem;
+  width: 100%;
+  height: 5rem;
 }
+
+.ht-bt-primary {
+  background-color: $colour-action-primary;
+  color: $colour-text-quaternary;
+}
+
+.ht-bt-secondary {
+  background-color: $colour-action-secondary;
+  color: $colour-text-primary;
+}
+
+.ht-bt-menu {
+  background: none;
+  box-shadow: none;
+  color: $colour-text-tertiary;
+  position: absolute;
+  margin: 0;
+  right: 0;
+  top: 0.8rem;
+  height: 2.2rem;
+  width: 3rem;
+}
+
