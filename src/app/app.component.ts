@@ -6,8 +6,8 @@ import { HaventecClient } from '@haventec/common-js';
 import { ChooseUserPage } from '../pages/choose-user/choose-user';
 import { LoginPage } from '../pages/login/login';
 import { LogService } from '../providers/log-service/log-service';
-import * as Constant from '../constants/application.const'
 import { TranslateService } from '@ngx-translate/core';
+import * as Constant from '../constants/application.const'
 
 @Component({
   templateUrl: 'app.html'
@@ -61,6 +61,10 @@ export class MyApp {
       this.rootPage = ChooseUserPage;
     }
   };
+
+  logout(page) {
+    this.navCtrl.setRoot(LoginPage);
+  }
 
   setLang(language) {
     console.log('You have chosen the language: ' + language);
