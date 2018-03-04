@@ -3,7 +3,7 @@
   "RESET_THIS_APP": "Reset this App",
   "RESET_THIS_APP_EXPLANATION": "Resetting this app will clear the Authentication Key and User information from this device. Once reset you can re-add this device to an existing user by clicking ‘Login’ or you can ‘Create a new account’.",
 
-  "LOGOUT": "Logout",
+  "SIGN_OUT": "Sign out",
   "ACTIVATE_YOUR_ACCOUNT": "Active your account",
   "PLEASE_ENTER_A_PIN": "please enter a PIN",
   "PIN_EXPLANATION": "This PIN will be used each time you login",

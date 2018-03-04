@@ -5,6 +5,8 @@
       <h1 class="title">{{'MENU' | translate }}</h1>
     </div>
 
+    <button class="ht-bt-secondary" menuClose (click)='logout();'>{{'SIGN_OUT' | translate}}</button>
+
     <button class="ht-bt-secondary" menuClose (click)="resetApp()">{{'RESET_THIS_APP' | translate}}</button>
 
     <p class="ht-text-small">{{'RESET_THIS_APP_EXPLANATION' | translate}}</p>

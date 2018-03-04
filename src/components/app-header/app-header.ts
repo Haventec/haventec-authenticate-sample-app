@@ -2,10 +2,10 @@ import { Component } from "@angular/core";
 import * as Constant from '../../constants/application.const';
 
 @Component({
-    templateUrl: 'header-public.html',
-    selector: 'header-public'
+    templateUrl: 'app-header.html',
+    selector: 'app-header'
 })
-export class HeaderPublic{
+export class AppHeader{
 
   private appName: string;
 

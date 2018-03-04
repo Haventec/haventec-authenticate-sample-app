@@ -3,7 +3,7 @@
   "RESET_THIS_APP": "Reiniciar App",
   "RESET_THIS_APP_EXPLANATION": "Borra de la aplicación toda la información del usuario y permite configurarla para otro usuario nuevo o existente.",
 
-  "LOGOUT": "Cerrar sessión",
+  "SIGN_OUT": "Cerrar sessión",
   "ACTIVATE_YOUR_ACCOUNT": "Activa tu cuenta",
   "PLEASE_ENTER_A_PIN": "introduce tu número PIN",
   "PIN_EXPLANATION": "El número PIN se usa cada vez que quiera acceder a la aplicación.",

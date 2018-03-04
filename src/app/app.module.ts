@@ -18,8 +18,7 @@ import { ChooseUserPage } from "../pages/choose-user/choose-user";
 import { AddDevicePage } from "../pages/add-device/add-device";
 
 import { PinInput } from "../components/pin-input/pin-input";
-import { HeaderPrivate } from "../components/header-private/header-private";
-import { HeaderPublic } from "../components/header-public/header-public";
+import { AppHeader } from "../components/app-header/app-header";
 
 import { HttpService } from '../providers/http-service/http-service';
 import { AuthService } from '../providers/auth-service/auth-service';
@@ -44,8 +43,7 @@ import { Http } from '@angular/http';
     ChooseUserPage,
     AddDevicePage,
     PinInput,
-    HeaderPrivate,
-    HeaderPublic
+    AppHeader
   ],
   imports: [
     BrowserModule,
@@ -72,8 +70,7 @@ import { Http } from '@angular/http';
     ChooseUserPage,
     AddDevicePage,
     PinInput,
-    HeaderPrivate,
-    HeaderPublic
+    AppHeader
   ],
   providers: [
     StatusBar,
