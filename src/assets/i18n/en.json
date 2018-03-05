@@ -24,9 +24,8 @@
   "NEW_USER": "New user",
   "EXISTING_USER": "Existing user",
 
-  "HI": "Hi",
-  "WELCOME_TO_YOUR_HOMEPAGE": "Welcome to your homepage",
-  "YOU_HAVE_SUCCESSFULLY_LOGGED_IN": "You have successfully logged in using Haventec Authenticate",
+  "WELCOME_MESSAGE": "Welcome to",
+  "WELCOME_MESSAGE_SUBTEXT": "You have successfully logged in using Haventec Authenticate",
   "YOU_HAVE_SUCCESSFULLY_LOGGED_IN_SECONDARY_MESSAGE": "We hope you enjoyed that authentication experience",
   "YOUR_USER_EXPERIENCE": "Your user experience",
   "4_DIGIT_PIN_EXPLANATION_HEADER": "You have just used a simple 4 digit PIN to Authenticate but what so special about it",

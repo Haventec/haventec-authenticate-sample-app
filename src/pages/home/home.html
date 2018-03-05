@@ -5,9 +5,10 @@
     <ion-row>
       <ion-col>
 
-        <h1>{{'HI' | translate}} {{user.username}}</h1>
-        <p>{{'WELCOME_TO_YOUR_HOMEPAGE' | translate}}. {{'YOU_HAVE_SUCCESSFULLY_LOGGED_IN' | translate}}</p>
-        <p>{{'YOU_HAVE_SUCCESSFULLY_LOGGED_IN_SECONDARY_MESSAGE' | translate}}</p>
+        <div class="ht-section-welcome">
+          <h1>{{'WELCOME_MESSAGE' | translate}} {{appName}}, {{user.username}}</h1>
+          <p>{{'WELCOME_MESSAGE_SUBTEXT' | translate}}</p>
+        </div>
 
         <h3><ion-icon name="heart" class="icon-left-aligned"></ion-icon>{{'YOUR_USER_EXPERIENCE' | translate}}</h3>
         <section class="section">

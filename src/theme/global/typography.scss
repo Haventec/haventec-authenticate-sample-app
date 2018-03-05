@@ -14,6 +14,7 @@ html {
   }
 }
 
+// Font weights
 $bold-medium:  500;
 $bold-demi:    600;
 
@@ -46,6 +47,12 @@ h5 {
   font-size: 1.2rem;
   font-weight: $bold-medium;
   line-height: 1.7rem;
+}
+
+p {
+  color: $colour-text-primary;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
 }
 
 button {
