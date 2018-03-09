@@ -34,9 +34,8 @@
   "USER_EXPERIENCE_EXPLANATION_3": "Every time you log in we rotate the authentication Key. It’s like having a locksmith change your locks every time you enter your house.",
   "USER_EXPERIENCE_EXPLANATION_4": "Two factor authentication (2FA) out of the box. 2FA is something you know, your PIN and something you have, your device and it’s unique Authentication Key.",
 
-  "ABOUT_YOU": "About You",
-  "USERNAME": "Username",
-  "EMAIL": "Email",
+  "PHOTO_ACTION": "Add photo",
+
   "YOUR_DEVICES": "Your devices",
   "NAME": "Name",
   "LAST_LOGIN": "Last login",

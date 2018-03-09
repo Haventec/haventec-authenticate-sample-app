@@ -41,19 +41,15 @@
     <ion-row>
       <ion-col>
 
-          <h3><ion-icon name="person" class="icon-left-aligned"></ion-icon>{{'ABOUT_YOU' | translate}}</h3>
-        <table class="table table-striped">
-          <tbody>
-            <tr>
-              <td>{{'USERNAME' | translate}}</td>
-              <td class="word-break">{{user.username}}</td>
-            </tr>
-            <tr>
-              <td>{{'EMAIL' | translate}}</td>
-              <td class="word-break">{{user.email}}</td>
-            </tr>
-          </tbody>
-        </table>
+        <section class="ht-section-profile">
+          <div class="photo">
+            <button class="ht-bt-primary ht-bt-circular">{{'PHOTO_ACTION' | translate}}</button>
+          </div>
+          <div class="details">
+            <h1 class="word-break">{{user.username}}</h1>
+            <h5 class="word-break">{{user.email}}</h5>
+          </div>
+        </section>
 
         <h3><ion-icon name="phone-portrait" class="icon-left-aligned"></ion-icon>{{'YOUR_DEVICES' | translate}}</h3>
         <table class="table table-striped">
