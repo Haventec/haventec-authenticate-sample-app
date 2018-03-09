@@ -5,23 +5,43 @@
     <ion-row>
       <ion-col>
 
-        <div class="ht-section-welcome">
+        <section class="ht-section-welcome">
           <h1>{{'WELCOME_MESSAGE' | translate}} {{appName}}, {{user.username}}</h1>
           <p>{{'WELCOME_MESSAGE_SUBTEXT' | translate}}</p>
-        </div>
-
-        <h3><ion-icon name="heart" class="icon-left-aligned"></ion-icon>{{'YOUR_USER_EXPERIENCE' | translate}}</h3>
-        <section class="section">
-          <p>{{'4_DIGIT_PIN_EXPLANATION_HEADER' | translate}}:</p>
-          <ul>
-            <li>{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_1A' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_1B' | translate}}</span>, {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_1C' | translate}}</li>
-            <li>{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_2A' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_2B' | translate}}</span> {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_2C' | translate}}</li>
-            <li>{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_3A' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_3B' | translate}}</span>. {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_3C' | translate}}</li>
-            <li>{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4A' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4B' | translate}}</span>, {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4C' | translate}} <span class="text-highlight">{{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4D' | translate}}</span>, {{'4_DIGIT_PIN_EXPLANATION_ARGUMENT_4E' | translate}}</li>
-          </ul>
         </section>
 
-        <h3><ion-icon name="person" class="icon-left-aligned"></ion-icon>{{'ABOUT_YOU' | translate}}</h3>
+      </ion-col>
+    </ion-row>
+
+    <section class="ht-section-ux-explanation ht-card-info">
+      <ion-row>
+        <ion-col col-12 col-md class="message">
+            <h2>{{'USER_EXPERIENCE_MESSAGE' | translate}}</h2>
+            <h5>{{'USER_EXPERIENCE_MESSAGE_SUBTEXT' | translate}}</h5>
+        </ion-col>
+        <ion-col class="explanation" col-12 col-md>
+          <img class="icon" src="/assets/icon/lock-icon.svg">
+          <h6 class="text">{{'USER_EXPERIENCE_EXPLANATION_1' | translate}}</h6>
+        </ion-col>
+        <ion-col class="explanation" col-12 col-md>
+          <img class="icon" src="/assets/icon/screen-icon.svg">
+          <h6 class="text">{{'USER_EXPERIENCE_EXPLANATION_2' | translate}}</h6>
+        </ion-col>
+        <ion-col class="explanation" col-12 col-md>
+          <img class="icon" src="/assets/icon/refresh-lock-icon.svg">
+          <h6 class="text">{{'USER_EXPERIENCE_EXPLANATION_3' | translate}}</h6>
+        </ion-col>
+        <ion-col class="explanation" col-12 col-md>
+          <img class="icon" src="/assets/icon/key-in-phone-icon.svg">
+          <h6 class="text">{{'USER_EXPERIENCE_EXPLANATION_4' | translate}}</h6>
+        </ion-col>
+      </ion-row>
+    </section>
+
+    <ion-row>
+      <ion-col>
+
+          <h3><ion-icon name="person" class="icon-left-aligned"></ion-icon>{{'ABOUT_YOU' | translate}}</h3>
         <table class="table table-striped">
           <tbody>
             <tr>

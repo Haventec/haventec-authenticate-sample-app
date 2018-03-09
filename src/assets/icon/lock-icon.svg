@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
+    <g transform="matrix(1,0,0,-1,5,38)">
+        <clipPath id="_clip1">
+            <path d="M0,19.993C0,21.654 1.347,23 3,23L27,23C28.657,23 30,21.664 30,19.993L30,3.007C30,1.346 28.653,0 27,0L3,0C1.343,0 0,1.336 0,3.007L0,19.993Z"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <path d="M0,19.993C0,21.654 1.347,23 3,23L27,23C28.657,23 30,21.664 30,19.993L30,3.007C30,1.346 28.653,0 27,0L3,0C1.343,0 0,1.336 0,3.007L0,19.993Z" style="fill:none;stroke:white;stroke-width:4px;"/>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,-1,11,16)">
+        <path d="M18,0L18,7C18,7 16.346,14 9,14C0.596,14 0,7 0,7L0,0" style="fill:none;stroke:white;stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,5,1)">
+        <text x="11px" y="31px" style="font-family:'AvenirNext-Bold', 'Avenir Next', sans-serif;font-weight:700;font-size:15px;fill:white;">?</text>
+    </g>
+</svg>

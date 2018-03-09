@@ -35,6 +35,13 @@ h1 {
   line-height: 3.8rem;
 }
 
+h2 {
+  color: $colour-text-primary;
+  font-size: 1.6rem;
+  font-weight: $bold-demi;
+  line-height: 2.2rem;
+}
+
 h3 {
   color: $colour-text-primary;
   font-size: 1.4rem;
@@ -46,7 +53,14 @@ h5 {
   color: $colour-action-primary;
   font-size: 1.2rem;
   font-weight: $bold-medium;
-  line-height: 1.7rem;
+  line-height: 1.6rem;
+}
+
+h6 {
+  color: $colour-text-primary;
+  font-size: 1rem;
+  font-weight: $bold-medium;
+  line-height: 1.4rem;
 }
 
 p {

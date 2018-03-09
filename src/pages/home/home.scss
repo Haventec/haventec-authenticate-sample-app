@@ -3,4 +3,47 @@
   .ht-section-welcome {
     text-align: center;
   }
+
+  .ht-section-ux-explanation {
+
+
+    h2, h5, p {
+      color: $colour-text-quaternary;
+      text-align: center;
+    }
+
+    h5 {
+      margin: 1rem 0;
+    }
+
+    h6 {
+      color: $colour-text-quaternary;
+      margin-top: 0.4rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .message {
+      padding: 1.6rem 1.8rem 0.8rem;
+    }
+
+    .explanation {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0 1rem;
+
+      .icon {
+        height: 4rem;
+        width: 4rem;
+      }
+
+      .text {
+        margin-left: 1.5rem;
+      }
+
+      &:last-child {
+        padding-bottom: 2.4rem;
+      }
+    }
+  }
 }
