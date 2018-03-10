@@ -69,11 +69,13 @@
 
     <ion-row>
       <ion-col>
-        <h3><ion-icon name="lock" class="icon-left-aligned"></ion-icon>{{'YOUR_SECURITY' | translate}}</h3>
-        <section class="section">
-          <h5>{{'AUTHENTICATION_KEY' | translate}}</h5>
-          <p>{{'AUTHENTICATION_KEY_EXPLANATION' | translate}}</p>
-          <button ion-button type="button" (click)='showAuthKey();'>{{'SHOW' | translate}}</button>
+        <section class="ht-section-security ht-card">
+          <h2 class="ht-card-title">{{'SECURITY_TITLE' | translate}}</h2>
+          <div class="ht-card-content">
+            <h2>{{'SECURITY_SUB_TITLE' | translate}}</h2>
+            <h5>{{'SECURITY_COPY' | translate}}</h5>
+            <button class="ht-bt-primary" (click)='showAuthKey();'>{{'SECURITY_CTA' | translate}}</button>
+          </div>
         </section>
       </ion-col>
     </ion-row>

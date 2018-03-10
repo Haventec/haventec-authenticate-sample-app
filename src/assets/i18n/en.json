@@ -39,10 +39,10 @@
   "DEVICE_TITLE": "Devices",
   "DEVICE_ACTIVE": "this device",
 
-  "YOUR_SECURITY": "Your security",
-  "AUTHENTICATION_KEY": "Authentication key",
-  "AUTHENTICATION_KEY_EXPLANATION": "The Authentication key is unique to this application on this device. It automatically rotates every time you login. This greatly increases your security",
-  "SHOW": "Show",
+  "SECURITY_TITLE": "Security",
+  "SECURITY_SUB_TITLE": "Authentication key",
+  "SECURITY_COPY": "The Authentication key is unique to this application on this device. It automatically rotates every time you login. This greatly increases your security",
+  "SECURITY_CTA": "Show key",
 
   "WELCOME_BACK": "Welcome back",
   "ENTER_YOUR_PIN_TO_LOGIN": "Enter your PIN to login",
