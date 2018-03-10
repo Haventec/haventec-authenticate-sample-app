@@ -1,3 +1,19 @@
+.ht-card {
+  background-color: $colour-background-secondary;
+  border-top: .2rem solid $colour-background-tertiary;
+
+  .ht-card-title {
+    color: $colour-text-tertiary;
+    padding: .6rem 1rem;
+    margin: 0;
+  }
+
+  .ht-card-content {
+    padding: .6rem 2rem 2rem;
+    margin: 0;
+  }
+}
+
 .ht-card-info {
   background-color: $colour-background-tertiary;
   color: $colour-text-quaternary;

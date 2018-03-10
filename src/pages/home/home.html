@@ -40,42 +40,44 @@
 
     <ion-row>
       <ion-col>
-
         <section class="ht-section-profile">
           <div class="photo">
-            <button class="ht-bt-primary ht-bt-circular">{{'PHOTO_ACTION' | translate}}</button>
+            <button class="ht-bt-primary ht-bt-circular">{{'PROFILE_PHOTO_ACTION' | translate}}</button>
           </div>
           <div class="details">
             <h1 class="word-break">{{user.username}}</h1>
             <h5 class="word-break">{{user.email}}</h5>
           </div>
         </section>
+      </ion-col>
+    </ion-row>
 
-        <h3><ion-icon name="phone-portrait" class="icon-left-aligned"></ion-icon>{{'YOUR_DEVICES' | translate}}</h3>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <td>{{'NAME' | translate}}</td>
-              <td>{{'LAST_LOGIN' | translate}}</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr  *ngFor="let device of user.devices">
-              <td>{{device.deviceName}} <ng-container *ngIf="device.deviceUuid === thisDeviceUuid">(this device)</ng-container></td>
-              <td>{{device.lastLogin * 1000 | date:'short'}}</td>
-            </tr>
-          </tbody>
-        </table>
+    <ion-row>
+      <ion-col>
+        <section class="ht-section-devices ht-card">
+          <h2 class="ht-card-title">{{'DEVICE_TITLE' | translate}}</h2>
+          <div class="ht-card-content">
+            <div class="device" *ngFor="let device of user.devices">
+              <img class="bullet-point" src="/assets/icon/bullet-point.svg">
+              <h2>{{device.deviceName}} <ng-container *ngIf="device.deviceUuid === thisDeviceUuid"><span class="ht-text-small">({{'DEVICE_ACTIVE' | translate}})</span></ng-container></h2>
+              <h5>{{device.lastLogin * 1000 | date:'short'}}</h5>
+            </div>
+          </div>
+        </section>
+      </ion-col>
+    </ion-row>
 
+    <ion-row>
+      <ion-col>
         <h3><ion-icon name="lock" class="icon-left-aligned"></ion-icon>{{'YOUR_SECURITY' | translate}}</h3>
         <section class="section">
           <h5>{{'AUTHENTICATION_KEY' | translate}}</h5>
           <p>{{'AUTHENTICATION_KEY_EXPLANATION' | translate}}</p>
           <button ion-button type="button" (click)='showAuthKey();'>{{'SHOW' | translate}}</button>
         </section>
-
       </ion-col>
     </ion-row>
+
   </ion-grid>
 </ion-content>
 

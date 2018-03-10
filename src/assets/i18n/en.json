@@ -31,14 +31,14 @@
   "USER_EXPERIENCE_MESSAGE_SUBTEXT": "You have just used a simple 4 digit PIN to Authenticate but what’s so special about it:",
   "USER_EXPERIENCE_EXPLANATION_1": "First off that PIN you entered is only known to you, it is not stored anywhere, not on this device or on Haventec’s servers. Nothing for an attacker to steal.",
   "USER_EXPERIENCE_EXPLANATION_2": "When you first signed up, we auto registered this device and placed a unique Authentication Key on it. See your security below for more details.",
-  "USER_EXPERIENCE_EXPLANATION_3": "Every time you log in we rotate the authentication Key. It’s like having a locksmith change your locks every time you enter your house.",
+  "USER_EXPERIENCE_EXPLANATION_3": "Every time you log in we rotate the Authentication Key. It’s like having a locksmith change your locks every time you enter your house.",
   "USER_EXPERIENCE_EXPLANATION_4": "Two factor authentication (2FA) out of the box. 2FA is something you know, your PIN and something you have, your device and it’s unique Authentication Key.",
 
-  "PHOTO_ACTION": "Add photo",
+  "PROFILE_PHOTO_ACTION": "Add photo",
 
-  "YOUR_DEVICES": "Your devices",
-  "NAME": "Name",
-  "LAST_LOGIN": "Last login",
+  "DEVICE_TITLE": "Devices",
+  "DEVICE_ACTIVE": "this device",
+
   "YOUR_SECURITY": "Your security",
   "AUTHENTICATION_KEY": "Authentication key",
   "AUTHENTICATION_KEY_EXPLANATION": "The Authentication key is unique to this application on this device. It automatically rotates every time you login. This greatly increases your security",

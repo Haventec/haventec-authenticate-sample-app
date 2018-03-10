@@ -56,8 +56,29 @@
       margin: 2rem;
 
       h1, h5 {
-        color: $colour-text-primary;
         margin: 0;
+      }
+    }
+  }
+
+  .ht-section-devices {
+    h2, h5 {
+      margin: 0;
+    }
+
+    .device {
+      border-left: 0.2rem solid $colour-background-quaternary;
+      padding-bottom: 1rem;
+      padding-left: 1.4rem;
+      margin-left: 2rem;
+      position: relative;
+
+      .bullet-point {
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 0px;
+        left: -11px;
       }
     }
   }
