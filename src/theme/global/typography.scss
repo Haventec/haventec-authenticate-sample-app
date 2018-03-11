@@ -92,3 +92,16 @@ button {
   color: $colour-text-primary;
   font-weight: 500;
 }
+
+// Ionic class overwrites
+.item-select {
+  color: $colour-text-primary;
+}
+
+.alert-title, alert-radio-label, .alert-ios [aria-checked=true] .alert-radio-label, {
+  color: $colour-text-quaternary;
+}
+
+.alert-ios [aria-checked=true] .alert-radio-inner {
+  border-color: $colour-text-quaternary;
+}
