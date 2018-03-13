@@ -1,19 +1,31 @@
 <app-header></app-header>
 
-<ion-content padding>
+<ion-content>
   <ion-grid >
     <ion-row justify-content-center>
-      <ion-col col-auto>
+      <ion-col col-11>
 
-        <div class="logo" text-center padding-vertical>
-          <ion-img width="200" height="200" src="assets/img/{{appName}}-logo.png"></ion-img>
+        <section class="ht-sign-up">
+          <h1>{{'SIGN_UP_TITLE' | translate }}</h1>
+          <form [formGroup]="signUpFormGroup" (ngSubmit)="signUp()">
+            <ion-item>
+              <ion-label stacked>{{'FORM_LABEL_USERNAME' | translate}}</ion-label>
+              <ion-input type="text" formControlName="username" placeholder="{{'FORM_PLACEHOLDER_USERNAME' | translate}}" autofocus></ion-input>
+            </ion-item>
 
-          <h1 margin-vertical>{{'WELCOME_TO' | translate }} {{appName}}</h1>
-        </div>
+            <ion-item>
+              <ion-label stacked>{{'FORM_LABEL_EMAIL' | translate}}</ion-label>
+              <ion-input type="email" formControlName="email" placeholder="{{'FORM_PLACEHOLDER_EMAIL' | translate}}"></ion-input>
+            </ion-item>
 
-        <button ion-button full (click)='newUser();'>{{'NEW_USER' | translate}}</button>
+            <button class="ht-bt-primary" type="submit">{{'SIGN_UP_CTA' | translate}}</button>
+          </form>
+        </section>
 
-        <button ion-button full (click)='existingUser();'>{{'EXISTING_USER' | translate}}</button>
+        <section class="ht-existing-user">
+          <h1>{{'EXISTING_USER_TITLE' | translate }}</h1>
+          <button class="ht-bt-secondary"  full (click)='existingUser();'>{{'EXISTING_USER_CTA' | translate}}</button>
+        </section>
 
       </ion-col>
     </ion-row>

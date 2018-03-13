@@ -1,9 +1,23 @@
 form {
-  margin: 2.5rem 0 2.8rem;
+  margin: 1.8rem 0 2rem;
+
+  .text-input {
+    color: $colour-text-primary;
+    padding-left: 1rem;
+  }
+
+  .item-input {
+    margin-bottom: 1.6rem;
+  }
 }
 
 .pin-label {
   color: $label-md-text-color;
   font-size: 1.2rem;
   margin-bottom: 1rem;
+}
+
+// Ionic class overwrites
+.item-ios {
+  padding-left: 0;
 }

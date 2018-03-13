@@ -9,7 +9,6 @@ import { HaventecClient, HaventecClientFactory } from "@haventec/common-js";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { SignUpPage } from "../pages/sign-up/sign-up";
 import { LoginPage } from "../pages/login/login";
 import { ActivateAccountPage } from "../pages/activate-account/activate-account";
 import { ResetPinPage } from "../pages/reset-pin/reset-pin";
@@ -35,7 +34,6 @@ import { Http } from '@angular/http';
   declarations: [
     MyApp,
     HomePage,
-    SignUpPage,
     LoginPage,
     ActivateAccountPage,
     ResetPinPage,
@@ -62,7 +60,6 @@ import { Http } from '@angular/http';
   entryComponents: [
     MyApp,
     HomePage,
-    SignUpPage,
     LoginPage,
     ActivateAccountPage,
     ResetPinPage,

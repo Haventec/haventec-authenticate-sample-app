@@ -20,9 +20,16 @@
   "ADD_DEVICE_EXPLANATION": "As this is your first time using this device, you will need to add it to your account",
   "ENTER_YOUR_USERNAME": "Enter your username",
 
-  "WELCOME_TO": "Welcome to",
-  "NEW_USER": "New user",
-  "EXISTING_USER": "Existing user",
+  "SIGN_UP_TITLE": "Create an account",
+  "SIGN_UP_CTA": "Get started",
+
+  "FORM_LABEL_USERNAME": "Choose a username",
+  "FORM_LABEL_EMAIL": "Enter your email",
+  "FORM_PLACEHOLDER_USERNAME": "Username",
+  "FORM_PLACEHOLDER_EMAIL": "name@email.com",
+
+  "EXISTING_USER_TITLE": "Existing user?",
+  "EXISTING_USER_CTA": "Login",
 
   "WELCOME_MESSAGE": "Welcome to",
   "WELCOME_MESSAGE_SUBTEXT": "You have successfully logged in using Haventec Authenticate",
@@ -57,8 +64,6 @@
 
   "CREATE_AN_ACCOUNT": "Create an account",
   "CREATE_AN_ACCOUNT_NOTE": "As this is your first time here, we need a few details",
-  "ENTER_A_USERNAME": "Enter a username",
-  "ENTER_YOUR_EMAIL": "Enter your email",
   "CREATE_AN_ACCOUNT_BUTTON": "Create account",
 
   "UNKNOWN_DEVICE": "Unknown device",
