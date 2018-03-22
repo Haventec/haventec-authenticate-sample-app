@@ -1,6 +1,23 @@
 .ht-header {
   border-top: 2px solid $colour-background-tertiary;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  .ht-header-item {
+    flex: 1;
+    padding: 0 1rem;
+
+    &:nth-child(1){
+      text-align: left;
+    }
+    &:nth-child(2){
+      text-align: center;
+    }
+    &:nth-child(3){
+      text-align: right;
+    }
+  }
 
   .toolbar {
     padding: 0;
