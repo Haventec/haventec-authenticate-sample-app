@@ -10,11 +10,9 @@
   "ENTER_A_PIN": "Enter a PIN",
   "CREATE_MY_ACCOUNT": "Create my account",
 
-  "ACTIVATE_THIS_DEVICE": "Activate this device",
-  "EMAIL_SENT_NOTE": "an email has been sent to your inbox",
-  "CHECK_YOUR_EMAIL_AND_ACTIVATE_DEVICE": "Please check your email and enter the device activation code below",
-  "DEVICE_ACTIVATION_CODE": "Device activation code",
-  "ACTIVATE": "Activate",
+  "ACTIVATE_DEVICE_TITLE": "Almost done activating",
+  "ACTIVATE_DEVICE_SUBTEXT": "We have sent a 6 digit activation code to your email",
+  "ACTIVATE_DEVICE_CTA": "Activate",
 
   "ADD_DEVICE_TITLE_A": "You haven’t used",
   "ADD_DEVICE_TITLE_B": "on  this device",
@@ -27,8 +25,11 @@
   "FORM_LABEL_USERNAME": "Choose a username",
   "FORM_LABEL_EMAIL": "Enter your email",
   "FORM_LABEL_EXISTING_USERNAME": "Enter your username",
+  "FORM_LABEL_ACTIVATION_CODE": "6 digit activation code",
+  "FORM_LABEL_PIN": "Enter a 4 digit PIN",
   "FORM_PLACEHOLDER_USERNAME": "Username",
   "FORM_PLACEHOLDER_EMAIL": "name@email.com",
+  "FORM_PLACEHOLDER_ACTIVATION_CODE": "activation code",
 
   "EXISTING_USER_TITLE": "Existing user?",
   "EXISTING_USER_CTA": "Login",
