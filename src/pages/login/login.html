@@ -5,14 +5,16 @@
     <ion-row justify-content-center>
       <ion-col col-auto class="col-fixed">
 
-        <h1>{{'WELCOME_BACK' | translate}} {{username}}</h1>
-        <h3>{{'ENTER_YOUR_PIN_TO_LOGIN' | translate}}</h3>
+        <section class="ht-login">
+          <h1>{{'LOGIN_TITLE' | translate}} {{username}}</h1>
+          <h3>{{'LOGIN_SUBTEXT' | translate}}</h3>
 
-        <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
-          <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
-        </form>
+          <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+            <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
+          </form>
 
-        <h5 (click)='forgotPin();'>{{'FORGOT_YOUR_PIN' | translate}}</h5>
+          <h5><button class="ht-bt-inline" (click)='forgotPin();'>{{'RESET_PIN_LINK' | translate}}</button></h5>
+        </section>
 
       </ion-col>
     </ion-row>

@@ -69,6 +69,11 @@ p {
   line-height: 1.9rem;
 }
 
+a {
+  color: $colour-action-primary;
+  text-decoration: none;
+}
+
 button {
   color: $colour-text-quaternary;
   font-size: 1.6rem;
