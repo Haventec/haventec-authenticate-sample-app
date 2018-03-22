@@ -1,25 +1,22 @@
 <app-header></app-header>
 
-<ion-content padding>
+<ion-content>
   <ion-grid>
-    <ion-row justify-content-center class="page-margin">
+    <ion-row justify-content-center>
       <ion-col col-auto class="col-fixed">
 
-        <h1>{{'ADD_THIS_DEVICE' | translate}}</h1>
-        <p>{{'ADD_DEVICE_EXPLANATION' | translate}}</p>
+        <section class="ht-add-device">
+          <h1>{{'ADD_DEVICE_TITLE_A' | translate}} {{appName}} {{'ADD_DEVICE_TITLE_B' | translate}}</h1>
+          <p>{{'ADD_DEVICE_SUBTEXT' | translate}}</p>
 
-        <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
-
-          <ion-item>
-            <ion-label stacked icon-start><ion-icon name="person">
-               </ion-icon>{{'ENTER_YOUR_USERNAME' | translate}}</ion-label>
-            <ion-input type="text" formControlName="username" autofocus></ion-input>
-          </ion-item>
-
-          <button ion-button type="submit" [disabled]="!addDeviceFormGroup.valid"
-                  block margin-vertical>{{'ADD_THIS_DEVICE' | translate}}</button>
-
-        </form>
+          <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
+            <ion-item>
+              <ion-label stacked>{{'FORM_LABEL_EXISTING_USERNAME' | translate}}</ion-label>
+              <ion-input type="text" formControlName="username" placeholder="{{'FORM_PLACEHOLDER_USERNAME' | translate}}" autofocus></ion-input>
+            </ion-item>
+            <button class="ht-bt-primary" [disabled]="!addDeviceFormGroup.valid" type="submit">{{'ADD_DEVICE_CTA' | translate}}</button>
+          </form>
+        </section>
 
       </ion-col>
     </ion-row>

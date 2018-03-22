@@ -4,15 +4,17 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ActivateDevicePage } from '../activate-device/activate-device'
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
+import * as Constant from '../../constants/application.const';
 
 @Component({
-  selector: 'page-existing-user',
+  selector: 'page-add-device',
   templateUrl: 'add-device.html',
   providers: [AuthService]
 })
 export class AddDevicePage {
 
   private addDeviceFormGroup : FormGroup;
+  private appName: string;
 
   constructor(
     public navCtrl: NavController,
@@ -25,6 +27,8 @@ export class AddDevicePage {
     this.addDeviceFormGroup = this.formBuilder.group({
       username: ['', Validators.required]
     });
+
+    this.appName = Constant.APPLICATION_NAME;
   }
 
   addDevice(){

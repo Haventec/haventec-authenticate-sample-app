@@ -16,15 +16,17 @@
   "DEVICE_ACTIVATION_CODE": "Device activation code",
   "ACTIVATE": "Activate",
 
-  "ADD_THIS_DEVICE": "Add this device",
-  "ADD_DEVICE_EXPLANATION": "As this is your first time using this device, you will need to add it to your account",
-  "ENTER_YOUR_USERNAME": "Enter your username",
+  "ADD_DEVICE_TITLE_A": "You haven’t used",
+  "ADD_DEVICE_TITLE_B": "on  this device",
+  "ADD_DEVICE_SUBTEXT": "You need to authenticate this device by entering an activation code. Don’t worry this will only happen once per device.",
+  "ADD_DEVICE_CTA": "Send code",
 
   "SIGN_UP_TITLE": "Create an account",
   "SIGN_UP_CTA": "Get started",
 
   "FORM_LABEL_USERNAME": "Choose a username",
   "FORM_LABEL_EMAIL": "Enter your email",
+  "FORM_LABEL_EXISTING_USERNAME": "Enter your username",
   "FORM_PLACEHOLDER_USERNAME": "Username",
   "FORM_PLACEHOLDER_EMAIL": "name@email.com",
 
