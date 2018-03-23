@@ -28,11 +28,11 @@
   "FORM_LABEL_USERNAME": "Choose a username",
   "FORM_LABEL_EMAIL": "Enter your email",
   "FORM_LABEL_EXISTING_USERNAME": "Enter your username",
-  "FORM_LABEL_ACTIVATION_CODE": "6 digit activation code",
+  "FORM_LABEL_CODE": "6 digit activation code",
   "FORM_LABEL_PIN": "Enter a 4 digit PIN",
   "FORM_PLACEHOLDER_USERNAME": "Username",
   "FORM_PLACEHOLDER_EMAIL": "name@email.com",
-  "FORM_PLACEHOLDER_ACTIVATION_CODE": "activation code",
+  "FORM_PLACEHOLDER_CODE": "Enter your code here",
 
   "EXISTING_USER_TITLE": "Existing user?",
   "EXISTING_USER_CTA": "Login",
@@ -57,14 +57,14 @@
   "SECURITY_COPY": "The Authentication key is unique to this application on this device. It automatically rotates every time you login. This greatly increases your security",
   "SECURITY_CTA": "Show key",
 
+  "RESET_PIN_TITLE": "Reset your PIN",
+  "RESET_PIN_SUBTEXT": "Forgot your PIN? Don’t worry,  it happens to the best of us.",
+  "RESET_PIN_TEXT": "We have sent a 6 digit activation code to your email",
+  "RESET_PIN_CTA": "Reset PIN",
 
-  "RESET_PIN_LINK": "Forgot your PIN?",
-  "RESET_YOUR_PIN": "Reset your PIN",
-  "RESET_YOUR_PIN_NOTE_1": "We have sent a reset PIN code to your email address.",
-  "RESET_YOUR_PIN_NOTE_2": "To reset your PIN, please enter that code here",
-  "RESET_PIN_CODE": "Reset PIN code",
-  "ENTER_A_NEW_PIN": "Enter a new PIN",
-  "RESET_PIN": "Reset PIN",
+
+  "NAV_LOGIN_LINK": "Back to login",
+  "NAV_RESET_PIN_LINK": "Forgot your PIN?",
 
   "CREATE_AN_ACCOUNT": "Create an account",
   "CREATE_AN_ACCOUNT_NOTE": "As this is your first time here, we need a few details",

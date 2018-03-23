@@ -1,1 +1,10 @@
-page-reset-pin {}
+page-reset-pin {
+
+  .ht-reset-pin{
+    padding: 0 1.8rem;
+
+    h1, h3, h5 {
+      text-align: center;
+    }
+  }
+}

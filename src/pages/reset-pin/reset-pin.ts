@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 import { HaventecClient } from '@haventec/common-js';
 import { HomePage } from '../home/home';
+import { LoginPage } from "../login/login";
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
@@ -55,5 +56,9 @@ export class ResetPinPage {
         this.pageLoadingService.dismiss();
       }
     );
+  }
+
+  login() {
+    this.navCtrl.push(LoginPage);
   }
 }

@@ -7,12 +7,12 @@
 
         <section class="ht-activate-device">
           <h1>{{'ACTIVATE_DEVICE_TITLE' | translate}}</h1>
-          <p>{{'ACTIVATE_DEVICE_SUBTEXT' | translate}}</p>
+          <h3>{{'ACTIVATE_DEVICE_SUBTEXT' | translate}}</h3>
 
           <form [formGroup]="activateDeviceFormGroup" (ngSubmit)="activateDevice()">
             <ion-item>
-              <ion-label stacked>{{'FORM_LABEL_ACTIVATION_CODE' | translate}}</ion-label>
-              <ion-input type="number" formControlName="deviceActivationCode" placeholder="{{'FORM_PLACEHOLDER_ACTIVATION_CODE' | translate}}" autofocus></ion-input>
+              <ion-label stacked>{{'FORM_LABEL_CODE' | translate}}</ion-label>
+              <ion-input type="number" formControlName="deviceActivationCode" placeholder="{{'FORM_PLACEHOLDER_CODE' | translate}}" autofocus></ion-input>
             </ion-item>
 
             <ion-label class="pin-label">{{'FORM_LABEL_PIN' | translate}}</ion-label>
