@@ -2,13 +2,12 @@
   "MENU": "Menu",
   "RESET_THIS_APP": "Reset this App",
   "RESET_THIS_APP_EXPLANATION": "Resetting this app will clear the Authentication Key and User information from this device. Once reset you can re-add this device to an existing user by clicking ‘Login’ or you can ‘Create a new account’.",
-
   "SIGN_OUT": "Sign out",
-  "ACTIVATE_YOUR_ACCOUNT": "Active your account",
-  "PLEASE_ENTER_A_PIN": "please enter a PIN",
-  "PIN_EXPLANATION": "This PIN will be used each time you login",
-  "ENTER_A_PIN": "Enter a PIN",
-  "CREATE_MY_ACCOUNT": "Create my account",
+
+  "ACTIVATE_USER_TITLE": "Set your PIN",
+  "ACTIVATE_USER_TEXT": "This PIN is only known to you, it is not saved anywhere",
+  "ACTIVATE_USER_SUBTEXT": "This PIN will be used each time you login",
+  "ACTIVATE_USER_CTA": "Login",
 
   "ACTIVATE_DEVICE_TITLE": "Almost done activating",
   "ACTIVATE_DEVICE_SUBTEXT": "We have sent a 6 digit activation code to your email",

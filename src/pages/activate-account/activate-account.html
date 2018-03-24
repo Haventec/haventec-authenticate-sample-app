@@ -1,21 +1,18 @@
 <app-header></app-header>
 
-<ion-content padding>
+<ion-content>
   <ion-grid>
-    <ion-row justify-content-center class="page-margin">
-      <ion-col col-auto class="col-fixed">
+    <ion-row justify-content-center>
+      <ion-col col-auto class="col-fixed ht-page-narrow">
 
-        <h1>{{'ACTIVATE_YOUR_ACCOUNT' | translate}}</h1>
-        <p>{{username}}, {{'PLEASE_ENTER_A_PIN' | translate}}</p>
-        <p>{{'PIN_EXPLANATION' | translate}}</p>
+        <h1>{{'ACTIVATE_USER_TITLE' | translate}}</h1>
+        <h3>{{'ACTIVATE_USER_TEXT' | translate}}</h3>
+        <h5>{{'ACTIVATE_USER_SUBTEXT' | translate}}</h5>
 
         <form [formGroup]="activateAccountFormGroup" (ngSubmit)="activateAccount()">
-
-          <ion-label class="pin-label" icon-start><ion-icon name="lock"></ion-icon>{{'ENTER_A_PIN' | translate}}</ion-label>
+          <ion-label class="pin-label">{{'FORM_LABEL_PIN' | translate}}</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
-
-          <button ion-button type="submit" [disabled]="!activateAccountFormGroup.valid" block margin-vertical>{{'CREATE_MY_ACCOUNT' | translate}}</button>
-
+          <button class="ht-bt-primary" [disabled]="!activateAccountFormGroup.valid" type="submit">{{'ACTIVATE_USER_CTA' | translate}}</button>
         </form>
 
       </ion-col>
