@@ -1,15 +1,11 @@
 page-choose-user {
 
-  h1 {
-    text-align: center;
+  .ht-margin-top {
+    margin-top: 1.8rem;
   }
 
-  .ht-sign-up, .ht-existing-user {
-    padding: 0 1.8rem;
-  }
-
-  .ht-existing-user {
+  .ht-line {
     border-top: 0.1rem solid #fff;
-    padding-top: 0.8rem;
+    padding-top: 3.5rem;
   }
 }

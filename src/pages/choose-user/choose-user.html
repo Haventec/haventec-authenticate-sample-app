@@ -3,10 +3,9 @@
 <ion-content>
   <ion-grid >
     <ion-row justify-content-center>
-      <ion-col col-11>
+      <ion-col col-auto class="col-fixed ht-page-narrow">
 
-        <section class="ht-sign-up">
-          <h1>{{'SIGN_UP_TITLE' | translate }}</h1>
+          <h1 class="ht-margin-top">{{'SIGN_UP_TITLE' | translate }}</h1>
           <form [formGroup]="signUpFormGroup" (ngSubmit)="signUp()">
             <ion-item>
               <ion-label stacked>{{'FORM_LABEL_USERNAME' | translate}}</ion-label>
@@ -20,12 +19,14 @@
 
             <button class="ht-bt-primary" type="submit">{{'SIGN_UP_CTA' | translate}}</button>
           </form>
-        </section>
 
-        <section class="ht-existing-user">
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col col-auto class="col-fixed ht-page-narrow ht-line">
+
           <h1>{{'EXISTING_USER_TITLE' | translate }}</h1>
-          <button class="ht-bt-secondary"  full (click)='existingUser();'>{{'EXISTING_USER_CTA' | translate}}</button>
-        </section>
+          <button class="ht-bt-secondary" (click)='existingUser();'>{{'EXISTING_USER_CTA' | translate}}</button>
 
       </ion-col>
     </ion-row>
