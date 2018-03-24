@@ -18,16 +18,6 @@ html {
 $bold-medium:  500;
 $bold-demi:    600;
 
-.title {
-  color: $colour-text-tertiary;
-  font-size: 1.4rem;
-  font-weight: $bold-demi;
-  letter-spacing: 0.1rem;
-  line-height: 1.9rem;
-  margin: 1rem 0;
-  text-transform: uppercase;
-}
-
 h1 {
   color: $colour-text-primary;
   font-size: 2.8rem;
@@ -85,6 +75,16 @@ button {
   font-weight: $bold-demi;
   letter-spacing: 0.17rem;
   line-height: 2.2rem;
+  text-transform: uppercase;
+}
+
+.ht-title {
+  color: $colour-text-tertiary;
+  font-size: 1.4rem;
+  font-weight: $bold-demi;
+  letter-spacing: 0.1rem;
+  line-height: 1.9rem;
+  margin: 1rem 0;
   text-transform: uppercase;
 }
 
