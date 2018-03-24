@@ -3,18 +3,15 @@
 <ion-content>
   <ion-grid>
     <ion-row justify-content-center>
-      <ion-col col-auto class="col-fixed">
+      <ion-col col-auto class="col-fixed ht-page-narrow">
 
-        <section class="ht-login">
-          <h1>{{'LOGIN_TITLE' | translate}} {{username}}</h1>
-          <h3>{{'LOGIN_SUBTEXT' | translate}}</h3>
+        <h1>{{'LOGIN_TITLE' | translate}} {{username}}</h1>
+        <h3>{{'LOGIN_SUBTEXT' | translate}}</h3>
+        <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+          <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
+        </form>
 
-          <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
-            <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
-          </form>
-
-          <h5><button class="ht-bt-inline" (click)='forgotPin();'>{{'NAV_RESET_PIN_LINK' | translate}}</button></h5>
-        </section>
+        <h5><button class="ht-bt-inline" (click)='forgotPin();'>{{'NAV_RESET_PIN_LINK' | translate}}</button></h5>
 
       </ion-col>
     </ion-row>
