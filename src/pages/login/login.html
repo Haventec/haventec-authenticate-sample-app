@@ -6,7 +6,7 @@
       <ion-col col-auto class="col-fixed ht-page-narrow">
 
         <h1>{{'LOGIN_TITLE' | translate}} {{username}}</h1>
-        <h3>{{'LOGIN_SUBTEXT' | translate}}</h3>
+        <h3>{{'LOGIN_TEXT' | translate}}</h3>
         <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
         </form>

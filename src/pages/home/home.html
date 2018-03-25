@@ -6,8 +6,8 @@
       <ion-col>
 
         <section class="ht-section-welcome">
-          <h1>{{'WELCOME_MESSAGE' | translate}} {{appName}}, {{user.username}}</h1>
-          <p>{{'WELCOME_MESSAGE_SUBTEXT' | translate}}</p>
+          <h1>{{'WELCOME_TEXT' | translate}} {{appName}}, {{user.username}}</h1>
+          <p>{{'WELCOME_SUBTEXT' | translate}}</p>
         </section>
 
       </ion-col>
@@ -16,8 +16,8 @@
     <section class="ht-section-ux-explanation ht-card-info">
       <ion-row>
         <ion-col col-12 col-md class="message">
-            <h2>{{'USER_EXPERIENCE_MESSAGE' | translate}}</h2>
-            <h5>{{'USER_EXPERIENCE_MESSAGE_SUBTEXT' | translate}}</h5>
+            <h2>{{'USER_EXPERIENCE_TEXT' | translate}}</h2>
+            <h5>{{'USER_EXPERIENCE_SUBTEXT' | translate}}</h5>
         </ion-col>
         <ion-col class="explanation" col-12 col-md>
           <img class="icon" src="/assets/icon/lock-icon.svg">
@@ -42,7 +42,7 @@
       <ion-col>
         <section class="ht-section-profile">
           <div class="photo">
-            <button class="ht-bt-primary ht-bt-circular">{{'PROFILE_PHOTO_ACTION' | translate}}</button>
+            <button class="ht-bt-primary ht-bt-circular">{{'PROFILE_PHOTO_CTA' | translate}}</button>
           </div>
           <div class="details">
             <h1 class="word-break">{{user.username}}</h1>
@@ -73,7 +73,7 @@
           <h2 class="ht-card-title">{{'SECURITY_TITLE' | translate}}</h2>
           <div class="ht-card-content">
             <h2>{{'SECURITY_SUB_TITLE' | translate}}</h2>
-            <h5>{{'SECURITY_COPY' | translate}}</h5>
+            <h5>{{'SECURITY_TEXT' | translate}}</h5>
             <button class="ht-bt-primary" (click)='showAuthKey();'>{{'SECURITY_CTA' | translate}}</button>
           </div>
         </section>
