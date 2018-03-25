@@ -16,20 +16,6 @@
     text-align: center;
     background-color: $colour-background-primary;
   }
-
-  @include media-breakpoint-up('sm') {
-    justify-content: center;
-
-    .pin-item {
-      margin: 0 2rem;
-    }
-    .pin-item:first-child {
-      margin: 0 2rem 0 0;
-    }
-    .pin-item:last-child {
-      margin: 0 0 0 2rem;
-    }
-  }
 }
 
 

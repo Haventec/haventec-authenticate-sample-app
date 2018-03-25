@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HaventecClient } from '@haventec/common-js';
+import { ChooseUserPage } from '../choose-user/choose-user';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
@@ -55,5 +56,9 @@ export class ActivateDevicePage {
         this.pageLoadingService.dismiss();
       }
     );
+  }
+
+  back() {
+    this.navCtrl.push(ChooseUserPage);
   }
 }

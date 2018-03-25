@@ -20,6 +20,8 @@
           <button class="ht-bt-primary" [disabled]="!activateDeviceFormGroup.valid" type="submit">{{'ACTIVATE_DEVICE_CTA' | translate}}</button>
         </form>
 
+        <h5><button class="ht-bt-inline" (click)='back();'>{{'NAV_BACK_LINK' | translate}}</button></h5>
+
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActivateDevicePage } from '../activate-device/activate-device'
+import { ChooseUserPage } from '../choose-user/choose-user'
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 import * as Constant from '../../constants/application.const';
@@ -47,6 +48,9 @@ export class AddDevicePage {
         this.pageLoadingService.dismiss();
       }
     );
+  }
 
+  back() {
+    this.navCtrl.push(ChooseUserPage);
   }
 }

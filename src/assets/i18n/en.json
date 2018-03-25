@@ -64,6 +64,7 @@
 
   "NAV_LOGIN_LINK": "Back to login",
   "NAV_RESET_PIN_LINK": "Forgot your PIN?",
+  "NAV_BACK_LINK": "Back",
 
   "CREATE_AN_ACCOUNT": "Create an account",
   "CREATE_AN_ACCOUNT_NOTE": "As this is your first time here, we need a few details",
