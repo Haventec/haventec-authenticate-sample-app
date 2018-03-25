@@ -23,13 +23,13 @@ export class LogService {
   error(errorObj: any, obj?: any) {
     let buttonName = 'Dismiss';
     let errorMsg = this.formatError(errorObj);
-    this.translate.get('DISMISS_BUTTON').subscribe(
+    this.translate.get('ERROR_CTA').subscribe(
       value => {
         buttonName = value;
       }
     )
 
-    this.translate.get('GENERAL_ERROR').subscribe(
+    this.translate.get('ERROR_GENERAL').subscribe(
       value => {
         let alert = this.alertCtrl.create({title: value, subTitle: errorMsg, buttons: [buttonName]});
         alert.present();

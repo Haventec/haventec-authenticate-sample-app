@@ -1,28 +1,7 @@
 {
-  "MENU": "Menu",
-  "RESET_THIS_APP": "Reset this App",
-  "RESET_THIS_APP_EXPLANATION": "Resetting this app will clear the Authentication Key and User information from this device. Once reset you can re-add this device to an existing user by clicking ‘Login’ or you can ‘Create a new account’.",
-  "SIGN_OUT": "Sign out",
-
-  "ACTIVATE_USER_TITLE": "Set your PIN",
-  "ACTIVATE_USER_TEXT": "This PIN is only known to you, it is not saved anywhere",
-  "ACTIVATE_USER_SUBTEXT": "This PIN will be used each time you login",
-  "ACTIVATE_USER_CTA": "Login",
-
-  "ACTIVATE_DEVICE_TITLE": "Almost done activating",
-  "ACTIVATE_DEVICE_SUBTEXT": "We have sent a 6 digit activation code to your email",
-  "ACTIVATE_DEVICE_CTA": "Activate",
-
-  "ADD_DEVICE_TITLE_A": "You haven’t used",
-  "ADD_DEVICE_TITLE_B": "on  this device",
-  "ADD_DEVICE_SUBTEXT": "You need to authenticate this device by entering an activation code. Don’t worry this will only happen once per device.",
-  "ADD_DEVICE_CTA": "Send code",
-
-  "LOGIN_TITLE": "Welcome back",
-  "LOGIN_SUBTEXT": "Enter your PIN to login",
-
-  "SIGN_UP_TITLE": "Create an account",
-  "SIGN_UP_CTA": "Get started",
+  "NAV_BACK_LINK": "Back",
+  "NAV_LOGIN_LINK": "Back to login",
+  "NAV_RESET_PIN_LINK": "Forgot your PIN?",
 
   "FORM_LABEL_USERNAME": "Choose a username",
   "FORM_LABEL_EMAIL": "Enter your email",
@@ -33,8 +12,38 @@
   "FORM_PLACEHOLDER_EMAIL": "name@email.com",
   "FORM_PLACEHOLDER_CODE": "Enter your code here",
 
+  "SIDE_MENU_TITLE": "Menu",
+  "SIDE_MENU_RESET_CTA": "Reset this App",
+  "SIDE_MENU_RESET_TEXT": "Resetting this app will clear the Authentication Key and User information from this device. Once reset you can re-add this device to an existing user by clicking ‘Login’ or you can ‘Create a new account’.",
+  "SIDE_MENU_LOGOUT_CTA": "Sign out",
+
+  "ACTIVATE_DEVICE_TITLE": "Almost done activating",
+  "ACTIVATE_DEVICE_SUBTEXT": "We have sent a 6 digit activation code to your email",
+  "ACTIVATE_DEVICE_CTA": "Activate",
+
+  "ACTIVATE_USER_TITLE": "Set your PIN",
+  "ACTIVATE_USER_TEXT": "This PIN is only known to you, it is not saved anywhere",
+  "ACTIVATE_USER_SUBTEXT": "This PIN will be used each time you login",
+  "ACTIVATE_USER_CTA": "Login",
+
+  "ADD_DEVICE_TITLE_A": "You haven’t used",
+  "ADD_DEVICE_TITLE_B": "on  this device",
+  "ADD_DEVICE_SUBTEXT": "You need to authenticate this device by entering an activation code. Don’t worry this will only happen once per device.",
+  "ADD_DEVICE_CTA": "Send code",
+
   "EXISTING_USER_TITLE": "Existing user?",
   "EXISTING_USER_CTA": "Login",
+
+  "LOGIN_TITLE": "Welcome back",
+  "LOGIN_SUBTEXT": "Enter your PIN to login",
+
+  "RESET_PIN_TITLE": "Reset your PIN",
+  "RESET_PIN_SUBTEXT": "Forgot your PIN? Don’t worry,  it happens to the best of us.",
+  "RESET_PIN_TEXT": "We have sent a 6 digit activation code to your email",
+  "RESET_PIN_CTA": "Reset PIN",
+
+  "SIGN_UP_TITLE": "Create an account",
+  "SIGN_UP_CTA": "Get started",
 
   "WELCOME_MESSAGE": "Welcome to",
   "WELCOME_MESSAGE_SUBTEXT": "You have successfully logged in using Haventec Authenticate",
@@ -56,22 +65,6 @@
   "SECURITY_COPY": "The Authentication key is unique to this application on this device. It automatically rotates every time you login. This greatly increases your security",
   "SECURITY_CTA": "Show key",
 
-  "RESET_PIN_TITLE": "Reset your PIN",
-  "RESET_PIN_SUBTEXT": "Forgot your PIN? Don’t worry,  it happens to the best of us.",
-  "RESET_PIN_TEXT": "We have sent a 6 digit activation code to your email",
-  "RESET_PIN_CTA": "Reset PIN",
-
-
-  "NAV_LOGIN_LINK": "Back to login",
-  "NAV_RESET_PIN_LINK": "Forgot your PIN?",
-  "NAV_BACK_LINK": "Back",
-
-  "CREATE_AN_ACCOUNT": "Create an account",
-  "CREATE_AN_ACCOUNT_NOTE": "As this is your first time here, we need a few details",
-  "CREATE_AN_ACCOUNT_BUTTON": "Create account",
-
-  "UNKNOWN_DEVICE": "Unknown device",
-
-  "GENERAL_ERROR": "Sorry an error occurred",
-  "DISMISS_BUTTON": "Dismiss"
+  "ERROR_GENERAL": "Sorry an error occurred",
+  "ERROR_CTA": "Dismiss"
 }
