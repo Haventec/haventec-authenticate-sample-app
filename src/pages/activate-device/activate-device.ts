@@ -59,6 +59,6 @@ export class ActivateDevicePage {
   }
 
   back() {
-    this.navCtrl.push(ChooseUserPage);
+    this.navCtrl.setRoot(ChooseUserPage);
   }
 }

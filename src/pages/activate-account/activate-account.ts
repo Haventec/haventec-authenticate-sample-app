@@ -57,6 +57,6 @@ export class ActivateAccountPage {
   }
 
   back() {
-    this.navCtrl.push(ChooseUserPage);
+    this.navCtrl.setRoot(ChooseUserPage);
   }
 }

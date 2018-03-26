@@ -59,6 +59,6 @@ export class ResetPinPage {
   }
 
   login() {
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.setRoot(LoginPage);
   }
 }

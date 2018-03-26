@@ -68,7 +68,7 @@ export class LoginPage {
     this.authService.forgotPin().then(
       data => {
         this.pageLoadingService.dismiss();
-        this.navCtrl.push(ResetPinPage);
+        this.navCtrl.setRoot(ResetPinPage);
       },
       err => {
         this.pageLoadingService.dismiss();

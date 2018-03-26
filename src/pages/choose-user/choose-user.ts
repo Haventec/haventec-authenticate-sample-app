@@ -42,7 +42,7 @@ export class ChooseUserPage {
     this.authService.signUpUser(username, email).then(
       data => {
         this.pageLoadingService.dismiss();
-        this.navCtrl.push(ActivateAccountPage, {
+        this.navCtrl.setRoot(ActivateAccountPage, {
           activationToken: data.activationToken
         });
       },
@@ -54,6 +54,6 @@ export class ChooseUserPage {
 
   existingUser() {
     const self: any = this;
-    self.navCtrl.push(AddDevicePage);
+    self.navCtrl.setRoot(AddDevicePage);
   }
 }

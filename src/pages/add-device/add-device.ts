@@ -41,8 +41,7 @@ export class AddDevicePage {
     this.authService.addDevice(username).then(
       data => {
         this.pageLoadingService.dismiss();
-
-        this.navCtrl.push(ActivateDevicePage);
+        this.navCtrl.setRoot(ActivateDevicePage);
       },
       err => {
         this.pageLoadingService.dismiss();
@@ -51,6 +50,6 @@ export class AddDevicePage {
   }
 
   back() {
-    this.navCtrl.push(ChooseUserPage);
+    this.navCtrl.setRoot(ChooseUserPage);
   }
 }
