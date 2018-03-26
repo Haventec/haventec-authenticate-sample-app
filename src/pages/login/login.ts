@@ -10,7 +10,7 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 import * as Constant from '../../constants/application.const';
 
 @Component({
-  selector: 'page-login',
+  selector: 'ht-page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {

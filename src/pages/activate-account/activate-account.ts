@@ -8,7 +8,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
-  selector: 'page-activate-account',
+  selector: 'ht-page-activate-account',
   templateUrl: 'activate-account.html',
 })
 export class ActivateAccountPage {

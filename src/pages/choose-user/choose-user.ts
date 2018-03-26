@@ -8,7 +8,7 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 import * as Constant from '../../constants/application.const';
 
 @Component({
-  selector: 'page-choose-user',
+  selector: 'ht-page-choose-user',
   templateUrl: 'choose-user.html',
   providers: [AuthService]
 })

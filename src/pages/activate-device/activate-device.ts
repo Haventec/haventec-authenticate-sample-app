@@ -8,7 +8,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
-  selector: 'page-activate-device',
+  selector: 'ht-page-activate-device',
   templateUrl: 'activate-device.html',
 })
 export class ActivateDevicePage {

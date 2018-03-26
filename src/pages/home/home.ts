@@ -6,7 +6,7 @@ import { UserModel } from '../../models/user';
 import * as Constant from '../../constants/application.const';
 
 @Component({
-  selector: 'page-home',
+  selector: 'ht-page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {

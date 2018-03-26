@@ -8,7 +8,7 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 import * as Constant from '../../constants/application.const';
 
 @Component({
-  selector: 'page-add-device',
+  selector: 'ht-page-add-device',
   templateUrl: 'add-device.html',
   providers: [AuthService]
 })

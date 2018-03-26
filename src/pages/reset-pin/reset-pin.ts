@@ -8,7 +8,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
-  selector: 'page-reset-pin',
+  selector: 'ht-page-reset-pin',
   templateUrl: 'reset-pin.html',
 })
 export class ResetPinPage {
