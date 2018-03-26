@@ -1,3 +1,25 @@
+.app-root {
+  background-color: $colour-background-secondary;
+}
+
+.ion-page {
+
+  @include media-breakpoint-up('xl') {
+    width: 65rem;
+    float: right;
+    position: relative;
+  }
+}
+
+page-home.ion-page {
+
+  @include media-breakpoint-up('xl') {
+    float: none;
+    width: 102.4rem;
+    margin: 0 auto;
+  }
+}
+
 // Pushes the page content below the header
 .fixed-content, .scroll-content {
   margin-top: 4.4rem;
@@ -7,9 +29,6 @@
   }
 }
 
-.col-fixed {
-  width: 33rem;
-}
 
 .page-margin {
   @include media-breakpoint-up('md') {
