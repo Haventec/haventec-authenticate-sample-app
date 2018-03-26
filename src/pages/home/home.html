@@ -1,13 +1,13 @@
 <app-header></app-header>
 
-<ion-content class="ht-page-home" padding>
+<ion-content class="ht-page-home">
   <ion-grid >
     <ion-row>
       <ion-col>
 
         <section class="ht-section-welcome">
           <h1>{{'WELCOME_TEXT' | translate}} {{appName}}, {{user.username}}</h1>
-          <p>{{'WELCOME_SUBTEXT' | translate}}</p>
+          <h3>{{'WELCOME_SUBTEXT' | translate}}</h3>
         </section>
 
       </ion-col>
@@ -53,7 +53,7 @@
     </ion-row>
 
     <ion-row>
-      <ion-col>
+      <ion-col col-12 col-md-6>
         <section class="ht-section-devices ht-card">
           <h2 class="ht-card-title">{{'DEVICE_TITLE' | translate}}</h2>
           <div class="ht-card-content">
@@ -65,10 +65,7 @@
           </div>
         </section>
       </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
+      <ion-col col-12 col-md-6>
         <section class="ht-section-security ht-card">
           <h2 class="ht-card-title">{{'SECURITY_TITLE' | translate}}</h2>
           <div class="ht-card-content">
@@ -82,4 +79,3 @@
 
   </ion-grid>
 </ion-content>
-
