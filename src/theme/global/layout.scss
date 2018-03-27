@@ -1,5 +1,9 @@
 .app-root {
   background-color: $colour-background-secondary;
+  background-image: url('/assets/img/sunset.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right bottom;
 }
 
 .ion-page {

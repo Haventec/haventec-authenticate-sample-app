@@ -11,7 +11,7 @@
         <form [formGroup]="activateDeviceFormGroup" (ngSubmit)="activateDevice()">
           <ion-item>
             <ion-label stacked>{{'FORM_LABEL_CODE' | translate}}</ion-label>
-            <ion-input type="number" formControlName="deviceActivationCode" placeholder="{{'FORM_PLACEHOLDER_CODE' | translate}}" autofocus></ion-input>
+            <ion-input type="number" formControlName="deviceActivationCode" autofocus></ion-input>
           </ion-item>
 
           <ion-label class="pin-label">{{'FORM_LABEL_PIN' | translate}}</ion-label>

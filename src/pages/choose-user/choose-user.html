@@ -9,12 +9,12 @@
           <form [formGroup]="signUpFormGroup" (ngSubmit)="signUp()">
             <ion-item>
               <ion-label stacked>{{'FORM_LABEL_USERNAME' | translate}}</ion-label>
-              <ion-input type="text" formControlName="username" placeholder="{{'FORM_PLACEHOLDER_USERNAME' | translate}}" autofocus></ion-input>
+              <ion-input type="text" formControlName="username" autofocus></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label stacked>{{'FORM_LABEL_EMAIL' | translate}}</ion-label>
-              <ion-input type="email" formControlName="email" placeholder="{{'FORM_PLACEHOLDER_EMAIL' | translate}}"></ion-input>
+              <ion-input type="email" formControlName="email"></ion-input>
             </ion-item>
 
             <button class="ht-bt-primary" type="submit">{{'SIGN_UP_CTA' | translate}}</button>

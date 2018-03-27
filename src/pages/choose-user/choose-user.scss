@@ -8,4 +8,10 @@ ht-page-choose-user {
     border-top: 0.1rem solid #fff;
     padding-top: 3.5rem;
   }
+
+  @include media-breakpoint-down('lg') {
+    .content, .content-md, form .item-input {
+      background-color: transparent;
+    }
+  }
 }

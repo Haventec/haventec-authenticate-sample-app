@@ -7,4 +7,11 @@ ht-page-login {
   .pin-input {
     margin-top: 3.5rem;
   }
+
+  @include media-breakpoint-down('lg') {
+
+    .content, .content-md, form .item-input {
+      background-color: transparent;
+    }
+  }
 }

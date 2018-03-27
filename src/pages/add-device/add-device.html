@@ -11,7 +11,7 @@
         <form [formGroup]="addDeviceFormGroup" (ngSubmit)="addDevice()">
           <ion-item>
             <ion-label stacked>{{'FORM_LABEL_EXISTING_USERNAME' | translate}}</ion-label>
-            <ion-input type="text" formControlName="username" placeholder="{{'FORM_PLACEHOLDER_USERNAME' | translate}}" autofocus></ion-input>
+            <ion-input type="text" formControlName="username" autofocus></ion-input>
           </ion-item>
           <button class="ht-bt-primary" [disabled]="!addDeviceFormGroup.valid" type="submit">{{'ADD_DEVICE_CTA' | translate}}</button>
         </form>
