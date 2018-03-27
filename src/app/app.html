@@ -2,7 +2,7 @@
   <div class="ht-side-menu">
 
     <div class="header">
-      <h1 class="title">{{'SIDE_MENU_TITLE' | translate }}</h1>
+      <h1 class="ht-title">{{'SIDE_MENU_TITLE' | translate }}</h1>
     </div>
 
     <button class="ht-bt-secondary" menuClose (click)='logout()'>{{'SIDE_MENU_LOGOUT_CTA' | translate}}</button>
@@ -11,15 +11,15 @@
 
     <p class="ht-text-small">{{'SIDE_MENU_RESET_TEXT' | translate}}</p>
 
-    <ion-list>
-      <ion-item>
-        <ion-label>Choose language</ion-label>
-        <ion-select [(ngModel)]="language" (ionChange)="setLang($event)">
-          <ion-option value="en">English</ion-option>
-          <ion-option value="es">Spanish</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
+    <!--<ion-list>-->
+      <!--<ion-item>-->
+        <!--<ion-label>Choose language</ion-label>-->
+        <!--<ion-select [(ngModel)]="language" (ionChange)="setLang($event)">-->
+          <!--<ion-option value="en">English</ion-option>-->
+          <!--<ion-option value="es">Spanish</ion-option>-->
+        <!--</ion-select>-->
+      <!--</ion-item>-->
+    <!--</ion-list>-->
 
   </div>
 </ion-menu>
