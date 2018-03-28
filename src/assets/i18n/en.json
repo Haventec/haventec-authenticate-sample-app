@@ -27,7 +27,7 @@
   "ACTIVATE_USER_CTA": "Login",
 
   "ADD_DEVICE_TITLE_A": "You haven’t used",
-  "ADD_DEVICE_TITLE_B": "on  this device",
+  "ADD_DEVICE_TITLE_B": "on this device",
   "ADD_DEVICE_TEXT": "You need to authenticate this device by entering an activation code. Don’t worry this will only happen once per device.",
   "ADD_DEVICE_CTA": "Send code",
 
@@ -38,7 +38,7 @@
   "LOGIN_TEXT": "Enter your PIN to login",
 
   "RESET_PIN_TITLE": "Reset your PIN",
-  "RESET_PIN_TEXT": "Forgot your PIN? Don’t worry,  it happens to the best of us.",
+  "RESET_PIN_TEXT": "Forgot your PIN? Don’t worry, it happens to the best of us.",
   "RESET_PIN_SUBTEXT": "We have sent a 6 digit activation code to your email",
   "RESET_PIN_CTA": "Reset PIN",
 
@@ -48,7 +48,7 @@
   "WELCOME_TEXT": "Welcome to",
   "WELCOME_SUBTEXT": "You have successfully logged in using Haventec Authenticate",
 
-  "USER_EXPERIENCE_TEXT": "Did you enjoy that quick  authentication?",
+  "USER_EXPERIENCE_TEXT": "Did you enjoy that quick authentication?",
   "USER_EXPERIENCE_SUBTEXT": "You have just used a simple 4 digit PIN to Authenticate but what’s so special about it:",
   "USER_EXPERIENCE_EXPLANATION_1": "First off that PIN you entered is only known to you, it is not stored anywhere, not on this device or on Haventec’s servers. Nothing for an attacker to steal.",
   "USER_EXPERIENCE_EXPLANATION_2": "When you first signed up, we auto registered this device and placed a unique Authentication Key on it. See your security below for more details.",
