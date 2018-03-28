@@ -20,19 +20,19 @@
             <h5>{{'USER_EXPERIENCE_SUBTEXT' | translate}}</h5>
         </ion-col>
         <ion-col class="explanation" col-12 col-md>
-          <img class="icon" src="/assets/icon/lock-icon.svg">
+          <img class="icon" src="./assets/icon/lock-icon.svg">
           <h6 class="text">{{'USER_EXPERIENCE_EXPLANATION_1' | translate}}</h6>
         </ion-col>
         <ion-col class="explanation" col-12 col-md>
-          <img class="icon" src="/assets/icon/screen-icon.svg">
+          <img class="icon" src="./assets/icon/screen-icon.svg">
           <h6 class="text">{{'USER_EXPERIENCE_EXPLANATION_2' | translate}}</h6>
         </ion-col>
         <ion-col class="explanation" col-12 col-md>
-          <img class="icon" src="/assets/icon/refresh-lock-icon.svg">
+          <img class="icon" src="./assets/icon/refresh-lock-icon.svg">
           <h6 class="text">{{'USER_EXPERIENCE_EXPLANATION_3' | translate}}</h6>
         </ion-col>
         <ion-col class="explanation" col-12 col-md>
-          <img class="icon" src="/assets/icon/key-in-phone-icon.svg">
+          <img class="icon" src="./assets/icon/key-in-phone-icon.svg">
           <h6 class="text">{{'USER_EXPERIENCE_EXPLANATION_4' | translate}}</h6>
         </ion-col>
       </ion-row>
@@ -58,7 +58,7 @@
           <h2 class="ht-card-title">{{'DEVICE_TITLE' | translate}}</h2>
           <div class="ht-card-content">
             <div class="device" *ngFor="let device of user.devices">
-              <img class="bullet-point" src="/assets/icon/bullet-point.svg">
+              <img class="bullet-point" src="./assets/icon/bullet-point.svg">
               <h2>{{device.deviceName}} <ng-container *ngIf="device.deviceUuid === thisDeviceUuid"><span class="ht-text-small">({{'DEVICE_ACTIVE' | translate}})</span></ng-container></h2>
               <h5>{{device.lastLogin * 1000 | date:'short'}}</h5>
             </div>
