@@ -9,6 +9,12 @@ html {
   }
 
   @include media-breakpoint-up('md') {
+    /*
+       Mobile base font size is 14px with the html tag font-size set to 62.5%, so 1.4rem = 14px;
+       For Desktop we increase the base font to 16px, now the html tag font-size is set to 71.4287%, so 1.4rem = 16px;
+       It is recommended to design mobile first to make your calculations easier.
+    */
+
     // Creates a base font of 16px
     font-size: 71.4287%;
   }
