@@ -6,7 +6,7 @@ import { UserModel } from '../../models/user';
     selector: 'ht-devices',
 
 })
-export class Devices{
+export class Devices {
 
   @Input() user: UserModel;
 
