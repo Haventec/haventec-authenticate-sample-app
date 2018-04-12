@@ -17,6 +17,7 @@ import { ChooseUserPage } from "../pages/choose-user/choose-user";
 import { AddDevicePage } from "../pages/add-device/add-device";
 
 import { PinInput } from "../components/pin-input/pin-input";
+import { Devices } from "../components/ht-devices/ht-devices";
 import { AppHeader } from "../components/app-header/app-header";
 
 import { HttpService } from '../providers/http-service/http-service';
@@ -41,6 +42,7 @@ import { Http } from '@angular/http';
     ChooseUserPage,
     AddDevicePage,
     PinInput,
+    Devices,
     AppHeader
   ],
   imports: [
@@ -67,6 +69,7 @@ import { Http } from '@angular/http';
     ChooseUserPage,
     AddDevicePage,
     PinInput,
+    Devices,
     AppHeader
   ],
   providers: [

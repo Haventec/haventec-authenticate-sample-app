@@ -54,16 +54,7 @@
 
     <ion-row>
       <ion-col col-12 col-md-6>
-        <section class="ht-section-devices ht-card">
-          <h2 class="ht-card-title">{{'DEVICE_TITLE' | translate}}</h2>
-          <div class="ht-card-content">
-            <div class="device" *ngFor="let device of user.devices">
-              <img class="bullet-point" src="./assets/icon/bullet-point.svg">
-              <h2>{{device.deviceName}} <ng-container *ngIf="device.deviceUuid === thisDeviceUuid"><span class="ht-text-small">({{'DEVICE_ACTIVE' | translate}})</span></ng-container></h2>
-              <h5>{{device.lastLogin * 1000 | date:'short'}}</h5>
-            </div>
-          </div>
-        </section>
+        <ht-devices [user]="user"></ht-devices>
       </ion-col>
       <ion-col col-12 col-md-6>
         <section class="ht-section-security ht-card">
