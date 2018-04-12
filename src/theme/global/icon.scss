@@ -16,6 +16,11 @@
   padding-left: 1rem;
 }
 
+ion-spinner *, .spinner-md-crescent circle {
+  stroke: $colour-text-primary;
+}
+
 .ht-alert {
   color: map-get($colors, danger);
 }
+

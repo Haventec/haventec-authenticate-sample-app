@@ -3,6 +3,11 @@
     margin: 0;
   }
 
+  ion-spinner {
+    display: block;
+    margin: 3rem auto;
+  }
+
   .device {
     border-left: 0.2rem solid $colour-background-quaternary;
     padding-bottom: 1rem;
