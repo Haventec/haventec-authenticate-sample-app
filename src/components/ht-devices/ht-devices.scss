@@ -20,13 +20,20 @@
       height: 2rem;
       position: absolute;
       top: 0px;
-      left: -11px;
+      left: -1.1rem;
     }
 
-    .icon {
+    .ht-bt-icon-lock, .ht-bt-icon-delete {
       position: absolute;
-      top: 6px;
-      right: 20px;
+      top: .6rem;
+    }
+
+    .ht-bt-icon-lock {
+      right: 5rem;
+    }
+
+    .ht-bt-icon-delete {
+      right: 1rem;
     }
   }
 }
