@@ -4,8 +4,7 @@ import { UserModel } from '../../models/user';
 
 @Component({
     templateUrl: 'ht-devices.html',
-    selector: 'ht-devices',
-
+    selector: 'ht-devices'
 })
 export class Devices {
 
