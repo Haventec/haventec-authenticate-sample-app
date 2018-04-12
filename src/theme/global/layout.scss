@@ -1,9 +1,14 @@
 .app-root {
   background-color: $colour-background-secondary;
-  background-image: url('../assets/img/sunset.jpg');
+  background-image: url('../assets/img/sdg-background.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right bottom;
+  background-size: unset;
+  background-position: top center;
+
+  @include media-breakpoint-up('xl') {
+    background-size: cover;
+    background-position: right bottom;
+  }
 }
 
 .ion-page {

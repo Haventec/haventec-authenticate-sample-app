@@ -22,19 +22,26 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-$colour-action-primary:                  #F1A920;
-$colour-action-secondary:                #383C4A;
-$colour-action-tertiary:                 #4498D4;
+$colour-one:    #FDBD2D;
+$colour-two:    #383C4A;
+$colour-three:  #66BCBC;
+$colour-four:   #091E33;
+$colour-five:   #FFFFFF;
+$colour-six:    #CFCFCF;
 
-$colour-background-primary:              #272A32;
-$colour-background-secondary:            #383C4A;
-$colour-background-tertiary:             #4496D2;
-$colour-background-quaternary:           #F1A920;
+$colour-action-primary:                  $colour-one;
+$colour-action-secondary:                $colour-two;
+$colour-action-tertiary:                 $colour-three;
 
-$colour-text-primary:                    #FFFFFF;
-$colour-text-secondary:                  #CFCFCF;
-$colour-text-tertiary:                   #4496D2;
-$colour-text-quaternary:                 #272A32;
+$colour-background-primary:              $colour-four;
+$colour-background-secondary:            $colour-two;
+$colour-background-tertiary:             $colour-three;
+$colour-background-quaternary:           $colour-one;
+
+$colour-text-primary:                    $colour-five;
+$colour-text-secondary:                  $colour-six;
+$colour-text-tertiary:                   $colour-three;
+$colour-text-quaternary:                 $colour-four;
 
 // Ionic Variable overwrites
 $background-color:                      $colour-background-primary;
