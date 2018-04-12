@@ -15,7 +15,6 @@ export class HomePage {
   public authKey: string;
   public user: UserModel = new UserModel();
   private appName: string;
-  private thisDeviceUuid: string;
 
   constructor(
     private alertCtrl: AlertController,
@@ -25,7 +24,6 @@ export class HomePage {
     this.user.username = this.haventecClient.getUsername();
     this.accessToken = this.haventecClient.getAccessToken();
     this.authKey = this.haventecClient.getAuthKey();
-    this.thisDeviceUuid = this.haventecClient.getDeviceUuid();
     this.getUserDetails();
     this.getUserDevices();
     this.appName = Constant.APPLICATION_NAME;

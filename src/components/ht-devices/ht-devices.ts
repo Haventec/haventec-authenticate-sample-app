@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { HaventecClient } from '@haventec/common-js';
 import { UserModel } from '../../models/user';
 
 @Component({
@@ -10,5 +11,9 @@ export class Devices {
 
   @Input() user: UserModel;
 
-  constructor() { }
+  private thisDeviceUuid: string;
+
+  constructor(private haventecClient: HaventecClient,) {
+    this.thisDeviceUuid = this.haventecClient.getDeviceUuid();
+  }
 }
