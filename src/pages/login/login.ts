@@ -62,17 +62,7 @@ export class LoginPage {
   }
 
   forgotPin() {
-
-    this.pageLoadingService.present();
-
-    this.authService.forgotPin().then(
-      data => {
-        this.pageLoadingService.dismiss();
-        this.navCtrl.setRoot(ResetPinPage);
-      },
-      err => {
-        this.pageLoadingService.dismiss();
-      }
-    );
+    this.navCtrl.setRoot(ResetPinPage);
+    this.authService.forgotPin();
   }
 }
