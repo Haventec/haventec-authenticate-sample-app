@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HaventecClient } from '@haventec/common-js';
+import { LogService } from '../../providers/log-service/log-service';
 
 @Injectable()
 export class HttpService {
 
-  constructor(private haventecClient: HaventecClient) {
+  constructor(private haventecClient: HaventecClient,
+              private logService: LogService) {
   }
 
   get(url: string): Promise<any> {
@@ -15,6 +17,7 @@ export class HttpService {
           resolve(data);
         },
         err => {
+          this.logService.error(err);
           reject(err);
         }
       );
@@ -34,6 +37,7 @@ export class HttpService {
           resolve(data);
         },
         err => {
+          this.logService.error(err);
           reject(err);
         }
       );
@@ -49,6 +53,7 @@ export class HttpService {
           resolve(data);
         },
         err => {
+          this.logService.error(err);
           reject(err);
         }
       );
