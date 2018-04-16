@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from 'ionic-angular';
-import { HaventecClient } from '@haventec/common-js';
-import { UserService } from '../../providers/user-service/user-service';
+import { HaventecClient } from 'authenticate-client-js';
 import { UserModel } from '../../models/user';
 import * as Constant from '../../constants/application.const';
 
@@ -19,7 +18,6 @@ export class HomePage {
   constructor(
     private alertCtrl: AlertController,
     private haventecClient: HaventecClient,
-    private userService: UserService
   ){
     this.user.username = this.haventecClient.getUsername();
     this.accessToken = this.haventecClient.getAccessToken();
@@ -30,7 +28,7 @@ export class HomePage {
   }
 
   private getUserDetails(){
-    this.userService.getUserDetails().then(
+    this.haventecClient.getCurrentUserDetails().then(
       data => {
         this.user.setData(data);
       },
@@ -39,7 +37,7 @@ export class HomePage {
   }
 
   private getUserDevices(){
-    this.userService.getUserDevices().then(
+    this.haventecClient.getUserDevices(this.haventecClient.getUserUuid()).then(
       data => {
         this.user.setData(data);
       },

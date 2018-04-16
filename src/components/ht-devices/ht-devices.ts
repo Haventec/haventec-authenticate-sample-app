@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { HaventecClient } from '@haventec/common-js';
+import { HaventecClient } from 'authenticate-client-js';
 import { UserModel } from '../../models/user';
 
 @Component({

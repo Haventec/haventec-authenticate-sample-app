@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { HaventecClient } from '@haventec/common-js';
+import { HaventecClient } from 'authenticate-client-js';
 import { ChooseUserPage } from '../choose-user/choose-user';
 import { HomePage } from '../home/home';
-import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
@@ -14,14 +13,12 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 export class ActivateAccountPage {
 
   public username: string;
-
   private activateAccountFormGroup: FormGroup;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private authService: AuthService,
     private haventecClient: HaventecClient,
     private pageLoadingService: PageLoadingService
   ) {
@@ -39,13 +36,13 @@ export class ActivateAccountPage {
     }
   }
 
-  activateAccount(){
+  activateUser(){
     let activationToken = this.navParams.get('activationToken');
     let pin = this.activateAccountFormGroup.value.pin;
 
     this.pageLoadingService.present();
 
-    this.authService.activateAccount(this.haventecClient.getUsername(), activationToken, pin).then(
+    this.haventecClient.activateUser(this.username, activationToken, pin).then(
       data => {
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);
