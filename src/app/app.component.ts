@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HaventecClient } from '@haventec/common-js';
+import { HaventecClient } from 'authenticate-client-js';
 import { ChooseUserPage } from '../pages/choose-user/choose-user';
 import { LoginPage } from '../pages/login/login';
 import { LogService } from '../providers/log-service/log-service';
@@ -37,6 +37,10 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      // You can find your Application UUID in the application section at https://console.haventec.com
+      // The API_ENDPOINT is the full URL to your backend APIs e.g https://your-api-domain.com
+      this.haventecClient.init(Constant.APPLICATION_UUID, Constant.API_ENDPOINT);
+
       this.checkAppConfig();
       this.checkForFirstTimeUse();
     });
@@ -63,6 +67,8 @@ export class MyApp {
   };
 
   logout(page) {
+    // Todo Add /logout to backend
+    // this.haventecClient.logout();
     this.navCtrl.setRoot(LoginPage);
   }
 

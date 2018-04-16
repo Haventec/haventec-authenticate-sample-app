@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
+import { HaventecClient } from 'authenticate-client-js';
 import { AddDevicePage } from '../add-device/add-device';
 import { ActivateAccountPage } from '../activate-account/activate-account';
-import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 import * as Constant from '../../constants/application.const';
 
 @Component({
   selector: 'ht-page-choose-user',
   templateUrl: 'choose-user.html',
-  providers: [AuthService]
 })
 export class ChooseUserPage {
 
@@ -21,7 +20,7 @@ export class ChooseUserPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    public authService: AuthService,
+    private haventecClient: HaventecClient,
     private pageLoadingService: PageLoadingService
 
   ) {
@@ -39,7 +38,7 @@ export class ChooseUserPage {
 
     this.pageLoadingService.present();
 
-    this.authService.signUpUser(username, email).then(
+    this.haventecClient.signUp(username, email).then(
       data => {
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(ActivateAccountPage, {

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { HaventecClient } from '@haventec/common-js';
+import { HaventecClient } from 'authenticate-client-js';
 import { HomePage } from '../home/home';
 import { LoginPage } from "../login/login";
-import { AuthService } from '../../providers/auth-service/auth-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
@@ -14,14 +13,12 @@ import { PageLoadingService } from '../../providers/page-loading-service/page-lo
 export class ResetPinPage {
 
   public username: string;
-
   private resetFormGroup : FormGroup;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private authService: AuthService,
     private haventecClient: HaventecClient,
     private pageLoadingService: PageLoadingService
   ) {
@@ -41,13 +38,12 @@ export class ResetPinPage {
   }
 
   resetPin(){
-
     let pin = this.resetFormGroup.value.pin;
     let resetPinToken = this.resetFormGroup.value.resetPinToken;
 
     this.pageLoadingService.present();
 
-    this.authService.resetPin(pin, resetPinToken).then(
+    this.haventecClient.resetPin(this.username, resetPinToken, pin).then(
       data => {
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);

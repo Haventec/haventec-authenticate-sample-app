@@ -1,0 +1,18 @@
+<section class="ht-section-devices ht-card">
+  <h2 class="ht-card-title">{{'DEVICE_TITLE' | translate}}</h2>
+  <div class="ht-card-content">
+
+    <ion-spinner *ngIf="user.devices.length === 0"></ion-spinner>
+
+    <div class="device" *ngFor="let device of user.devices | orderBy : 'lastLogin' : true">
+      <img class="bullet-point" src="./assets/icon/bullet-point.svg">
+      <h2>{{device.deviceName}} <ng-container *ngIf="device.deviceUuid === thisDeviceUuid"><span class="ht-text-small">({{'DEVICE_ACTIVE' | translate}})</span></ng-container></h2>
+      <h5>{{device.lastLogin * 1000 | date:'short'}}</h5>
+
+      <button class="ht-bt-icon ht-bt-icon-delete" *ngIf="device.deviceUuid !== thisDeviceUuid"><ion-icon class="icon" name="trash"></ion-icon></button>
+      <button class="ht-bt-icon ht-bt-icon-lock" *ngIf="device.locked === false && device.deviceUuid !== thisDeviceUuid"><ion-icon class="icon" name="unlock"></ion-icon></button>
+      <button class="ht-bt-icon ht-bt-icon-lock ht-alert" *ngIf="device.locked === true && device.deviceUuid !== thisDeviceUuid"><ion-icon class="icon" name="lock"></ion-icon></button>
+
+    </div>
+  </div>
+</section>

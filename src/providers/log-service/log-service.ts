@@ -27,14 +27,14 @@ export class LogService {
       value => {
         buttonName = value;
       }
-    )
+    );
 
     this.translate.get('ERROR_GENERAL').subscribe(
       value => {
         let alert = this.alertCtrl.create({title: value, subTitle: errorMsg, buttons: [buttonName]});
         alert.present();
       }
-    )
+    );
 
     console.error('Error: ' + errorMsg);
   }
