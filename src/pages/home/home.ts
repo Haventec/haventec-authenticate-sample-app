@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from 'ionic-angular';
-import { HaventecClient } from 'authenticate-client-js';
+import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
+import { LogService } from '../../providers/log-service/log-service';
 import { UserModel } from '../../models/user';
 import * as Constant from '../../constants/application.const';
 
@@ -17,31 +18,36 @@ export class HomePage {
 
   constructor(
     private alertCtrl: AlertController,
-    private haventecClient: HaventecClient,
+    private haventecAuthenticateClient: HaventecAuthenticateClient,
+    private logService: LogService
   ){
-    this.user.username = this.haventecClient.getUsername();
-    this.accessToken = this.haventecClient.getAccessToken();
-    this.authKey = this.haventecClient.getAuthKey();
+    this.user.username = this.haventecAuthenticateClient.getUsername();
+    this.accessToken = this.haventecAuthenticateClient.getAccessToken();
+    this.authKey = this.haventecAuthenticateClient.getAuthKey();
     this.getUserDetails();
     this.getUserDevices();
     this.appName = Constant.APPLICATION_NAME;
   }
 
   private getUserDetails(){
-    this.haventecClient.getCurrentUserDetails().then(
+    this.haventecAuthenticateClient.getCurrentUserDetails().then(
       data => {
         this.user.setData(data);
       },
-      err => {}
+      err => {
+        this.logService.error(err);
+      }
     );
   }
 
   private getUserDevices(){
-    this.haventecClient.getUserDevices(this.haventecClient.getUserUuid()).then(
+    this.haventecAuthenticateClient.getUserDevices(this.haventecAuthenticateClient.getUserUuid()).then(
       data => {
         this.user.setData(data);
       },
-      err => {}
+      err => {
+        this.logService.error(err);
+      }
     );
   }
 

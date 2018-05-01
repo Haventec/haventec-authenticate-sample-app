@@ -48,6 +48,7 @@ export class LogService {
   }
 
   private formatError(error: any) {
+    console.log('JK', error);
     if ( error && error.responseStatus && error.responseStatus.message ) {
       return error.responseStatus.message;
     }

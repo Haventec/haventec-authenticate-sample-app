@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, Events } from 'ionic-angular';
-import { HaventecClient } from 'authenticate-client-js';
+import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { HomePage } from '../home/home';
 import { ResetPinPage } from '../reset-pin/reset-pin';
 import { LogService } from '../../providers/log-service/log-service'
@@ -22,7 +22,7 @@ export class LoginPage {
     public navCtrl: NavController,
     private formBuilder: FormBuilder,
     private logService: LogService,
-    private haventecClient: HaventecClient,
+    private haventecAuthenticateClient: HaventecAuthenticateClient,
     public events: Events,
     private pageLoadingService: PageLoadingService
   ) {
@@ -32,7 +32,7 @@ export class LoginPage {
       pin: ['', Validators.required],
     });
 
-    this.username = this.haventecClient.getUsername();
+    this.username = this.haventecAuthenticateClient.getUsername();
   }
 
   pinUpdated(pin) {
@@ -46,7 +46,7 @@ export class LoginPage {
   login(pin) {
     this.pageLoadingService.present();
 
-    this.haventecClient.login(this.username, pin).then(
+    this.haventecAuthenticateClient.login(this.username, pin).then(
       data => {
         this.logService.debug('\nAuthentication Key: \n\n', data.authKey);
         this.pageLoadingService.dismiss();
@@ -54,12 +54,18 @@ export class LoginPage {
       },
       err => {
         this.pageLoadingService.dismiss();
+        this.logService.error(err);
       }
     );
   }
 
   forgotPin() {
     this.navCtrl.setRoot(ResetPinPage);
-    this.haventecClient.forgotPin(this.username);
+    this.haventecAuthenticateClient.forgotPin(this.username).then(
+      data => {},
+      err => {
+        this.logService.error(err);
+      }
+    );
   }
 }

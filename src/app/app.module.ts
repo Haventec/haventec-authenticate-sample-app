@@ -5,7 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HaventecClient, HaventecClientFactory } from 'authenticate-client-js';
+import { HaventecAuthenticateClient, HaventecAuthenticateClientFactory } from '@haventec/authenticate-client-js';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -75,7 +75,7 @@ import { OrderByPipe } from '../pipes/orderBy'
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler},
-    { provide: HaventecClient, useFactory: HaventecClientFactory, deps: [ ] },
+    { provide: HaventecAuthenticateClient, useFactory: HaventecAuthenticateClientFactory, deps: [ ] },
     LogService,
     PageLoadingService
   ]

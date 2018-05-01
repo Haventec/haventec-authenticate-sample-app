@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { HaventecClient } from 'authenticate-client-js';
+import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { ActivateDevicePage } from '../activate-device/activate-device'
 import { ChooseUserPage } from '../choose-user/choose-user'
+import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 import * as Constant from '../../constants/application.const';
 
@@ -20,7 +21,8 @@ export class AddDevicePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private haventecClient: HaventecClient,
+    private haventecAuthenticateClient: HaventecAuthenticateClient,
+    private logService: LogService,
     private pageLoadingService: PageLoadingService
   ) {
 
@@ -34,15 +36,13 @@ export class AddDevicePage {
   addDevice(){
     let username = this.addDeviceFormGroup.value.username;
 
-    this.pageLoadingService.present();
+    this.navCtrl.setRoot(ActivateDevicePage);
 
-    this.haventecClient.addDevice(username).then(
-      data => {
-        this.pageLoadingService.dismiss();
-        this.navCtrl.setRoot(ActivateDevicePage);
-      },
+    this.haventecAuthenticateClient.addDevice(username).then(
+      data => { },
       err => {
         this.pageLoadingService.dismiss();
+        this.logService.error(err);
       }
     );
   }

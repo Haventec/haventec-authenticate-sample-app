@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HaventecClient } from 'authenticate-client-js';
+import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { ChooseUserPage } from '../pages/choose-user/choose-user';
 import { LoginPage } from '../pages/login/login';
 import { LogService } from '../providers/log-service/log-service';
@@ -23,7 +23,7 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private logService: LogService,
-    private haventecClient: HaventecClient,
+    private haventecAuthenticateClient: HaventecAuthenticateClient,
     private translateService: TranslateService) {
     this.initializeApp();
   }
@@ -39,7 +39,7 @@ export class MyApp {
 
       // You can find your Application UUID in the application section at https://console.haventec.com
       // The API_ENDPOINT is the full URL to your backend APIs e.g https://your-api-domain.com
-      this.haventecClient.init(Constant.APPLICATION_UUID, Constant.API_ENDPOINT);
+      this.haventecAuthenticateClient.init(Constant.APPLICATION_UUID, Constant.API_ENDPOINT);
 
       this.checkAppConfig();
       this.checkForFirstTimeUse();
@@ -48,7 +48,7 @@ export class MyApp {
 
   // Reset the App and return the user to the Sign up page
   resetApp(page) {
-    this.haventecClient.purge();
+    this.haventecAuthenticateClient.purge();
     this.logService.debug('Resetting App');
     this.navCtrl.setRoot(ChooseUserPage);
   }
@@ -56,8 +56,8 @@ export class MyApp {
   // Check if this is the users first time using the App
   checkForFirstTimeUse(): void {
 
-    let username = this.haventecClient.getUsername();
-    if(username != null && this.haventecClient.getAuthKey() != null) {
+    let username = this.haventecAuthenticateClient.getUsername();
+    if(username != null && this.haventecAuthenticateClient.getAuthKey() != null) {
       this.logService.debug('Not First time use');
       this.rootPage = LoginPage;
     } else {
@@ -66,9 +66,12 @@ export class MyApp {
     }
   };
 
-  logout(page) {
-    // Todo Add /logout to backend
-    // this.haventecClient.logout();
+  logout() {
+    this.haventecAuthenticateClient.logout().then(
+      data => {},
+      err => {this.logService.error(err);
+      });
+
     this.navCtrl.setRoot(LoginPage);
   }
 

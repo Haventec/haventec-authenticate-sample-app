@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { HaventecClient } from 'authenticate-client-js';
+import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { HomePage } from '../home/home';
 import { LoginPage } from "../login/login";
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
@@ -19,7 +19,7 @@ export class ResetPinPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private haventecClient: HaventecClient,
+    private haventecAuthenticateClient: HaventecAuthenticateClient,
     private pageLoadingService: PageLoadingService
   ) {
 
@@ -28,7 +28,7 @@ export class ResetPinPage {
       pin: ['', Validators.required],
     });
 
-    this.username = this.haventecClient.getUsername();
+    this.username = this.haventecAuthenticateClient.getUsername();
   }
 
   pinUpdated(pin){
@@ -43,7 +43,7 @@ export class ResetPinPage {
 
     this.pageLoadingService.present();
 
-    this.haventecClient.resetPin(this.username, resetPinToken, pin).then(
+    this.haventecAuthenticateClient.resetPin(this.username, resetPinToken, pin).then(
       data => {
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);

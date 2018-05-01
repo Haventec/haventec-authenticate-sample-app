@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { HaventecClient } from 'authenticate-client-js';
+import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { ChooseUserPage } from '../choose-user/choose-user';
 import { HomePage } from '../home/home';
+import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 
 @Component({
@@ -19,7 +20,8 @@ export class ActivateDevicePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private haventecClient: HaventecClient,
+    private haventecAuthenticateClient: HaventecAuthenticateClient,
+    private logService: LogService,
     private pageLoadingService: PageLoadingService
   ) {
 
@@ -28,7 +30,7 @@ export class ActivateDevicePage {
       pin: ['', Validators.required]
     });
 
-    this.username = this.haventecClient.getUsername();
+    this.username = this.haventecAuthenticateClient.getUsername();
   }
 
   pinUpdated(pin){
@@ -43,13 +45,14 @@ export class ActivateDevicePage {
 
     this.pageLoadingService.present();
 
-    this.haventecClient.activateDevice(this.username, pin, activationToken).then(
+    this.haventecAuthenticateClient.activateDevice(this.username, pin, activationToken).then(
       data => {
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);
       },
       err => {
         this.pageLoadingService.dismiss();
+        this.logService.error(err);
       }
     );
   }
