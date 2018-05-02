@@ -61,6 +61,10 @@
   "DEVICE_TITLE": "Devices",
   "DEVICE_ACTIVE": "this device",
 
+  "WALLET_TITLE": "Wallets",
+  "WALLET_ADD_CTA": "Add an SDG wallet",
+  "WALLET_ADD_AMOUNT_CTA": "Top up",
+
   "SECURITY_TITLE": "Security",
   "SECURITY_SUB_TITLE": "Authentication key",
   "SECURITY_TEXT": "The Authentication key is unique to this application on this device. It automatically rotates every time you login. This greatly increases your security",

@@ -1,0 +1,53 @@
+.ht-section-wallets {
+
+  h2 {
+    margin: 0;
+  }
+
+  .ht-card-content {
+    text-align: center;
+  }
+
+  .add-wallet-cta {
+
+    @include media-breakpoint-up('md') {
+      width: 35rem;
+    }
+  }
+
+  .wallet {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .icon {
+      flex: 0 1 3rem;
+      height: 3rem;
+      width: 3rem;
+      margin-right: 1rem;
+    }
+
+    .name {
+      flex: 0 1 auto;
+      margin: 0 1rem;
+    }
+
+    .amount {
+      flex: 1 1 4rem;
+      margin: 0 1rem;
+      text-align: right;
+    }
+
+    .add-amount-cta {
+      flex: 1 1 12rem;
+      margin-left: 1rem;
+    }
+
+    @include media-breakpoint-up('md') {
+      .add-amount-cta {
+        flex: 0 1 12rem;
+      }
+    }
+  }
+}

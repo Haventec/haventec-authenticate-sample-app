@@ -18,6 +18,7 @@ import { AddDevicePage } from '../pages/add-device/add-device';
 
 import { PinInput } from '../components/pin-input/pin-input';
 import { Devices } from '../components/ht-devices/ht-devices';
+import { Wallets } from '../components/ht-wallets/ht-wallets';
 import { AppHeader } from '../components/app-header/app-header';
 
 import { LogService } from '../providers/log-service/log-service';
@@ -41,6 +42,7 @@ import { OrderByPipe } from '../pipes/orderBy'
     AddDevicePage,
     PinInput,
     Devices,
+    Wallets,
     AppHeader,
     OrderByPipe
   ],
@@ -69,6 +71,7 @@ import { OrderByPipe } from '../pipes/orderBy'
     AddDevicePage,
     PinInput,
     Devices,
+    Wallets,
     AppHeader
   ],
   providers: [
