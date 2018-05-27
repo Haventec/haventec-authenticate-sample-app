@@ -8,7 +8,6 @@ export class UserModel {
   public lastLogin;
   public locked;
   public username;
-  public wallets;
 
   constructor(){
     this.active = '';
@@ -19,7 +18,6 @@ export class UserModel {
     this.lastLogin = '';
     this.locked = '';
     this.username = '';
-    this.wallets = [];
   }
 
   setData(userResponse: any){

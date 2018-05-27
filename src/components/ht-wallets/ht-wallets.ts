@@ -1,6 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import { AlertController } from 'ionic-angular';
-import { UserModel } from '../../models/user';
+import { Sanctum } from '../../providers/sanctum/sanctum';
 
 @Component({
     templateUrl: 'ht-wallets.html',
@@ -8,9 +8,30 @@ import { UserModel } from '../../models/user';
 })
 export class Wallets {
 
-  @Input() user: UserModel;
+  walletValue = undefined;
+  checkingForWallet = true;
 
-  constructor(private alertCtrl: AlertController){}
+  constructor(
+    private alertCtrl: AlertController,
+    private sanctum: Sanctum
+  ){
+    let self = this;
+
+    this.sanctum.getVault().then(function(res) {
+      self.checkingForWallet = false;
+      let response = JSON.parse(res.text);
+      console.log('DELETE_ME', response);
+
+      if(response.responseStatus.status === 'SUCCESS'){
+        self.walletValue = response.responseStatus.wallet;
+      } else if(response.responseStatus.status === 'Error'){
+        console.log(response.responseStatus.message);
+      }
+    }).catch(function(err) {
+      console.log(err);
+    });
+
+  }
 
   addWallet() {
     let alert = this.alertCtrl.create({
@@ -30,7 +51,15 @@ export class Wallets {
         {
           text: 'Add',
           handler: data => {
-            this.user.wallets.push({'amount': Number(data.amount)});
+
+            let amount = Number(data.amount);
+            this.walletValue = amount;
+
+            this.sanctum.createVault(amount.toString()).then(function(res) {
+              console.log(res);
+            }).catch(function(err) {
+              console.log(err);
+            });
           }
         }
       ]
@@ -56,7 +85,15 @@ export class Wallets {
         {
           text: 'Add',
           handler: data => {
-            this.user.wallets[0].amount = this.user.wallets[0].amount + Number(data.amount);
+            let amount = Number(this.walletValue) + Number(data.amount);
+            this.walletValue = amount;
+
+            console.log('DELETE_ME', amount.toString());
+            this.sanctum.updateVault(amount.toString()).then(function(res) {
+              console.log(res);
+            }).catch(function(err) {
+              console.log(err);
+            });
           }
         }
       ]

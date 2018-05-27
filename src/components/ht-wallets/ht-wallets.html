@@ -2,12 +2,14 @@
   <h2 class="ht-card-title">{{'WALLET_TITLE' | translate}}</h2>
   <div class="ht-card-content">
 
-    <button class="add-wallet-cta ht-bt-primary" (click)='addWallet();' *ngIf="user.wallets.length === 0">{{'WALLET_ADD_CTA' | translate}}</button>
+    <ion-spinner *ngIf="checkingForWallet"></ion-spinner>
 
-    <div class="wallet" *ngFor="let wallet of user.wallets">
+    <button class="add-wallet-cta ht-bt-primary" (click)='addWallet();' *ngIf="walletValue === undefined && !checkingForWallet">{{'WALLET_ADD_CTA' | translate}}</button>
+
+    <div class="wallet" *ngIf="walletValue !== undefined && !checkingForWallet">
       <img class="icon" src="./assets/icon/coin-icon.svg">
       <h2 class="name">SDG Wallet</h2>
-      <h1 class="amount">{{wallet.amount}}</h1>
+      <h1 class="amount">{{walletValue}}</h1>
       <button class="add-amount-cta ht-bt-primary" (click)='addAmount();'>{{'WALLET_ADD_AMOUNT_CTA' | translate}}</button>
     </div>
   </div>

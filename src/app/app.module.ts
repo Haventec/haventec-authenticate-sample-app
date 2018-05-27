@@ -22,6 +22,7 @@ import { Wallets } from '../components/ht-wallets/ht-wallets';
 import { AppHeader } from '../components/app-header/app-header';
 
 import { LogService } from '../providers/log-service/log-service';
+import { Sanctum } from '../providers/sanctum/sanctum';
 import { PageLoadingService } from '../providers/page-loading-service/page-loading-service';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateLoader } from '@ngx-translate/core';
@@ -80,6 +81,7 @@ import { OrderByPipe } from '../pipes/orderBy'
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HaventecAuthenticateClient, useFactory: HaventecAuthenticateClientFactory, deps: [ ] },
     LogService,
+    Sanctum,
     PageLoadingService
   ]
 })

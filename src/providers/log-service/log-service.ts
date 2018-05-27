@@ -8,6 +8,10 @@ export class LogService {
 
   constructor(private alertCtrl: AlertController, private translate: TranslateService) {}
 
+  info(msg: string, obj?: any) {
+      this.print(msg, obj);
+  }
+
   debug(msg: string, obj?: any) {
     if(Constant.DEBUG){
       this.print(msg, obj);
@@ -48,7 +52,6 @@ export class LogService {
   }
 
   private formatError(error: any) {
-    console.log('JK', error);
     if ( error && error.responseStatus && error.responseStatus.message ) {
       return error.responseStatus.message;
     }
