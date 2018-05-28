@@ -5,7 +5,7 @@ export const API_ENDPOINT: string = '';
 export const APPLICATION_UUID: string = '';
 
 // Your name of this application that is displayed to the user
-export const APPLICATION_NAME: string = 'Haventec';
+export const APPLICATION_NAME: string = 'Catch Finance';
 
 export const DEBUG: boolean = true;
 export const TRACE: boolean = false;

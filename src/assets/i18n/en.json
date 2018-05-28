@@ -52,7 +52,6 @@
   "USER_EXPERIENCE_SUBTEXT": "You have just used a simple 4 digit PIN to Authenticate but what’s so special about it:",
   "USER_EXPERIENCE_EXPLANATION_LOCK": "First off that PIN you entered is only known to you, it is not stored anywhere, not on this device or on any server or database. Nothing for an attacker to steal.",
   "USER_EXPERIENCE_EXPLANATION_SCREEN": "When you first signed up, we auto registered this device and placed a unique Authentication Key on it. See your security below for more details.",
-  "USER_EXPERIENCE_EXPLANATION_ID": "Your unique ID and authentication are always associated with all core SDG ecosystem services including wallet, communicator, community and personal data.",
   "USER_EXPERIENCE_EXPLANATION_KEY": "Every time you log in we rotate the Authentication Key. It’s like having a locksmith change your locks every time you enter your house.",
   "USER_EXPERIENCE_EXPLANATION_2FA": "Two factor authentication (2FA) out of the box. 2FA is something you know, your PIN and something you have, your device and it’s unique Authentication Key.",
 
@@ -60,10 +59,6 @@
 
   "DEVICE_TITLE": "Devices",
   "DEVICE_ACTIVE": "this device",
-
-  "WALLET_TITLE": "Wallets",
-  "WALLET_ADD_CTA": "Add an SDG wallet",
-  "WALLET_ADD_AMOUNT_CTA": "Top up",
 
   "SECURITY_TITLE": "Security",
   "SECURITY_SUB_TITLE": "Authentication key",

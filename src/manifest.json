@@ -1,10 +1,10 @@
 {
-  "name": "SDG",
-  "short_name": "SDG",
+  "name": "Catch Finance",
+  "short_name": "Catch Finance",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
-    "src": "assets/img/sdg-coin.png",
+    "src": "assets/img/Haventec-logo.png",
     "sizes": "300x300",
     "type": "image/png"
   }],
