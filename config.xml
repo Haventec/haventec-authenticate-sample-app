@@ -88,4 +88,5 @@
     <engine name="ios" spec="4.5.4" />
     <plugin name="cordova-plugin-secure-storage" spec="^2.6.8" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.2" />
+    <engine name="android" spec="~7.0.0" />
 </widget>

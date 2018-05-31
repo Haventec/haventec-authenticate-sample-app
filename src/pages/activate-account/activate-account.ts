@@ -44,8 +44,8 @@ export class ActivateAccountPage {
       if ( result === 'OK' || result === 'Success' || result === 'finger' ) {
         this.canUseFingerprint = true;
       }
-    }).catch(err => {
-      this.logService.error(err);
+    }, err => {
+      console.log(err);
     });
   }
 

@@ -15,9 +15,8 @@
           <button class="ht-bt-primary" [disabled]="!activateAccountFormGroup.valid" type="submit">{{'ACTIVATE_USER_CTA' | translate}}</button>
         </form>
 
-        <h5>or</h5>
-
         <h5 *ngIf="canUseFingerprint">
+          <span>or</span><br>
           <button class="ht-bt-primary" (click)="activateUserWithFingerprint();">{{'ACTIVATE_USER_USE_FP' | translate}}</button>
         </h5>
 
