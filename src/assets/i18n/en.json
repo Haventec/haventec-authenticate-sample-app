@@ -25,7 +25,7 @@
   "ACTIVATE_USER_TEXT": "This PIN is only known to you, it is not saved anywhere",
   "ACTIVATE_USER_SUBTEXT": "This PIN will be used each time you login",
   "ACTIVATE_USER_CTA": "Login",
-  "ACTIVATE_USER_USE_FP": "Skip to use Fingerprint",
+  "ACTIVATE_USER_USE_FP": "Click to use Fingerprint",
 
   "ADD_DEVICE_TITLE_A": "You haven’t used",
   "ADD_DEVICE_TITLE_B": "on this device",
