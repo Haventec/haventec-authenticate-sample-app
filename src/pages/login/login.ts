@@ -62,6 +62,9 @@ export class LoginPage {
   openFingerprint() {
     this.faio.show({
       clientId: Constant.APPLICATION_NAME,
+      clientSecret: 'password', //Only necessary for Android
+      localizedFallbackTitle: 'Use Pin', //Only for iOS
+      localizedReason: 'Please authenticate', //Only for iOS
       disableBackup:true  //Only for Android(optional)
     })
       .then((result: any) => {

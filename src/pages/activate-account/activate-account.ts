@@ -65,8 +65,13 @@ export class ActivateAccountPage {
 
   activateUserWithFingerprint(){
 
+    let pin = this.generatePIN(Constant.FINGERPRINT_PIN_SIZE);
+
     this.faio.show({
       clientId: Constant.APPLICATION_NAME,
+      clientSecret: 'password', //Only necessary for Android
+      localizedFallbackTitle: 'Use Pin', //Only for iOS
+      localizedReason: 'Please authenticate', //Only for iOS
       disableBackup:true  //Only for Android(optional)
     })
       .then((result: any) => {
@@ -75,8 +80,6 @@ export class ActivateAccountPage {
         // we generate a PIN for them to use to authenticate with Haventec Authenticate.
         // We must save this locally in secure storage before calling Haventec Authenticate activateUser,
         // which will be used in subsequent logins, accessed only after successful fingerprint authentication
-        let pin = this.generatePIN(Constant.FINGERPRINT_PIN_SIZE);
-
         this.secureStorage.create('ha_sample_app')
           .then((storage: SecureStorageObject) => {
             storage.set('ha_pin', pin)
