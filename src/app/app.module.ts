@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { IonicStorageModule } from '@ionic/storage';
+import {IonicStorageModule} from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { HaventecAuthenticateClient, HaventecAuthenticateClientFactory } from '@haventec/authenticate-client-js';
 
 import { MyApp } from './app.component';
@@ -28,6 +29,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Http } from '@angular/http';
 
 import { OrderByPipe } from '../pipes/orderBy'
+import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
+import {SecureStorage} from "@ionic-native/secure-storage";
 
 @NgModule({
   declarations: [
@@ -74,6 +77,8 @@ import { OrderByPipe } from '../pipes/orderBy'
   providers: [
     StatusBar,
     SplashScreen,
+    FingerprintAIO,
+    SecureStorage,
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HaventecAuthenticateClient, useFactory: HaventecAuthenticateClientFactory, deps: [ ] },
     LogService,

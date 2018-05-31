@@ -7,6 +7,7 @@ import { ChooseUserPage } from '../pages/choose-user/choose-user';
 import { LoginPage } from '../pages/login/login';
 import { LogService } from '../providers/log-service/log-service';
 import { TranslateService } from '@ngx-translate/core';
+import {Storage} from "@ionic/storage";
 import * as Constant from '../constants/application.const'
 
 @Component({
@@ -22,6 +23,7 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
+    private storage: Storage,
     private logService: LogService,
     private haventecAuthenticateClient: HaventecAuthenticateClient,
     private translateService: TranslateService) {
@@ -49,6 +51,7 @@ export class MyApp {
   // Reset the App and return the user to the Sign up page
   resetApp(page) {
     this.haventecAuthenticateClient.purge();
+    this.storage.remove('ha_auth_method');
     this.logService.debug('Resetting App');
     this.navCtrl.setRoot(ChooseUserPage);
   }
