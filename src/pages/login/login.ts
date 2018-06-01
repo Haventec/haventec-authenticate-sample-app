@@ -84,7 +84,9 @@ export class LoginPage {
       })
       .catch((error: any) =>
       {
-        this.logService.error(error);
+        if ( error !== 'Cancelled' && error != 'Error: Optional("Canceled by user.")' ) {
+          this.logService.error(error);
+        }
       });
   }
 
