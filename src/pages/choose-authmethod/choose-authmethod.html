@@ -5,10 +5,19 @@
     <ion-row justify-content-center>
       <ion-col col-auto class="col-fixed ht-page-narrow">
 
+        <br>
+
         <h1>{{'CHOOSE_AUTHMETHOD_TITLE' | translate}}</h1>
+
+        <br>
 
         <h5>
           <button class="ht-bt-primary" (click)="usePIN();">{{'CHOOSE_AUTHMETHOD_USE_PIN' | translate}}</button>
+        </h5>
+
+        <br>
+
+        <h5>
           <button class="ht-bt-primary" (click)="activateUserWithFingerprint();">{{'CHOOSE_AUTHMETHOD_USE_FP' | translate}}</button>
         </h5>
 
