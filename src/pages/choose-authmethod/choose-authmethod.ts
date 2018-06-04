@@ -50,7 +50,8 @@ export class ChooseAuthMethodPage {
     let activationToken = this.navParams.get('activationToken');
     this.insecureStorage.set('ha_auth_method', 'pin');
     this.navCtrl.setRoot(ActivateAccountPage, {
-      activationToken: activationToken
+      activationToken: activationToken,
+      fromChooseAuthMethod: true
     });
   }
 

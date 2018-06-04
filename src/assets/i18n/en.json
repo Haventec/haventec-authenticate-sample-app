@@ -62,6 +62,13 @@
   "USER_EXPERIENCE_EXPLANATION_KEY": "Every time you log in we rotate the Authentication Key. It’s like having a locksmith change your locks every time you enter your house.",
   "USER_EXPERIENCE_EXPLANATION_2FA": "Two factor authentication (2FA) out of the box. 2FA is something you know, your PIN and something you have, your device and it’s unique Authentication Key.",
 
+  "USER_EXPERIENCE_FP_TEXT": "Did you enjoy that quick authentication?",
+  "USER_EXPERIENCE_FP_SUBTEXT": "You have just used your fingerprint to Authenticate but what’s so special about that:",
+  "USER_EXPERIENCE_FP_EXPLANATION_LOCK": "First off your fingerprint is unique to you, and is difficult for an attacker to replicate.",
+  "USER_EXPERIENCE_FP_EXPLANATION_SCREEN": "When you first signed up, we auto registered this device and placed a unique Authentication Key on it. See your security below for more details.",
+  "USER_EXPERIENCE_FP_EXPLANATION_KEY": "Every time you log in we rotate the Authentication Key. It’s like having a locksmith change your locks every time you enter your house.",
+  "USER_EXPERIENCE_FP_EXPLANATION_2FA": "Two factor authentication (2FA) out of the box. 2FA is something you are, your Fingerprint and something you have, your device and it’s unique Authentication Key.",
+
   "PROFILE_PHOTO_CTA": "Add photo",
 
   "DEVICE_TITLE": "Devices",

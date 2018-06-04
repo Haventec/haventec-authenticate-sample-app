@@ -4,6 +4,7 @@ import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { LogService } from '../../providers/log-service/log-service';
 import { UserModel } from '../../models/user';
 import * as Constant from '../../constants/application.const';
+import {Storage} from "@ionic/storage";
 
 @Component({
   selector: 'ht-page-home',
@@ -16,8 +17,11 @@ export class HomePage {
   public user: UserModel = new UserModel();
   private appName: string;
 
+  private authFingerprint = false;
+
   constructor(
     private alertCtrl: AlertController,
+    private insecureStorage: Storage,
     private haventecAuthenticateClient: HaventecAuthenticateClient,
     private logService: LogService
   ){
@@ -27,6 +31,15 @@ export class HomePage {
     this.getUserDetails();
     this.getUserDevices();
     this.appName = Constant.APPLICATION_NAME;
+
+    this.insecureStorage.get('ha_auth_method').then(authMethod => {
+
+      if ( authMethod === 'fingerprint' ) {
+        this.authFingerprint = true;
+      }
+    }, error => {
+      this.logService.error(error);
+    });
   }
 
   private getUserDetails(){
