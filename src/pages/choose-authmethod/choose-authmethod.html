@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-auto class="col-fixed ht-page-narrow">
+
+        <h1>{{'CHOOSE_AUTHMETHOD_TITLE' | translate}}</h1>
+
+        <h5>
+          <button class="ht-bt-primary" (click)="usePIN();">{{'CHOOSE_AUTHMETHOD_USE_PIN' | translate}}</button>
+          <button class="ht-bt-primary" (click)="activateUserWithFingerprint();">{{'CHOOSE_AUTHMETHOD_USE_FP' | translate}}</button>
+        </h5>
+
+        <h5><button class="ht-bt-inline" (click)="back();">{{'NAV_BACK_LINK' | translate}}</button></h5>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

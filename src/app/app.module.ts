@@ -16,6 +16,7 @@ import { ResetPinPage } from '../pages/reset-pin/reset-pin';
 import { ActivateDevicePage } from '../pages/activate-device/activate-device';
 import { ChooseUserPage } from '../pages/choose-user/choose-user';
 import { AddDevicePage } from '../pages/add-device/add-device';
+import {ChooseAuthMethodPage} from "../pages/choose-authmethod/choose-authmethod";
 
 import { PinInput } from '../components/pin-input/pin-input';
 import { Devices } from '../components/ht-devices/ht-devices';
@@ -41,6 +42,7 @@ import {SecureStorage} from "@ionic-native/secure-storage";
     ResetPinPage,
     ActivateDevicePage,
     ChooseUserPage,
+    ChooseAuthMethodPage,
     AddDevicePage,
     PinInput,
     Devices,
@@ -69,6 +71,7 @@ import {SecureStorage} from "@ionic-native/secure-storage";
     ResetPinPage,
     ActivateDevicePage,
     ChooseUserPage,
+    ChooseAuthMethodPage,
     AddDevicePage,
     PinInput,
     Devices,

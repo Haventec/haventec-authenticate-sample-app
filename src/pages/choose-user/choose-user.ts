@@ -7,6 +7,8 @@ import { ActivateAccountPage } from '../activate-account/activate-account';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 import { LogService } from '../../providers/log-service/log-service';
 import * as Constant from '../../constants/application.const';
+import {ChooseAuthMethodPage} from "../choose-authmethod/choose-authmethod";
+import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 
 @Component({
   selector: 'ht-page-choose-user',
@@ -16,11 +18,13 @@ export class ChooseUserPage {
 
   private appName: string;
   private signUpFormGroup : FormGroup;
+  private canUseFingerprint = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
+    private faio: FingerprintAIO,
     private haventecAuthenticateClient: HaventecAuthenticateClient,
     private logService: LogService,
     private pageLoadingService: PageLoadingService
@@ -31,6 +35,15 @@ export class ChooseUserPage {
       username: ['', Validators.required],
       email: ['', Validators.email],
     });
+
+    this.faio.isAvailable().then(result => {
+      if ( result === 'OK' || result === 'Success' || result === 'finger' ) {
+        this.canUseFingerprint = true;
+      }
+    }, err => {
+      console.log(err);
+    });
+
   }
 
   signUp(){
@@ -43,7 +56,9 @@ export class ChooseUserPage {
     this.haventecAuthenticateClient.signUp(username, email).then(
       data => {
         this.pageLoadingService.dismiss();
-        this.navCtrl.setRoot(ActivateAccountPage, {
+
+        const pageToNavTo = this.canUseFingerprint ? ChooseAuthMethodPage : ActivateAccountPage;
+        this.navCtrl.setRoot(pageToNavTo, {
           activationToken: data.activationToken
         });
       },

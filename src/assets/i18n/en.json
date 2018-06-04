@@ -21,6 +21,10 @@
   "ACTIVATE_DEVICE_TEXT": "We have sent a 6 digit activation code to your email",
   "ACTIVATE_DEVICE_CTA": "Activate",
 
+  "CHOOSE_AUTHMETHOD_TITLE": "How would you like to sign in?",
+  "CHOOSE_AUTHMETHOD_USE_PIN": "PIN",
+  "CHOOSE_AUTHMETHOD_USE_FP": "Fingerprint",
+
   "ACTIVATE_USER_TITLE": "Set your PIN",
   "ACTIVATE_USER_TEXT": "This PIN is only known to you, it is not saved anywhere",
   "ACTIVATE_USER_SUBTEXT": "This PIN will be used each time you login",
