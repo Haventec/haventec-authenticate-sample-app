@@ -77,3 +77,33 @@ The fingerprint will need to be activated on the device in order to enable this.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+
+## Troubleshooting
+
+### Error building or running on Android (spawn EACCES)
+
+
+**Steps to reproduce:** 
+1. Run from the project folder the following command in order to build for android
+```
+cordova build android --verbose
+```
+
+**Error Output**
+
+```
+No scripts found for hook "before_compile".
+		ANDROID_HOME=/Users/oscarsancheziglesias/Library/Android/sdk
+		JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
+		Running command: "/Applications/Android Studio.app/Contents/gradle/gradle-4.4/bin/gradle" -p /Users/oscarsancheziglesias/IdeaProjects/haventec-authenticate-sample-app/platforms/android wrapper -b /Users/oscarsancheziglesias/IdeaProjects/haventec-authenticate-sample-app/platforms/android/wrapper.gradle
+		(node:78017) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): Error: spawn EACCES
+		(node:78017) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+		➜  haventec-authenticate-sample-app git:(master)
+```
+
+**Solution**
+* Give execution permission to gradle. (Use the right location of gradle at your environment stated in the error above)
+```
+sudo chmod +x /Applications/Android\ Studio.app/Contents/gradle/gradle-4.4/bin/gradle
+```
