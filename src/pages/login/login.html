@@ -6,12 +6,15 @@
       <ion-col col-auto class="col-fixed ht-page-narrow">
 
         <h1>{{'LOGIN_TITLE' | translate}} {{username}}</h1>
-        <h3>{{'LOGIN_TEXT' | translate}}</h3>
-        <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+        <h3 *ngIf="!mustUseFingerprint">{{'LOGIN_PIN_TEXT' | translate}}</h3>
+        <h3 *ngIf="mustUseFingerprint">{{'LOGIN_FP_TEXT' | translate}}</h3>
+
+        <form *ngIf="!mustUseFingerprint" [formGroup]="loginFormGroup" (ngSubmit)="login()">
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
         </form>
 
-        <h5><button class="ht-bt-inline" (click)='forgotPin();'>{{'NAV_RESET_PIN_LINK' | translate}}</button></h5>
+        <h5 *ngIf="!mustUseFingerprint"><button class="ht-bt-inline" (click)='forgotPin();'>{{'NAV_RESET_PIN_LINK' | translate}}</button></h5>
+        <h5 *ngIf="mustUseFingerprint"><button class="ht-bt-inline" (click)='openFingerprint();'>{{'LOGIN_FP_OPEN' | translate}}</button></h5>
 
       </ion-col>
     </ion-row>

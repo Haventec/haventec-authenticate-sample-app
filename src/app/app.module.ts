@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { IonicStorageModule } from '@ionic/storage';
+import {IonicStorageModule} from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { HaventecAuthenticateClient, HaventecAuthenticateClientFactory } from '@haventec/authenticate-client-js';
 
 import { MyApp } from './app.component';
@@ -15,6 +16,7 @@ import { ResetPinPage } from '../pages/reset-pin/reset-pin';
 import { ActivateDevicePage } from '../pages/activate-device/activate-device';
 import { ChooseUserPage } from '../pages/choose-user/choose-user';
 import { AddDevicePage } from '../pages/add-device/add-device';
+import {ChooseAuthMethodPage} from "../pages/choose-authmethod/choose-authmethod";
 
 import { PinInput } from '../components/pin-input/pin-input';
 import { Devices } from '../components/ht-devices/ht-devices';
@@ -28,6 +30,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Http } from '@angular/http';
 
 import { OrderByPipe } from '../pipes/orderBy'
+import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
+import {SecureStorage} from "@ionic-native/secure-storage";
 
 @NgModule({
   declarations: [
@@ -38,6 +42,7 @@ import { OrderByPipe } from '../pipes/orderBy'
     ResetPinPage,
     ActivateDevicePage,
     ChooseUserPage,
+    ChooseAuthMethodPage,
     AddDevicePage,
     PinInput,
     Devices,
@@ -66,6 +71,7 @@ import { OrderByPipe } from '../pipes/orderBy'
     ResetPinPage,
     ActivateDevicePage,
     ChooseUserPage,
+    ChooseAuthMethodPage,
     AddDevicePage,
     PinInput,
     Devices,
@@ -74,6 +80,8 @@ import { OrderByPipe } from '../pipes/orderBy'
   providers: [
     StatusBar,
     SplashScreen,
+    FingerprintAIO,
+    SecureStorage,
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: HaventecAuthenticateClient, useFactory: HaventecAuthenticateClientFactory, deps: [ ] },
     LogService,

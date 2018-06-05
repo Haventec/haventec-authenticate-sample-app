@@ -6,6 +6,7 @@ import { ChooseUserPage } from '../choose-user/choose-user';
 import { HomePage } from '../home/home';
 import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
+import {ChooseAuthMethodPage} from "../choose-authmethod/choose-authmethod";
 
 @Component({
   selector: 'ht-page-activate-account',
@@ -38,9 +39,10 @@ export class ActivateAccountPage {
     }
   }
 
-  activateUser(){
-    let activationToken = this.navParams.get('activationToken');
+  activateUser() {
     let pin = this.activateAccountFormGroup.value.pin;
+
+    let activationToken = this.navParams.get('activationToken');
 
     this.pageLoadingService.present();
 
@@ -57,6 +59,15 @@ export class ActivateAccountPage {
   }
 
   back() {
-    this.navCtrl.setRoot(ChooseUserPage);
+
+    let fromChooseAuthMethod = this.navParams.get('fromChooseAuthMethod');
+    let activationToken = this.navParams.get('activationToken');
+    if ( fromChooseAuthMethod ) {
+      this.navCtrl.setRoot(ChooseAuthMethodPage, {
+        activationToken: activationToken
+      });
+    } else {
+      this.navCtrl.setRoot(ChooseUserPage);
+    }
   }
 }

@@ -21,10 +21,15 @@
   "ACTIVATE_DEVICE_TEXT": "We have sent a 6 digit activation code to your email",
   "ACTIVATE_DEVICE_CTA": "Activate",
 
+  "CHOOSE_AUTHMETHOD_TITLE": "How would you like to sign in?",
+  "CHOOSE_AUTHMETHOD_USE_PIN": "PIN",
+  "CHOOSE_AUTHMETHOD_USE_FP": "Fingerprint",
+
   "ACTIVATE_USER_TITLE": "Set your PIN",
   "ACTIVATE_USER_TEXT": "This PIN is only known to you, it is not saved anywhere",
   "ACTIVATE_USER_SUBTEXT": "This PIN will be used each time you login",
   "ACTIVATE_USER_CTA": "Login",
+  "ACTIVATE_USER_USE_FP": "Click to use Fingerprint",
 
   "ADD_DEVICE_TITLE_A": "You haven’t used",
   "ADD_DEVICE_TITLE_B": "on this device",
@@ -35,7 +40,9 @@
   "EXISTING_USER_CTA": "Login",
 
   "LOGIN_TITLE": "Welcome back",
-  "LOGIN_TEXT": "Enter your PIN to login",
+  "LOGIN_PIN_TEXT": "Enter your PIN to login",
+  "LOGIN_FP_TEXT": "Use your fingerprint to login",
+  "LOGIN_FP_OPEN": "Click to login with fingerprint",
 
   "RESET_PIN_TITLE": "Reset your PIN",
   "RESET_PIN_TEXT": "Forgot your PIN? Don’t worry, it happens to the best of us.",
@@ -54,6 +61,13 @@
   "USER_EXPERIENCE_EXPLANATION_SCREEN": "When you first signed up, we auto registered this device and placed a unique Authentication Key on it. See your security below for more details.",
   "USER_EXPERIENCE_EXPLANATION_KEY": "Every time you log in we rotate the Authentication Key. It’s like having a locksmith change your locks every time you enter your house.",
   "USER_EXPERIENCE_EXPLANATION_2FA": "Two factor authentication (2FA) out of the box. 2FA is something you know, your PIN and something you have, your device and it’s unique Authentication Key.",
+
+  "USER_EXPERIENCE_FP_TEXT": "Did you enjoy that quick authentication?",
+  "USER_EXPERIENCE_FP_SUBTEXT": "You have just used your fingerprint to Authenticate but what’s so special about that:",
+  "USER_EXPERIENCE_FP_EXPLANATION_LOCK": "First off your fingerprint is unique to you, and is difficult for an attacker to replicate.",
+  "USER_EXPERIENCE_FP_EXPLANATION_SCREEN": "When you first signed up, we auto registered this device and placed a unique Authentication Key on it. See your security below for more details.",
+  "USER_EXPERIENCE_FP_EXPLANATION_KEY": "Every time you log in we rotate the Authentication Key. It’s like having a locksmith change your locks every time you enter your house.",
+  "USER_EXPERIENCE_FP_EXPLANATION_2FA": "Two factor authentication (2FA) out of the box. 2FA is something you are, your Fingerprint and something you have, your device and it’s unique Authentication Key.",
 
   "PROFILE_PHOTO_CTA": "Add photo",
 

@@ -16,6 +16,9 @@
   "DEVICE_ACTIVATION_CODE": "Código de activación",
   "ACTIVATE": "Activar",
 
+
+  "CHOOSE_AUTHMETHOD_TITLE": "¿Cómo le gustaría acceder?",
+
   "ADD_THIS_DEVICE": "Agregar este dispositivo",
   "ADD_DEVICE_EXPLANATION": "Como es la primera vez en este dispositivo, tiene que agregarlo a tu cuenta",
   "ENTER_YOUR_USERNAME": "Introduce tu numbre de usuario",

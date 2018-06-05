@@ -56,6 +56,11 @@ However you can modify this code to easily work with your own server
 
 [Ionic deploying](https://ionicframework.com/docs/intro/deploying/)
 
+## Fingerprint Authentication
+
+The app supports authentication using the user's fingerprint, on supported iOS and Android devices, in addition to PIN. 
+The fingerprint will need to be activated on the device in order to enable this. Please see instructions for the specific device on setting up fingerprint ID scan.
+
 ## Publishing
 
 [Ionic publishing](http://ionicframework.com/docs/v1/guide/publishing.html)
