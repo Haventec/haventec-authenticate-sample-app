@@ -2,7 +2,7 @@
   background-color: $colour-background-secondary;
   background-image: url('../assets/img/sunset.jpg');
   background-repeat: no-repeat;
-  background-size: unset;
+  background-size: cover;
   background-position: top center;
 
   @include media-breakpoint-up('xl') {
