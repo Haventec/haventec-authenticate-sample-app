@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { AddDevicePage } from '../add-device/add-device';
 import { ActivateAccountPage } from '../activate-account/activate-account';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
@@ -9,6 +8,7 @@ import { LogService } from '../../providers/log-service/log-service';
 import * as Constant from '../../constants/application.const';
 import {ChooseAuthMethodPage} from "../choose-authmethod/choose-authmethod";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
+import { HaventecAuthenticateClient } from '../../services/authenticate.client';
 
 @Component({
   selector: 'ht-page-choose-user',
@@ -54,7 +54,7 @@ export class ChooseUserPage {
     this.pageLoadingService.present();
 
     this.haventecAuthenticateClient.signUp(username, email).then(
-      data => {
+      (data:any) => {
         this.pageLoadingService.dismiss();
 
         const pageToNavTo = this.canUseFingerprint ? ChooseAuthMethodPage : ActivateAccountPage;

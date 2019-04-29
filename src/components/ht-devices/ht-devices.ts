@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
-import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { LogService } from '../../providers/log-service/log-service';
 import { UserModel } from '../../models/user';
+import { HaventecAuthenticateClient } from "../../services/authenticate.client";
 
 @Component({
     templateUrl: 'ht-devices.html',

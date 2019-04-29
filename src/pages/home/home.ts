@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { AlertController } from 'ionic-angular';
-import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { LogService } from '../../providers/log-service/log-service';
 import { UserModel } from '../../models/user';
 import * as Constant from '../../constants/application.const';
 import {Storage} from "@ionic/storage";
+import { HaventecAuthenticateClient } from '../../services/authenticate.client';
 
 @Component({
   selector: 'ht-page-home',

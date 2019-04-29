@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { ChooseUserPage } from '../choose-user/choose-user';
 import { HomePage } from '../home/home';
 import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
+import { HaventecAuthenticateClient } from '../../services/authenticate.client';
 
 @Component({
   selector: 'ht-page-activate-device',

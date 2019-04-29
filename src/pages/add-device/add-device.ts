@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { ActivateDevicePage } from '../activate-device/activate-device'
 import { ChooseUserPage } from '../choose-user/choose-user'
 import { LogService } from '../../providers/log-service/log-service';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 import * as Constant from '../../constants/application.const';
+import { HaventecAuthenticateClient } from '../../services/authenticate.client';
 
 @Component({
   selector: 'ht-page-add-device',
