@@ -18,6 +18,10 @@ export class HaventecAuthenticateClient {
     public init(applicationUuid: string, domain: string) {
         this.applicationUuid = applicationUuid;
         this.domain = domain;
+        let currentUser = localStorage.getItem('haventec_username');
+        if (currentUser) {
+            this.setCurrentUser(JSON.parse(currentUser));
+        }
     }
 
     public activateDevice(username: string, pin: string, activationToken: string, urlOverwrite?:string) {
