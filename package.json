@@ -21,7 +21,7 @@
         "@angular/http": "5.2.11",
         "@angular/platform-browser": "5.2.11",
         "@angular/platform-browser-dynamic": "5.2.11",
-        "@haventec/authenticate-web-sdk": "^1.0.1",
+        "@haventec/authenticate-web-sdk": "1.0.5",
         "@ionic-native/core": "4.20.0",
         "@ionic-native/fingerprint-aio": "4.20.0",
         "@ionic-native/secure-storage": "4.20.0",
