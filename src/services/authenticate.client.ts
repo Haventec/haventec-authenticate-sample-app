@@ -20,7 +20,7 @@ export class HaventecAuthenticateClient {
         this.domain = domain;
         let currentUser = localStorage.getItem('haventec_username');
         if (currentUser) {
-            this.setCurrentUser(JSON.parse(currentUser));
+            this.setCurrentUser(currentUser);
         }
     }
 
@@ -188,7 +188,10 @@ export class HaventecAuthenticateClient {
     private setCurrentUser(username: string) {
         if(username && this.currentUser !== username){
             this.currentUser = username;
-            this.haventecAuthenticate = new HaventecAuthenticate(username);
+            if ( !this.haventecAuthenticate ) {
+              this.haventecAuthenticate = new HaventecAuthenticate();
+            }
+            this.haventecAuthenticate.initialiseStorage(username);
         }
     }
 
