@@ -6,8 +6,6 @@ import {IonicStorageModule} from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HaventecAuthenticateClient, HaventecAuthenticateClientFactory } from '@haventec/authenticate-client-js';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -32,6 +30,8 @@ import { Http } from '@angular/http';
 import { OrderByPipe } from '../pipes/orderBy'
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {SecureStorage} from "@ionic-native/secure-storage";
+import { HaventecAuthenticateClient } from '../services/authenticate.client';
+import { HT_HttpService } from '../services/http.service';
 
 @NgModule({
   declarations: [
@@ -78,12 +78,13 @@ import {SecureStorage} from "@ionic-native/secure-storage";
     AppHeader
   ],
   providers: [
+    HaventecAuthenticateClient,
+    HT_HttpService,
     StatusBar,
     SplashScreen,
     FingerprintAIO,
     SecureStorage,
     { provide: ErrorHandler, useClass: IonicErrorHandler},
-    { provide: HaventecAuthenticateClient, useFactory: HaventecAuthenticateClientFactory, deps: [ ] },
     LogService,
     PageLoadingService
   ]

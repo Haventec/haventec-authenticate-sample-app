@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, Events } from 'ionic-angular';
-import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { HomePage } from '../home/home';
 import { ResetPinPage } from '../reset-pin/reset-pin';
 import { LogService } from '../../providers/log-service/log-service'
@@ -10,6 +9,7 @@ import * as Constant from '../../constants/application.const';
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {Storage} from "@ionic/storage";
 import {SecureStorage, SecureStorageObject} from "@ionic-native/secure-storage";
+import { HaventecAuthenticateClient } from '../../services/authenticate.client';
 
 @Component({
   selector: 'ht-page-login',
@@ -102,7 +102,7 @@ export class LoginPage {
     this.pageLoadingService.present();
 
     this.haventecAuthenticateClient.login(this.username, pin).then(
-      data => {
+      (data:any) => {
         this.logService.debug('\nAuthentication Key: \n\n', data.authKey);
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);

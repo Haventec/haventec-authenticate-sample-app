@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { ActivateAccountPage } from '../activate-account/activate-account';
 import { PageLoadingService } from '../../providers/page-loading-service/page-loading-service';
 import { LogService } from '../../providers/log-service/log-service';
@@ -10,6 +9,7 @@ import {HomePage} from "../home/home";
 import {ChooseUserPage} from "../choose-user/choose-user";
 import {Storage} from "@ionic/storage";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
+import { HaventecAuthenticateClient } from '../../services/authenticate.client';
 
 @Component({
   selector: 'ht-page-choose-authmethod',

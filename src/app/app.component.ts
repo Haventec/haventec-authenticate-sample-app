@@ -2,13 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HaventecAuthenticateClient } from '@haventec/authenticate-client-js';
 import { ChooseUserPage } from '../pages/choose-user/choose-user';
 import { LoginPage } from '../pages/login/login';
 import { LogService } from '../providers/log-service/log-service';
 import { TranslateService } from '@ngx-translate/core';
 import {Storage} from "@ionic/storage";
 import * as Constant from '../constants/application.const'
+import { HaventecAuthenticateClient } from '../services/authenticate.client';
 
 @Component({
   templateUrl: 'app.html'
