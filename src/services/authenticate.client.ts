@@ -18,7 +18,7 @@ export class HaventecAuthenticateClient {
     public init(applicationUuid: string, domain: string) {
         this.applicationUuid = applicationUuid;
         this.domain = domain;
-        let currentUser = localStorage.getItem('haventec_username');
+        const currentUser = localStorage.getItem('haventec_username');
         if (currentUser) {
             this.setCurrentUser(currentUser);
         }
@@ -237,7 +237,7 @@ export class HaventecAuthenticateClient {
         return this.haventecAuthenticate.hashPin(pin);;
     }
 
-    public getUsername() {
+    public getUsername(): string {
         return this.haventecAuthenticate ? this.haventecAuthenticate.getUsername(): undefined;
     }
 
