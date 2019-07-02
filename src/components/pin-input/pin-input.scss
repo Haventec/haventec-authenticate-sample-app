@@ -5,6 +5,7 @@
   min-height: 4.5rem;
   color: $colour-text-primary;
   margin-bottom: 1rem;
+  // -webkit-text-security: disc !important; 
 
   .pin-item {
     padding: 1rem;
@@ -18,4 +19,12 @@
   }
 }
 
+input[inputmode="numeric"] { 
+  -webkit-text-security: disc !important; 
+}
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
