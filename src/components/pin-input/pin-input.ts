@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Events } from 'ionic-angular';
-import { ChangeDetectorStatus } from "@angular/core/src/change_detection/constants";
 
 @Component({
   templateUrl: 'pin-input.html',
@@ -66,8 +65,6 @@ export class PinInput {
       next = changes.target.nextElementSibling;
     } else if (changes.keyCode == 8) {
       next = changes.target.previousElementSibling;
-    } else if (changes.keyCode < 48 || changes.keyCode > 57) {
-      changes.preventDefault();
     }
 
     if (next) {
