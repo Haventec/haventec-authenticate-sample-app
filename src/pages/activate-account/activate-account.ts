@@ -27,6 +27,7 @@ export class ActivateAccountPage {
   ) {
 
     this.activateAccountFormGroup = this.formBuilder.group({
+      accountActivationCode: ['', Validators.required],
       pin: ['', Validators.required]
     });
 
@@ -42,7 +43,7 @@ export class ActivateAccountPage {
   activateUser() {
     let pin = this.activateAccountFormGroup.value.pin;
 
-    let activationToken = this.navParams.get('activationToken');
+    let activationToken = this.activateAccountFormGroup.value.accountActivationCode;
 
     this.pageLoadingService.present();
 
