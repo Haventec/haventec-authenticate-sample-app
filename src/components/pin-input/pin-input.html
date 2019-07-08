@@ -1,6 +1,6 @@
 <div class="pin-input">
-    <input pattern="[0-9]*" inputmode="numeric" type="number" id="pinInput1" onfocus="this.value = '';" class="pin-item" maxlength="1" [(ngModel)]="pin1" (focus)="doKeydown1()" (keyup)="update($event)" placeholder=""/>
-    <input pattern="[0-9]*" inputmode="numeric" type="number" id="pinInput2" onfocus="this.value = '';" class="pin-item" maxlength="1" [(ngModel)]="pin2" (focus)="doKeydown2()" (keyup)="update($event)"/>
-    <input pattern="[0-9]*" inputmode="numeric" type="number" id="pinInput3" onfocus="this.value = '';" class="pin-item" maxlength="1" [(ngModel)]="pin3" (focus)="doKeydown3()" (keyup)="update($event)"/>
-    <input pattern="[0-9]*" inputmode="numeric" type="number" id="pinInput4" onfocus="this.value = '';" class="pin-item" maxlength="1" [(ngModel)]="pin4" (focus)="doKeydown4()" (keyup)="update($event)"/>
+    <input type="tel" id="pinInput1" onfocus="this.value = '';" class="pin-item form-control mask-text" maxlength="1" [(ngModel)]="pin1" (focus)="doKeydown1()" (keyup)="update($event)"/>
+    <input type="tel" id="pinInput2" onfocus="this.value = '';" class="pin-item form-control mask-text" maxlength="1" [(ngModel)]="pin2" (focus)="doKeydown2()" (keyup)="update($event)"/>
+    <input type="tel" id="pinInput3" onfocus="this.value = '';" class="pin-item form-control mask-text" maxlength="1" [(ngModel)]="pin3" (focus)="doKeydown3()" (keyup)="update($event)"/>
+    <input type="tel" id="pinInput4" onfocus="this.value = '';" class="pin-item form-control mask-text" maxlength="1" [(ngModel)]="pin4" (focus)="doKeydown4()" (keyup)="update($event)"/>
 </div>

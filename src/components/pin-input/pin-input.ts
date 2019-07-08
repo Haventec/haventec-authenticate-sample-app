@@ -63,6 +63,13 @@ export class PinInput {
       this.pincode = this.pin1 + this.pin2 + this.pin3 + this.pin4;
       this.pinUpdated.emit(this.pincode);
       next = changes.target.nextElementSibling;
+
+      if (next === null) {
+        console.log("Next is null");
+      }
+
+      console.log(next);
+
     } else if (changes.keyCode == 8) {
       next = changes.target.previousElementSibling;
     }
