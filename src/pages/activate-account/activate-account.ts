@@ -47,11 +47,11 @@ export class ActivateAccountPage {
 
     this.pageLoadingService.present();
 
-    this.haventecAuthenticateClient.activateUser(this.username, activationToken, pin).then(
-      data => {
+    this.haventecAuthenticateClient.activateUser(this.username, activationToken, pin)
+    .then(data => {
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);
-      },
+      }, 
       err => {
         this.logService.error(err);
         this.pageLoadingService.dismiss();
