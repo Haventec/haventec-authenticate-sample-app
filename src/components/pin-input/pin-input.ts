@@ -2,35 +2,35 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Events } from 'ionic-angular';
 
 @Component({
-    templateUrl: 'pin-input.html',
-    selector: 'pin-input',
+  templateUrl: 'pin-input.html',
+  selector: 'pin-input',
 
 })
-export class PinInput{
+export class PinInput {
 
-    @Input() pincode: string;
-    @Input() pin1: string;
-    @Input() pin2: string;
-    @Input() pin3: string;
-    @Input() pin4: string;
+  @Input() pincode: string;
+  @Input() pin1: string;
+  @Input() pin2: string;
+  @Input() pin3: string;
+  @Input() pin4: string;
 
-    @Output() pinUpdated = new EventEmitter();
+  @Output() pinUpdated = new EventEmitter();
 
-    constructor(public events: Events) {
-        this.pin1 = '';
-        this.pin2 = '';
-        this.pin3 = '';
-        this.pin4 = '';
-        this.pincode = '';
+  constructor(public events: Events) {
+    this.pin1 = '';
+    this.pin2 = '';
+    this.pin3 = '';
+    this.pin4 = '';
+    this.pincode = '';
 
-      events.subscribe('pin:clear', () => {
-        this.clearPins();
-      });
-    }
+    events.subscribe('pin:clear', () => {
+      this.clearPins();
+    });
+  }
 
-    ngOnChanges(changes: any) {
-        this.update(changes);
-    }
+  ngOnChanges(changes: any) {
+    this.update(changes);
+  }
 
   doKeydown1() {
     this.pin1 = '';
@@ -59,15 +59,18 @@ export class PinInput{
 
   update(changes) {
     let next = null;
-    if (changes.keyCode >= 48 && changes.keyCode <= 57 || changes.keyCode >= 96 && changes.keyCode <= 105) {
+    if (changes.keyCode >= 48 && changes.keyCode <= 57) {
       this.pincode = this.pin1 + this.pin2 + this.pin3 + this.pin4;
-
       this.pinUpdated.emit(this.pincode);
-
       next = changes.target.nextElementSibling;
-    }
 
-    if (changes.keyCode == 8) {
+      if (next === null) {
+        console.log("Next is null");
+      }
+
+      console.log(next);
+
+    } else if (changes.keyCode == 8) {
       next = changes.target.previousElementSibling;
     }
 
