@@ -10,9 +10,14 @@
         <h5>{{'ACTIVATE_USER_SUBTEXT' | translate}}</h5>
 
         <form [formGroup]="activateAccountFormGroup" (ngSubmit)="activateUser()">
+          <ion-item>
+            <ion-label stacked>{{'FORM_LABEL_CODE' | translate}}</ion-label>
+            <ion-input type="number" formControlName="accountActivationCode"></ion-input>
+          </ion-item>
           <ion-label class="pin-label">{{'FORM_LABEL_PIN' | translate}}</ion-label>
           <pin-input id="pin" [pincode]="pin" required (pinUpdated)="pinUpdated($event)"></pin-input>
-          <button class="ht-bt-primary" [disabled]="!activateAccountFormGroup.valid" type="submit">{{'ACTIVATE_USER_CTA' | translate}}</button>
+          <button class="ht-bt-primary" [disabled]="!activateAccountFormGroup.valid"
+            type="submit">{{'ACTIVATE_USER_CTA' | translate}}</button>
         </form>
 
         <h5><button class="ht-bt-inline" (click)="back();">{{'NAV_BACK_LINK' | translate}}</button></h5>

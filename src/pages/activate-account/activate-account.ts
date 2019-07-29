@@ -27,6 +27,7 @@ export class ActivateAccountPage {
   ) {
 
     this.activateAccountFormGroup = this.formBuilder.group({
+      accountActivationCode: ['', Validators.required],
       pin: ['', Validators.required]
     });
 
@@ -42,15 +43,15 @@ export class ActivateAccountPage {
   activateUser() {
     let pin = this.activateAccountFormGroup.value.pin;
 
-    let activationToken = this.navParams.get('activationToken');
+    let activationToken = this.activateAccountFormGroup.value.accountActivationCode;
 
     this.pageLoadingService.present();
 
-    this.haventecAuthenticateClient.activateUser(this.username, activationToken, pin).then(
-      data => {
+    this.haventecAuthenticateClient.activateUser(this.username, activationToken, pin)
+    .then(data => {
         this.pageLoadingService.dismiss();
         this.navCtrl.setRoot(HomePage);
-      },
+      }, 
       err => {
         this.logService.error(err);
         this.pageLoadingService.dismiss();
