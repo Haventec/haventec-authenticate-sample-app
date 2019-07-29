@@ -25,9 +25,9 @@
   "CHOOSE_AUTHMETHOD_USE_PIN": "PIN",
   "CHOOSE_AUTHMETHOD_USE_FP": "Fingerprint",
 
-  "ACTIVATE_USER_TITLE": "Set your PIN",
+  "ACTIVATE_USER_TITLE": "Verify your email and set a PIN",
   "ACTIVATE_USER_TEXT": "This PIN is only known to you, it is not saved anywhere",
-  "ACTIVATE_USER_SUBTEXT": "This PIN will be used each time you login",
+  "ACTIVATE_USER_SUBTEXT": "We have sent a 6 digit activation code to your email",
   "ACTIVATE_USER_CTA": "Login",
   "ACTIVATE_USER_USE_FP": "Click to use Fingerprint",
 
