@@ -35,7 +35,7 @@ rem application.const.ts.template application.const.ts
 ```
 
 Edit the file 'application.const.ts' to add your application UUID
-* APPLICATION_UUID: The UUID of the application that you created at [Haventec Console](https://console-demo.haventec.com)
+* APPLICATION_UUID: The UUID of the application that you created at [Haventec Console](https://console-demo.haventec.com/)
 * API_ENDPOINT: URL where the backend server is located. (The default value is fine when running locally)
 
 Linux / Mac:
