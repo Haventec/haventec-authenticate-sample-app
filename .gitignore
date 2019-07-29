@@ -32,3 +32,9 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+# Ionic
+.sourcemaps/
+
+# Configuration
+src/constants/application.const.ts
